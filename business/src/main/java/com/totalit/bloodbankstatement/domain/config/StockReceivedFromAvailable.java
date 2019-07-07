@@ -11,6 +11,8 @@ public class StockReceivedFromAvailable extends BaseEntity{
 
 
     private String receivedFrom;
+    private String branchName;
+
 
     @ManyToOne
     @JsonIgnore
@@ -30,5 +32,13 @@ public class StockReceivedFromAvailable extends BaseEntity{
 
     public void setStockAvailable(StockAvailable stockAvailable) {
         this.stockAvailable = stockAvailable;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 }

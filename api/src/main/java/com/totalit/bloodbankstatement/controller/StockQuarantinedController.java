@@ -1,14 +1,12 @@
 package com.totalit.bloodbankstatement.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.totalit.bloodbankstatement.controller.admin.BranchController;
-import com.totalit.bloodbankstatement.domain.config.Branch;
-import com.totalit.bloodbankstatement.domain.config.StockAvailable;
-import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
+import com.totalit.bloodbankstatement.domain.config.*;
 import com.totalit.bloodbankstatement.service.*;
-import com.totalit.bloodbankstatement.util.StringUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -16,9 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.lang.reflect.InvocationTargetException;
+import java.util.*;
 
 
 @CrossOrigin(origins = "*", maxAge = 200000)
@@ -41,33 +38,77 @@ public class StockQuarantinedController {
 
     @PostMapping("/save")
     @ApiOperation("Persists Company Details")
-    public ResponseEntity<Map<String, Object>> saveCompanyPro(@RequestHeader(value = "Branch") String branchString, @RequestBody StockQuarantined stockQuarantined) {
-        System.err.println("****************");
-        System.err.println("**SAVING**");
-        System.err.println("****************");
-        Branch branch = StringUtils.stringToCompanyObject(branchString);
+    public ResponseEntity<Map<String, Object>> saveCompanyPro( @RequestBody StockQuarantined stockQuarantined) throws JsonProcessingException {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockQuarantined));
+
+        Branch branch = stockQuarantined.getBranch();
         Map<String, Object> response = new HashMap<>();
         try {
-            stockQuarantined.setBranch(branch);
+            if (stockQuarantined.getId()== null) {
+                System.err.println("***************");
+                System.err.println("cant be using this one");
+                System.err.println("***************");
+                stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
+                    item.setStockQuarantined(stockQuarantined);
+                    stockIssuedToQuarantineService.save(item);
+                });
+                stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
+                    item.setStockQuarantined(stockQuarantined);
+                    stockReceivedFromQuarantineService.save(item);
+                });
+                StockQuarantined stock = stockService.save(stockQuarantined);
 
-//            ObjectMapper objectMapper = new ObjectMapper();
-//            System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockQuarantined));
+                response.put("stockQuarantined", stock);
+                response.put("message", "added new stock available Successfully");
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }
+            if (stockQuarantined.getId() != null) {
+                StockQuarantined quarantined = stockService.getByBranchAndActive(branch, Boolean.TRUE);
+                if(quarantined != null) {
+                    System.err.println("***************");
+                    System.err.println("using this one");
+                    System.err.println("***************");
+                    setUpObject(stockQuarantined,quarantined );
+                    stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
+                        item.setStockQuarantined(stockQuarantined);
+                        stockIssuedToQuarantineService.save(item);
+                    });
+                    quarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
+                        item.setStockQuarantined(quarantined);
+                        stockReceivedFromQuarantineService.save(item);
+                    });
+                    StockQuarantined stock = stockService.save(quarantined);
 
+                    response.put("stockQuarantined", stock);
+                    response.put("message", "updated stock available Successfully");
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                }else{
+                    System.err.println("***************");
+                    System.err.println("using this two");
+                    System.err.println("***************");
+                    stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
+                        item.setStockQuarantined(stockQuarantined);
+                        stockIssuedToQuarantineService.save(item);
+                    });
+                    stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
+                        item.setStockQuarantined(stockQuarantined);
+                        stockReceivedFromQuarantineService.save(item);
+                    });
+                    StockQuarantined stock = stockService.save(stockQuarantined);
 
-            StockQuarantined st = stockService.save(stockQuarantined);
-            stockQuarantined.getStockIssuedToQuarantines().forEach(complaint -> {
-                complaint.setStockQuarantined(st);
-                stockIssuedToQuarantineService.save(complaint);
-            });
-            stockQuarantined.getStockReceivedFromQuarantineds().forEach(complaint -> {
-                complaint.setStockQuarantined(st);
-                stockReceivedFromQuarantineService.save(complaint);
-            });
+                    response.put("stockQuarantined", stock);
+                    response.put("message", "added new stock available Successfully");
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                }
+            }
+
         } catch (Exception ex) {
+            System.err.println(ex);
             response.put("message", "System error occurred saving item");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response.put("message", "available stock saved Saved Successfully");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     @GetMapping("/get")
@@ -75,13 +116,41 @@ public class StockQuarantinedController {
     public StockQuarantined getByBranchAndActive(@RequestParam("branchId") Long id) {
 
         Branch branch = service.get(id);
-        return stockService.getByBranchAndActive(branch , Boolean.TRUE);
+        List<StockIssuedToQuarantine> stockIssuedToQuarantines = new ArrayList<>();
+        List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
+
+        StockQuarantined stockQuarantined = stockService.getByBranchAndActive(branch , Boolean.TRUE);
+        if (stockQuarantined ==null){
+            return null;
+        }
+        if(stockQuarantined!=null && stockQuarantined.getStockIssuedToQuarantines()!=null) {
+            stockQuarantined.getStockIssuedToQuarantines().stream().forEach(item -> {
+                stockIssuedToQuarantines.add(item);
+            });
+        }
+        if(stockQuarantined!=null && stockQuarantined.getStockReceivedFromQuarantineds()!=null) {
+            stockQuarantined.getStockReceivedFromQuarantineds().stream().forEach(item -> {
+                stockReceivedFromQuarantineds.add(item);
+            });
+        }
+        stockQuarantined.setIssuedToQuarantines(stockIssuedToQuarantines);
+        stockQuarantined.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
+
+        return stockQuarantined;
     }
 
     @GetMapping("/get-by-active-branch")
     @ApiOperation("Returns all active company profiles")
     public StockQuarantined get(@PathVariable("branchId") Long id) {
         return stockService.get(id);
+    }
+
+    public void setUpObject(StockQuarantined old, StockQuarantined current) throws InvocationTargetException, IllegalAccessException {
+        Date dateCreated = old.getDateCreated();
+        User createdBy = old.getCreatedBy();
+        BeanUtils.copyProperties(current, old);
+        old.setDateCreated(dateCreated);
+        old.setCreatedBy(createdBy);
     }
 
 }

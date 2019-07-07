@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class StockIssuedToAvailable extends BaseEntity{
 
-
+        private String branchName;
         private String issuedTo;
         @ManyToOne
         @JsonIgnore
@@ -32,5 +32,11 @@ public class StockIssuedToAvailable extends BaseEntity{
         this.stockAvailable = stockAvailable;
     }
 
+    public String getBranchName() {
+        return branchName;
+    }
 
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
+    }
 }

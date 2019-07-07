@@ -1,9 +1,9 @@
 package com.totalit.bloodbankstatement.domain.config;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -39,11 +39,20 @@ public class StockQuarantined extends BaseEntity {
     private Integer plt2;
     private Integer cryo;
 
-    @OneToMany(mappedBy = "stockQuarantined", fetch = FetchType.EAGER)
+
+    @JsonIgnore
+    @OneToMany( mappedBy = "stockQuarantined", fetch = FetchType.EAGER)
     private Set<StockIssuedToQuarantine> stockIssuedToQuarantines;
 
-    @OneToMany(mappedBy = "stockQuarantined", fetch = FetchType.EAGER)
+    @Transient
+    private  List<StockIssuedToQuarantine> issuedToQuarantines;
+
+    @JsonIgnore
+    @OneToMany( mappedBy = "stockQuarantined", fetch = FetchType.EAGER)
     private Set<StockReceivedFromQuarantined> stockReceivedFromQuarantineds;
+
+    @Transient
+    private List<StockReceivedFromQuarantined> receivedFromQuarantineds;
 
     @ManyToOne
     private Branch branch;
@@ -302,5 +311,21 @@ public class StockQuarantined extends BaseEntity {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public List<StockIssuedToQuarantine> getIssuedToQuarantines() {
+        return issuedToQuarantines;
+    }
+
+    public void setIssuedToQuarantines(List<StockIssuedToQuarantine> issuedToQuarantines) {
+        this.issuedToQuarantines = issuedToQuarantines;
+    }
+
+    public List<StockReceivedFromQuarantined> getReceivedFromQuarantineds() {
+        return receivedFromQuarantineds;
+    }
+
+    public void setReceivedFromQuarantineds(List<StockReceivedFromQuarantined> receivedFromQuarantineds) {
+        this.receivedFromQuarantineds = receivedFromQuarantineds;
     }
 }

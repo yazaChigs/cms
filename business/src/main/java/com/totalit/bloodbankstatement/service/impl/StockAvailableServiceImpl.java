@@ -70,7 +70,25 @@ public class StockAvailableServiceImpl implements StockAvailableService {
 
     @Override
     public Boolean checkDuplicate(StockAvailable current, StockAvailable old) {
-        return null;
+        if (current.getId() != null) {
+            /**
+             * @param current is in existence
+             */
+            if (!current.getId().equals(old.getId())) {
+                if (get(current.getId()) != null) {
+                    return true;
+                }
+            }
+
+        } else if (current.getId() == null) {
+            /**
+             * @param current is new
+             */
+            if (get(current.getId())  != null) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

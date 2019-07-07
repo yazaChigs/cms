@@ -11,6 +11,8 @@ public class StockReceivedFromQuarantined extends BaseEntity{
 
 
     private String receivedFrom;
+    private String branchName;
+
 
     @ManyToOne
     @JsonIgnore
@@ -30,5 +32,13 @@ public class StockReceivedFromQuarantined extends BaseEntity{
 
     public void setStockQuarantined(StockQuarantined stockQuarantined) {
         this.stockQuarantined = stockQuarantined;
+    }
+
+    public String getBranchName() {
+        return branchName;
+    }
+
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 }

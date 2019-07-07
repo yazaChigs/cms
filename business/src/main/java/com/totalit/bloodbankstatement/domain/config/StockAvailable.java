@@ -1,9 +1,9 @@
 package com.totalit.bloodbankstatement.domain.config;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 
@@ -132,11 +132,19 @@ public class StockAvailable extends BaseEntity {
     private Integer cryo;
     private Integer paedPacks;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "stockAvailable", fetch = FetchType.EAGER)
     private Set<StockReceivedFromAvailable> stockReceivedFromAvailable;
 
+    @Transient
+    public List<StockReceivedFromAvailable> receivedFromAvailable;
+
+    @JsonIgnore
     @OneToMany(mappedBy = "stockAvailable", fetch = FetchType.EAGER)
     private Set<StockIssuedToAvailable> stockIssuedToAvailable;
+
+    @Transient
+    public List<StockIssuedToAvailable> issuedToAvailable;
 
     @ManyToOne
     private Branch branch;
@@ -1131,5 +1139,21 @@ public class StockAvailable extends BaseEntity {
 
     public void setBranch(Branch branch) {
         this.branch = branch;
+    }
+
+    public List<StockReceivedFromAvailable> getReceivedFromAvailable() {
+        return receivedFromAvailable;
+    }
+
+    public void setReceivedFromAvailable(List<StockReceivedFromAvailable> receivedFromAvailable) {
+        this.receivedFromAvailable = receivedFromAvailable;
+    }
+
+    public List<StockIssuedToAvailable> getIssuedToAvailable() {
+        return issuedToAvailable;
+    }
+
+    public void setIssuedToAvailable(List<StockIssuedToAvailable> issuedToAvailable) {
+        this.issuedToAvailable = issuedToAvailable;
     }
 }
