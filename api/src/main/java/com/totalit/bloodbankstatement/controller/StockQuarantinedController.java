@@ -50,6 +50,7 @@ public class StockQuarantinedController {
                 System.err.println("***************");
                 System.err.println("cant be using this one");
                 System.err.println("***************");
+                StockQuarantined stock = stockService.save(stockQuarantined);
                 stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                     item.setStockQuarantined(stockQuarantined);
                     stockIssuedToQuarantineService.save(item);
@@ -58,7 +59,6 @@ public class StockQuarantinedController {
                     item.setStockQuarantined(stockQuarantined);
                     stockReceivedFromQuarantineService.save(item);
                 });
-                StockQuarantined stock = stockService.save(stockQuarantined);
 
                 response.put("stockQuarantined", stock);
                 response.put("message", "added new stock available Successfully");

@@ -52,6 +52,7 @@ public class StockAvailableController {
                 System.err.println("***************");
                 System.err.println("cant be using this one");
                 System.err.println("***************");
+                StockAvailable stock = stockService.save(stockAvailable);
                 stockAvailable.getIssuedToAvailable().stream().forEach(item -> {
                     item.setStockAvailable(stockAvailable);
                     stockIssuedToAvailableService.save(item);
@@ -60,7 +61,6 @@ public class StockAvailableController {
                     item.setStockAvailable(stockAvailable);
                     stockReceivedFromAvailableService.save(item);
                 });
-                StockAvailable stock = stockService.save(stockAvailable);
 
                 response.put("stockAvailable", stock);
                 response.put("message", "added new stock available Successfully");
@@ -72,6 +72,7 @@ public class StockAvailableController {
                     System.err.println("***************");
                     System.err.println("using this one");
                     System.err.println("***************");
+                    StockAvailable stock = stockService.save(stockAvailable1);
                     setUpObject(stockAvailable,stockAvailable1 );
                     stockAvailable1.getIssuedToAvailable().stream().forEach(item -> {
                         item.setStockAvailable(stockAvailable1);
@@ -81,7 +82,6 @@ public class StockAvailableController {
                         item.setStockAvailable(stockAvailable1);
                         stockReceivedFromAvailableService.save(item);
                     });
-                    StockAvailable stock = stockService.save(stockAvailable1);
 
                     response.put("stockAvailable", stock);
                     response.put("message", "updated stock available Successfully");
