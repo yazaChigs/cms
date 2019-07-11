@@ -39,9 +39,9 @@ public class StockAvailableController {
 
     @PostMapping("/save")
     @ApiOperation("Persists Company Details")
-    public ResponseEntity<Map<String, Object>> saveCompanyPro(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-          System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+    public ResponseEntity<Map<String, Object>> saveAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
+//        ObjectMapper objectMapper = new ObjectMapper();
+//          System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
 
           Branch branch = stockAvailable.getBranch();
 
@@ -49,9 +49,6 @@ public class StockAvailableController {
         Map<String, Object> response = new HashMap<>();
         try {
             if (stockAvailable.getId()== null) {
-                System.err.println("***************");
-                System.err.println("cant be using this one");
-                System.err.println("***************");
                 StockAvailable stock = stockService.save(stockAvailable);
                 stockAvailable.getIssuedToAvailable().stream().forEach(item -> {
                     item.setStockAvailable(stockAvailable);
@@ -68,17 +65,14 @@ public class StockAvailableController {
             }
             if (stockAvailable.getId() != null) {
                 StockAvailable stockAvailable1 = stockService.getByBranchAndActive(branch, Boolean.TRUE);
-                if(stockAvailable1 != null) {
-                    System.err.println("***************");
-                    System.err.println("using this one");
-                    System.err.println("***************");
+                if (stockAvailable1 != null) {
+                    setUpObject(stockAvailable, stockAvailable1);
                     StockAvailable stock = stockService.save(stockAvailable1);
-                    setUpObject(stockAvailable,stockAvailable1 );
                     stockAvailable1.getIssuedToAvailable().stream().forEach(item -> {
                         item.setStockAvailable(stockAvailable1);
                         stockIssuedToAvailableService.save(item);
                     });
-                    stockAvailable1.getReceivedFromAvailable().stream().forEach(item ->{
+                    stockAvailable1.getReceivedFromAvailable().stream().forEach(item -> {
                         item.setStockAvailable(stockAvailable1);
                         stockReceivedFromAvailableService.save(item);
                     });
@@ -86,15 +80,12 @@ public class StockAvailableController {
                     response.put("stockAvailable", stock);
                     response.put("message", "updated stock available Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
-                }else{
-                    System.err.println("***************");
-                    System.err.println("using this two");
-                    System.err.println("***************");
+                } else {
                     stockAvailable.getIssuedToAvailable().stream().forEach(item -> {
                         item.setStockAvailable(stockAvailable);
                         stockIssuedToAvailableService.save(item);
                     });
-                    stockAvailable.getReceivedFromAvailable().stream().forEach(item ->{
+                    stockAvailable.getReceivedFromAvailable().stream().forEach(item -> {
                         item.setStockAvailable(stockAvailable);
                         stockReceivedFromAvailableService.save(item);
                     });
@@ -104,64 +95,83 @@ public class StockAvailableController {
                     response.put("message", "added new stock available Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
-//            if (branch != null){
-////                Branch branch = stockAvailable.getBranch();
-//                StockAvailable stockAvailable1 =  stockService.getByBranchAndActive(branch, Boolean.TRUE);
-//
-//
-//                if (stockAvailable1 == null) {
-//                   StockAvailable stock = stockService.save(stockAvailable);
-//                    stockAvailable.getReceivedFromAvailable().stream().forEach(item ->{
-//                        item.setStockAvailable(stockAvailable);
-//                        stockReceivedFromAvailableService.save(item);
-//                    });
-//                    stockAvailable.getStockIssuedToAvailable().stream().forEach(item ->{
-//                        item.setStockAvailable(stockAvailable);
-//                        stockIssuedToAvailableService.save(item);
-//                    });
-//                    response.put("stockAvailable", stock);
-//                    response.put("message", "added new stock available Successfully");
-//                    return new ResponseEntity<>(response, HttpStatus.OK);
-//                }
-//                if (stockAvailable1!=null){
-//                    if(stockAvailable.getBranch()==stockAvailable1.getBranch()){
-//                        System.err.println("swap objects");
-//                        setUpObject(stockAvailable1, stockAvailable);
-//                        StockAvailable stock = stockService.save(stockAvailable1);
-//                        stockAvailable.getReceivedFromAvailable().stream().forEach(item ->{
-//                            item.setStockAvailable(stockAvailable);
-//                            stockReceivedFromAvailableService.save(item);
-//                        });
-//                        stockAvailable.getStockIssuedToAvailable().stream().forEach(item ->{
-//                            item.setStockAvailable(stockAvailable);
-//                            stockIssuedToAvailableService.save(item);
-//                        });
-//                        response.put("stockAvailable", stock);
-//                        response.put("message", "updated old available Stock Successfully");
-//                        return new ResponseEntity<>(response, HttpStatus.OK);
-//                    }
-//                    else {
-//                        System.err.println("straight save objects");
-//
-//                        StockAvailable stock = stockService.save(stockAvailable);
-//                        stockAvailable.getReceivedFromAvailable().stream().forEach(item ->{
-//                            item.setStockAvailable(stockAvailable);
-//                            stockReceivedFromAvailableService.save(item);
-//                        });
-//                        stockAvailable.getStockIssuedToAvailable().stream().forEach(item ->{
-//                            item.setStockAvailable(stockAvailable);
-//                            stockIssuedToAvailableService.save(item);
-//                        });
-//                        response.put("stockAvailable", stock);
-//                        response.put("message", "available Stock Saved Successfully");
-//                        return new ResponseEntity<>(response, HttpStatus.OK);
-//                    }
-                }
-//            }else {
-//                response.put("message", "Branch is null");
-//                return new ResponseEntity<>(response, HttpStatus.OK);
-//            }
+            }
 
+        } catch (Exception ex) {
+            System.err.println(ex);
+            response.put("message", "System error occurred saving item");
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("/submit")
+    @ApiOperation("Persists Company Details")
+    public ResponseEntity<Map<String, Object>> submitAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
+
+        Branch branch = stockAvailable.getBranch();
+
+//        Map<String, Object> response =validate(stockAvailable);
+        Map<String, Object> response = new HashMap<>();
+        try {
+            if (stockAvailable.getId()== null) {
+                stockAvailable.setActive(Boolean.FALSE);
+                StockAvailable stock = stockService.save(stockAvailable);
+                stockAvailable.getIssuedToAvailable().stream().forEach(item -> {
+                    item.setStockAvailable(stockAvailable);
+                    item.setActive(Boolean.FALSE);
+                    stockIssuedToAvailableService.save(item);
+                });
+                stockAvailable.getReceivedFromAvailable().stream().forEach(item ->{
+                    item.setStockAvailable(stockAvailable);
+                    item.setActive(Boolean.FALSE);
+                    stockReceivedFromAvailableService.save(item);
+                });
+
+//                response.put("stockAvailable", stock);
+                response.put("message", "added new stock available Successfully");
+                return new ResponseEntity<>(response, HttpStatus.OK);
+            }
+            if (stockAvailable.getId() != null) {
+                StockAvailable stockAvailable1 = stockService.getByBranchAndActive(branch, Boolean.TRUE);
+                if (stockAvailable1 != null) {
+                    setUpObject(stockAvailable, stockAvailable1);
+                    stockAvailable1.setActive(Boolean.FALSE);
+                    StockAvailable stock = stockService.save(stockAvailable1);
+                    stockAvailable1.getIssuedToAvailable().stream().forEach(item -> {
+                        item.setStockAvailable(stockAvailable1);
+                        item.setActive(Boolean.FALSE);
+                        stockIssuedToAvailableService.save(item);
+                    });
+                    stockAvailable1.getReceivedFromAvailable().stream().forEach(item -> {
+                        item.setStockAvailable(stockAvailable1);
+                        item.setActive(Boolean.FALSE);
+                        stockReceivedFromAvailableService.save(item);
+                    });
+
+//                    response.put("stockAvailable", stock);
+                    response.put("message", "updated stock available Successfully");
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                } else {
+                    stockAvailable.setActive(Boolean.FALSE);
+                    StockAvailable stock = stockService.save(stockAvailable);
+                    stockAvailable.getIssuedToAvailable().stream().forEach(item -> {
+                        item.setStockAvailable(stockAvailable);
+                        item.setActive(Boolean.FALSE);
+                        stockIssuedToAvailableService.save(item);
+                    });
+                    stockAvailable.getReceivedFromAvailable().stream().forEach(item -> {
+                        item.setStockAvailable(stockAvailable);
+                        item.setActive(Boolean.FALSE);
+                        stockReceivedFromAvailableService.save(item);
+                    });
+
+//                    response.put("stockAvailable", stock);
+                    response.put("message", "added new stock available Successfully");
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                }
+            }
 
         } catch (Exception ex) {
             System.err.println(ex);
