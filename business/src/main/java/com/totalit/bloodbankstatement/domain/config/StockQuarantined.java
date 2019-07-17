@@ -28,6 +28,7 @@ public class StockQuarantined extends BaseEntity {
     private Integer c11;
     private Integer expired;
     private Integer wrongPack;
+    private Integer broken;
     private Integer other;
     private Integer serologicalDiscards;
     private Integer totalIssuesDiscards;
@@ -327,5 +328,13 @@ public class StockQuarantined extends BaseEntity {
 
     public void setReceivedFromQuarantineds(List<StockReceivedFromQuarantined> receivedFromQuarantineds) {
         this.receivedFromQuarantineds = receivedFromQuarantineds;
+    }
+
+    public Integer getBroken() {
+        return broken;
+    }
+
+    public void setBroken(Integer broken) {
+        this.broken = broken;
     }
 }

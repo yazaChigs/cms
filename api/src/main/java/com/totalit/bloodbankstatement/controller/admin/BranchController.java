@@ -136,10 +136,9 @@ public class BranchController {
 
     @GetMapping("/get-all-for-user")
     @ApiOperation("Returns all active company profiles")
-    public List<Branch> getAllForUser() {
-
-        User user = userService.getCurrentUser();
-        return service.getByUserBranch(user.getBranch());
+    public List<Branch> getAllForUser(@RequestParam("branchId") Long branchId) {
+        Branch branch = service.get(branchId);
+        return service.getByUserBranch(branch);
     }
     
     @GetMapping("/get-item")

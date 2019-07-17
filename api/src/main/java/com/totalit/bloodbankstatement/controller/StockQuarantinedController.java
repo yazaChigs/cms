@@ -58,7 +58,7 @@ public class StockQuarantinedController {
                 });
 
                 response.put("stockQuarantined", stock);
-                response.put("message", "added new stock available Successfully");
+                response.put("message", "added new stock quarantined Successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockQuarantined.getId() != null) {
@@ -76,7 +76,7 @@ public class StockQuarantinedController {
                     StockQuarantined stock = stockService.save(quarantined);
 
                     response.put("stockQuarantined", stock);
-                    response.put("message", "updated stock available Successfully");
+                    response.put("message", "updated stock quaratined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }else{
                     stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
@@ -90,7 +90,7 @@ public class StockQuarantinedController {
                     StockQuarantined stock = stockService.save(stockQuarantined);
 
                     response.put("stockQuarantined", stock);
-                    response.put("message", "added new stock available Successfully");
+                    response.put("message", "added new stock quarantined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }
@@ -125,7 +125,7 @@ public class StockQuarantinedController {
                 });
 
                 response.put("stockQuarantined", stock);
-                response.put("message", "added new stock available Successfully");
+                response.put("message", "added and submitted new stock quarantined Successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockQuarantined.getId() != null) {
@@ -146,7 +146,7 @@ public class StockQuarantinedController {
                     });
 
                     response.put("stockQuarantined", stock);
-                    response.put("message", "updated stock available Successfully");
+                    response.put("message", "updated and submitted stock quarantined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }else{
                     stockQuarantined.setActive(Boolean.FALSE);
@@ -163,7 +163,7 @@ public class StockQuarantinedController {
                     });
 
                     response.put("stockQuarantined", stock);
-                    response.put("message", "added new stock available Successfully");
+                    response.put("message", "added and submitted new stock quarantined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }

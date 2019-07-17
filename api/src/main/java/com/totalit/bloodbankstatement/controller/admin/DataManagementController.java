@@ -44,7 +44,7 @@ public class DataManagementController {
     private UserService userService;
 
     @PostMapping("/save-no-days-requirements")
-    @ApiOperation("Persists Company Details")
+    @ApiOperation("Persists No Days Requirements Details")
     public ResponseEntity<Map<String, Object>> saveNoDaysRequirements(@RequestHeader(value = "Branch") String branchString, @RequestBody NoDaysRequiremets noDaysRequiremets) {
         Branch branch = StringUtils.stringToCompanyObject(branchString);
 
@@ -92,12 +92,12 @@ public class DataManagementController {
             response.put("message", "System error occurred saving item");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response.put("message", "available stock saved Saved Successfully");
+        response.put("message", "No Days Requirements saved Saved Successfully");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/get-no-days-requirements")
-    @ApiOperation("Returns all active company profiles")
+    @ApiOperation("Returns all active No Days Requirements profiles")
     public NoDaysRequiremets getNoDaysRequirements() {
         Branch brn = userService.getCurrentUser().getBranch();
         if (brn==null){
@@ -106,7 +106,7 @@ public class DataManagementController {
     }
 
     @PostMapping("/save-ud-daily-requirements")
-    @ApiOperation("Persists Company Details")
+    @ApiOperation("Persists Unadjusted Daily Requirements Details")
     public ResponseEntity<Map<String, Object>> saveUnadjustedDailyRequirements(@RequestHeader(value = "Branch") String branchString, @RequestBody UnadjustedDailyRequirements unadjustedDailyRequirements) {
 
         Branch branch = StringUtils.stringToCompanyObject(branchString);
@@ -151,12 +151,12 @@ public class DataManagementController {
             response.put("message", "System error occurred saving item");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response.put("message", "available stock saved Saved Successfully");
+        response.put("message", "Unadjusted Daily Requirements saved Saved Successfully");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/get-ud-daily-requirements")
-    @ApiOperation("Returns all active company profiles")
+    @ApiOperation("Returns all active Unadjusted Daily Requirements profiles")
     public UnadjustedDailyRequirements getUnadjustedDailyRequirements() {
         Branch brn = userService.getCurrentUser().getBranch();
         if (brn==null){
@@ -165,7 +165,7 @@ public class DataManagementController {
     }
 
     @PostMapping("/save-bdmc")
-    @ApiOperation("Persists Company Details")
+    @ApiOperation("Persists Branch Daily Minimal Capacity Details")
     public ResponseEntity<Map<String, Object>> saveBranchDailyMinimalCapacity(@RequestHeader(value = "Branch") String branchString, @RequestBody BranchDailyMinimalCapacity branchDailyMinimalCapacity) {
 
         Branch branch = StringUtils.stringToCompanyObject(branchString);
@@ -212,12 +212,12 @@ public class DataManagementController {
             response.put("message", "System error occurred saving item");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response.put("message", "available stock saved Saved Successfully");
+        response.put("message", "Branch Daily Minimal Capacity saved Saved Successfully");
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/get-bdmc")
-    @ApiOperation("Returns all active company profiles")
+    @ApiOperation("Returns all Branch Daily Minimal Capacity")
     public BranchDailyMinimalCapacity getBranchDailyMinimalCapacity() {
         Branch brn = userService.getCurrentUser().getBranch();
         if (brn==null){

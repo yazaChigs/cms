@@ -130,7 +130,7 @@ public class StockAvailableController {
                 });
 
 //                response.put("stockAvailable", stock);
-                response.put("message", "added new stock available Successfully");
+                response.put("message", "added and submitted new stock available Successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockAvailable.getId() != null) {
@@ -151,7 +151,7 @@ public class StockAvailableController {
                     });
 
 //                    response.put("stockAvailable", stock);
-                    response.put("message", "updated stock available Successfully");
+                    response.put("message", "updated and submitted stock available Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 } else {
                     stockAvailable.setActive(Boolean.FALSE);
@@ -168,7 +168,7 @@ public class StockAvailableController {
                     });
 
 //                    response.put("stockAvailable", stock);
-                    response.put("message", "added new stock available Successfully");
+                    response.put("message", "added and submitted new stock available Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }
