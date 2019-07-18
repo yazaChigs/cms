@@ -46,9 +46,7 @@ public class DashboardController {
 
     @PostMapping("/get-for-selected-branches-by-date")
     @ApiOperation("Returns info by date for selected branches")
-    public StockInfoDTO getForSelectedBranchesByDate(@RequestBody SearchDTO dto) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dto));
+    public StockInfoDTO getForSelectedBranchesByDate(@RequestBody SearchDTO dto) {
 
         return stockAvailableService.getResult(dto);
 

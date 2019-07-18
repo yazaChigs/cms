@@ -3,6 +3,8 @@ package com.totalit.bloodbankstatement.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.totalit.bloodbankstatement.domain.config.Admin.BranchDailyMinimalCapacity;
+import com.totalit.bloodbankstatement.domain.config.Admin.NoDaysRequiremets;
 import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.domain.config.StockAvailable;
 import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
@@ -152,9 +154,30 @@ public class StockAvailableServiceImpl implements StockAvailableService {
 
     }
 
-    public StockQuarantined getQuarantine(SearchDTO dto, Branch branch) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(dto));
+    public BranchDailyMinimalCapacity getBranchDailyMinCapacity(SearchDTO dto, Branch branch) {
+        try{
+            StringBuilder builder = new StringBuilder("from BranchDailyMinimalCapacity p");
+            int position = 0;
+            if(branch != null) {
+                if(position == 0) {
+                    builder.append(" where p.branch=:branch");
+                    position++;
+                }else{
+                    builder.append(" and p.branch=:branch");
+                }
+            }
+            TypedQuery query = entityManager.createQuery(builder.toString(), BranchDailyMinimalCapacity.class);
+            if(branch != null){
+                query.setParameter("branch", branch);
+            }
+            return (BranchDailyMinimalCapacity) query.getSingleResult();
+        }catch (NoResultException ex) {
+            return null;
+        }
+
+    }
+
+    public StockQuarantined getQuarantine(SearchDTO dto, Branch branch) {
 
         try{
             StringBuilder builder = new StringBuilder("from StockQuarantined p");
@@ -201,16 +224,16 @@ public class StockAvailableServiceImpl implements StockAvailableService {
     }
 
     public StockInfoDTO getResult(SearchDTO dto) {
+        Integer branchNumberAvailable = 0;
+        Integer branchNumberQuarantine = 0;
         List<StockAvailable> availableList = new ArrayList<>();
         List<StockQuarantined> quarantinedList = new ArrayList<>();
+        List<BranchDailyMinimalCapacity> dailyMinimalCapacities = new ArrayList<>();
         dto.getBranches().forEach(item -> {
             if (item != null) {
                 availableList.add(getAvailable(dto, item));
-                try {
-                    quarantinedList.add(getQuarantine(dto, item));
-                } catch (JsonProcessingException e) {
-                    e.printStackTrace();
-                }
+                quarantinedList.add(getQuarantine(dto, item));
+                dailyMinimalCapacities.add(getBranchDailyMinCapacity(dto, item));
             }
         });
         Integer availableStock = 0;
@@ -223,59 +246,80 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         Integer receipts = 0;
         Integer issues = 0;
         Integer discards = 0;
+        Integer harareTotalMinCap = 0;
+        Integer bulawayoTotalMinCap = 0;
+        Integer masvingoTotalMinCap = 0;
+        Integer mutareTotalMinCap = 0;
+        Integer gweruTotalMinCap = 0;
+
 
         StockInfoDTO availableDTO = new StockInfoDTO();
 
         for(StockAvailable item : availableList){
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(item));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
             if (item != null) {
                 availableStock += checkNull(item.getTotalTotal()) + checkNull(item.getTotalTotalcompatibility());
                 supplies += checkNull(item.getHospitals()) + checkNull(item.getCompatsIssues());
                 orders += checkNull(item.getCompatsOrders()) + checkNull(item.getTotalHospitalOrders());
                 if (orders != 0)
                     demandVsSupply += checkNull(supplies/orders);
+                branchNumberAvailable ++;
+            }else {
+//                branchNumberAvailable += 1;
             }
         }
-        availableDTO.setStockAvailable(availableStock);
-        availableDTO.setSupplies(supplies);
-        availableDTO.setOrders(orders);
-        availableDTO.setDemandVsSupply(demandVsSupply);
+        availableDTO.setStockAvailable(availableStock / checkZero(branchNumberAvailable));
+        availableDTO.setSupplies(supplies / checkZero(branchNumberAvailable));
+        availableDTO.setOrders(orders / checkZero(branchNumberAvailable));
+        availableDTO.setDemandVsSupply(demandVsSupply / checkZero(branchNumberAvailable));
 
         for(StockQuarantined item : quarantinedList){
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(item));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
             if (item != null) {
-
                 opening += checkNull(item.getOpeningStock());
                 receipts += checkNull(item.getTotalReceiptsFromBranches());
-                issues += checkNull(item.getTotalIssues());
+                issues += checkNull(item.getTotalIssues())+ checkNull(item.getAvailableStock());
                 discards += checkNull(item.getTotalIssuesDiscards());
                 quarantineStock += checkNull(item.getTotalCollections()) + checkNull(item.getTotalReceiptsFromBranches()) - checkNull(item.getTotalIssuesDiscards()) - checkNull(item.getTotalIssues());
-                collections += checkNull(item.getTotalCollections()) - checkNull(item.getOpeningStock()); // divided by branchDailyMinimalCapacity.harareTotalMinCapacity kuFront end
+                collections += checkNull(item.getTotalCollections()) ; // divided by branchDailyMinimalCapacity.harareTotalMinCapacity kuFront end
+                branchNumberQuarantine ++;
+            }else {
+//                branchNumberQuarantine += 1 ;
             }
         }
-        availableDTO.setCollections(collections);
-        availableDTO.setStockAvailable(availableStock);
-        availableDTO.setOpening(opening);
-        availableDTO.setReceipts(receipts);
-        availableDTO.setIssues(issues);
-        availableDTO.setDiscards(discards);
-        availableDTO.setQuarantineStock(quarantineStock);
+        availableDTO.setCollections(collections / checkZero(branchNumberQuarantine));
+        availableDTO.setStockAvailable(availableStock / checkZero(branchNumberQuarantine));
+        availableDTO.setOpening(opening / checkZero(branchNumberQuarantine));
+        availableDTO.setReceipts(receipts / checkZero(branchNumberQuarantine));
+        availableDTO.setIssues(issues / checkZero(branchNumberQuarantine));
+        availableDTO.setDiscards(discards / checkZero(branchNumberQuarantine));
+        availableDTO.setQuarantineStock(quarantineStock / checkZero(branchNumberQuarantine));
+
+        for (BranchDailyMinimalCapacity item: dailyMinimalCapacities) {
+            if (item != null) {
+                harareTotalMinCap += checkNull(item.getHarareTotalMinCapacity());
+                bulawayoTotalMinCap += checkNull(item.getBulawayoTotalMinCapacity());
+                gweruTotalMinCap += checkNull(item.getGweruTotalMinCapacity());
+                mutareTotalMinCap += checkNull(item.getMutareTotalMinCapacity());
+                masvingoTotalMinCap += checkNull(item.getMasvingoTotalMinCapacity());
+            }
+        }
+        availableDTO.setHarareTotalMinCap(harareTotalMinCap);
+        availableDTO.setBulawayoTotalMinCap(bulawayoTotalMinCap);
+        availableDTO.setGweruTotalMinCap(gweruTotalMinCap);
+        availableDTO.setMutareTotalMinCap(mutareTotalMinCap);
+        availableDTO.setMasvingoTotalMinCap(masvingoTotalMinCap);
+
         return availableDTO;
     }
 
     public static Integer checkNull (Integer input){
         if(input == null){
             input = 0;
+        }
+        return input;
+    }
+    public static Integer checkZero (Integer input){
+        if(input == 0){
+            input = 1;
         }
         return input;
     }

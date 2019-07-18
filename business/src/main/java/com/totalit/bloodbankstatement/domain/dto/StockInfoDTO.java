@@ -13,6 +13,11 @@ public class StockInfoDTO implements Serializable {
     private Integer receipts;
     private Integer issues;
     private Integer discards;
+    private Integer harareTotalMinCap;
+    private Integer bulawayoTotalMinCap;
+    private Integer gweruTotalMinCap;
+    private Integer masvingoTotalMinCap;
+    private Integer mutareTotalMinCap;
 
 
 
@@ -94,5 +99,45 @@ public class StockInfoDTO implements Serializable {
 
     public void setDiscards(Integer discards) {
         this.discards = discards;
+    }
+
+    public Integer getHarareTotalMinCap() {
+        return harareTotalMinCap;
+    }
+
+    public void setHarareTotalMinCap(Integer harareTotalMinCap) {
+        this.harareTotalMinCap = harareTotalMinCap;
+    }
+
+    public Integer getBulawayoTotalMinCap() {
+        return bulawayoTotalMinCap;
+    }
+
+    public void setBulawayoTotalMinCap(Integer bulawayoTotalMinCap) {
+        this.bulawayoTotalMinCap = bulawayoTotalMinCap;
+    }
+
+    public Integer getGweruTotalMinCap() {
+        return gweruTotalMinCap;
+    }
+
+    public void setGweruTotalMinCap(Integer gweruTotalMinCap) {
+        this.gweruTotalMinCap = gweruTotalMinCap;
+    }
+
+    public Integer getMasvingoTotalMinCap() {
+        return masvingoTotalMinCap;
+    }
+
+    public void setMasvingoTotalMinCap(Integer masvingoTotalMinCap) {
+        this.masvingoTotalMinCap = masvingoTotalMinCap;
+    }
+
+    public Integer getMutareTotalMinCap() {
+        return mutareTotalMinCap;
+    }
+
+    public void setMutareTotalMinCap(Integer mutareTotalMinCap) {
+        this.mutareTotalMinCap = mutareTotalMinCap;
     }
 }
