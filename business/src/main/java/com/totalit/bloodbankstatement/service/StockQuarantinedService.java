@@ -5,6 +5,7 @@ import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 
 import java.util.Date;
+import java.util.List;
 
 public interface StockQuarantinedService extends GenericNameService<StockQuarantined> {
     StockQuarantined getByBranchAndActive(Branch branch, boolean active);
@@ -12,4 +13,6 @@ public interface StockQuarantinedService extends GenericNameService<StockQuarant
     StockQuarantined getByDate(Date date);
 
     StockQuarantined getQuarantineByDate(SearchDTO searchDTO, Branch branch);
+
+    List<StockQuarantined> getAllByActive(boolean active);
 }

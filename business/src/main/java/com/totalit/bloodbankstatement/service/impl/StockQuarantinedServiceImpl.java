@@ -134,4 +134,9 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
         }
 
     }
+
+    @Override
+    public List<StockQuarantined> getAllByActive(boolean active) {
+        return repo.findByActive(active);
+    }
 }

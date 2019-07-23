@@ -162,6 +162,12 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         }
 
     }
+
+    @Override
+    public List<StockAvailable> getAllByActive(Boolean active) {
+        return repo.findByActive(active);
+    }
+
     public List<StockAvailable> getAvailable(SearchDTO dto, Branch branch) {
         try{
             StringBuilder builder = new StringBuilder("from StockAvailable p");

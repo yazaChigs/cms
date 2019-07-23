@@ -217,10 +217,11 @@ public class StockQuarantinedController {
         return stockService.getQuarantineByDate(searchDTO, stockQuarantined.getBranch());
     }
 
-    @GetMapping("/get-by-active-branch")
+    @GetMapping("/get-by-active")
     @ApiOperation("Returns all active company profiles")
-    public StockQuarantined get(@PathVariable("branchId") Long id) {
-        return stockService.get(id);
+    public Integer getAllActive() {
+        List<StockQuarantined> wholeList = stockService.getAllByActive(Boolean.TRUE);
+         return wholeList.size();
     }
 
     public void setUpObject(StockQuarantined old, StockQuarantined current) throws InvocationTargetException, IllegalAccessException {

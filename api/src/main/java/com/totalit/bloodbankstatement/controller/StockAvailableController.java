@@ -227,6 +227,13 @@ public class StockAvailableController {
         return stockService.getAvailableByDate(searchDTO, stockAvailable.getBranch());
     }
 
+    @GetMapping("/get-by-active")
+    @ApiOperation("Returns Number of all all active company profiles")
+    public Integer getAllActive() {
+        List<StockAvailable> wholeList = stockService.getAllByActive(Boolean.TRUE);
+        return wholeList.size();
+    }
+
     private Map<String, Object> validate(StockAvailable item) throws InvocationTargetException, IllegalAccessException {
         Map<String, Object> response = new HashMap<>();
 
