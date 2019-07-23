@@ -70,31 +70,31 @@ public class BranchDailyMinimalCapacityServiceImpl implements BranchDailyMinimal
 
     @Override
     public Boolean checkDuplicate(BranchDailyMinimalCapacity current, BranchDailyMinimalCapacity old) {
-
-        if (current.getId() != null) {
-            /**
-             * @param current is in existence
-             */
-            if (!current.getBranch().equals(old.getBranch())) {
-                if (getByName(current.getBranch().getBranchName()) != null) {
-                    return true;
-                }
-            }
-
-        } else if (current.getId() == null) {
-            /**
-             * @param current is new
-             */
-            if (getByName(current.getBranch().getBranchName()) != null) {
-                return true;
-            }
-        }
-        return false;
+//
+//        if (current.getId() != null) {
+//            /**
+//             * @param current is in existence
+//             */
+//            if (!current.getBranch().equals(old.getBranch())) {
+//                if (getByName(current.getBranch().getBranchName()) != null) {
+//                    return true;
+//                }
+//            }
+//
+//        } else if (current.getId() == null) {
+//            /**
+//             * @param current is new
+//             */
+//            if (getByName(current.getBranch().getBranchName()) != null) {
+//                return true;
+//            }
+//        }
+        return null;
     }
 
 
     @Override
-    public BranchDailyMinimalCapacity getByBranch(Branch branch) {
-        return repo.getByBranch(branch);
+    public BranchDailyMinimalCapacity findFirstByOrderById() {
+        return repo.findFirstByOrderById();
     }
 }

@@ -72,8 +72,9 @@ public class NoDaysRequiremetsServiceImpl implements NoDaysRequiremetsService {
         return null;
     }
 
+
     @Override
-    public NoDaysRequiremets getByBranch(Branch branch) {
-        return repo.getByBranch(branch);
+    public NoDaysRequiremets findFirstByOrderById() {
+        return repo.findFirstByOrderById();
     }
 }

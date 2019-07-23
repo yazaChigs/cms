@@ -75,7 +75,7 @@ public class UnadjustedDailyRequirementsServiceImpl implements UnadjustedDailyRe
 
 
     @Override
-    public UnadjustedDailyRequirements getByBranch(Branch branch) {
-        return repo.findByBranch(branch);
+    public UnadjustedDailyRequirements findFirstByOrderById() {
+        return repo.findFirstByOrderById();
     }
 }

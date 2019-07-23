@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.controller.admin.BranchController;
 import com.totalit.bloodbankstatement.domain.config.*;
+import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -192,8 +193,7 @@ public class StockAvailableController {
 
         StockAvailable stockAvailable = stockService.getByBranchAndActive(branch , Boolean.TRUE);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+
 
         if (stockAvailable ==null){
             return null;
@@ -213,6 +213,18 @@ public class StockAvailableController {
         stockAvailable.setReceivedFromAvailable(stockReceivedFromAvailable);
 
         return stockAvailable;
+    }
+
+    @PostMapping("/get-by-date")
+    @ApiOperation("Returns all active company profiles")
+    public StockAvailable getByDate(@RequestBody StockAvailable stockAvailable) {
+
+        List<Branch> branchList = new ArrayList<>();
+        branchList.add(stockAvailable.getBranch());
+        SearchDTO searchDTO = new SearchDTO();
+        searchDTO.setBranches(branchList);
+        searchDTO.setDate(stockAvailable.getTodaysDate());
+        return stockService.getAvailableByDate(searchDTO, stockAvailable.getBranch());
     }
 
     private Map<String, Object> validate(StockAvailable item) throws InvocationTargetException, IllegalAccessException {

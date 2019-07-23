@@ -5,5 +5,7 @@ import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.repo.AbstractRepo;
 
 public interface BranchDailyMinimalCapacityRepo extends AbstractRepo<BranchDailyMinimalCapacity, Long> {
-    BranchDailyMinimalCapacity getByBranch(Branch branch);
+//    BranchDailyMinimalCapacity getByBranch(Branch branch);
+    BranchDailyMinimalCapacity findFirstByOrderById();
+
 }

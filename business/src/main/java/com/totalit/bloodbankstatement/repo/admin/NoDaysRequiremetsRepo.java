@@ -6,5 +6,7 @@ import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.repo.AbstractRepo;
 
 public interface NoDaysRequiremetsRepo extends AbstractRepo<NoDaysRequiremets, Long> {
-    NoDaysRequiremets getByBranch(Branch branch);
+//    NoDaysRequiremets getByBranch(Branch branch);
+    NoDaysRequiremets findFirstByOrderById();
+
 }

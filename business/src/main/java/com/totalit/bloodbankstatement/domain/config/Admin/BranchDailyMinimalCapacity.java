@@ -54,9 +54,6 @@ public class BranchDailyMinimalCapacity  extends BaseEntity {
     private Integer fixedPercentage;
     private Integer mobPercentage;
 
-    @ManyToOne
-    private Branch branch;
-
     public Integer getHarareStaticCbd() {
         return harareStaticCbd;
     }
@@ -409,11 +406,4 @@ public class BranchDailyMinimalCapacity  extends BaseEntity {
         this.mobPercentage = mobPercentage;
     }
 
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
-    }
 }

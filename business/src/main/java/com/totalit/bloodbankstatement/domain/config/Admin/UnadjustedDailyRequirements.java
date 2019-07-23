@@ -64,8 +64,6 @@ public class UnadjustedDailyRequirements extends BaseEntity {
     private Integer abMinusTotalDailyRequirements;
     private Integer totalTotalDailyRequirements;
 
-    @ManyToOne
-    private Branch branch;
 
     public Integer getoPlusHarare() {
         return oPlusHarare;
@@ -499,11 +497,4 @@ public class UnadjustedDailyRequirements extends BaseEntity {
         this.totalTotalDailyRequirements = totalTotalDailyRequirements;
     }
 
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
-    }
 }

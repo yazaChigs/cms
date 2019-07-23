@@ -5,5 +5,7 @@ import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.service.GenericNameService;
 
 public interface BranchDailyMinimalCapacityService extends GenericNameService<BranchDailyMinimalCapacity> {
-    BranchDailyMinimalCapacity getByBranch(Branch branch);
+//    BranchDailyMinimalCapacity getByBranch(Branch branch);
+    BranchDailyMinimalCapacity findFirstByOrderById();
+
 }

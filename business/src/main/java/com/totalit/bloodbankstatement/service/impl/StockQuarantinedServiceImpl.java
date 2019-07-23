@@ -1,7 +1,10 @@
 package com.totalit.bloodbankstatement.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
+import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.repo.StockAvailableRepo;
 import com.totalit.bloodbankstatement.repo.StockQuarantinedRepo;
 import com.totalit.bloodbankstatement.service.StockQuarantinedService;
@@ -11,6 +14,10 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +30,8 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
     private StockQuarantinedRepo repo;
     @Resource
     private UserService userService;
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Override
     public StockQuarantined getByName(String name) {
@@ -77,5 +86,52 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
     @Override
     public StockQuarantined getByBranchAndActive(Branch branch, boolean active) {
         return repo.findByBranchAndActive(branch, active);
+    }
+
+    @Override
+    public StockQuarantined getByDate(Date date) {
+        return null;
+    }
+
+    public StockQuarantined getQuarantineByDate(SearchDTO dto, Branch branch) {
+        try{
+            StringBuilder builder = new StringBuilder("from StockQuarantined p");
+            int position = 0;
+            if(branch != null) {
+                if(position == 0) {
+                    builder.append(" where p.branch=:branch");
+                    position++;
+                }else{
+                    builder.append(" and p.branch=:branch");
+                }
+            }
+            if(dto.getDate() != null) {
+                if(position == 0) {
+                    builder.append("where p.dateCreated=:date");
+                    position++;
+                }else{
+                    builder.append(" and p.dateCreated=:date");
+                }
+            }
+            if(position == 0) {
+                builder.append(" where p.active=:active");
+                position++;
+            }else{
+                builder.append(" and p.active=:active");
+            }
+            TypedQuery query = entityManager.createQuery(builder.toString(), StockQuarantined.class);
+            if(branch != null){
+                query.setParameter("branch", branch);
+            }
+            if(dto.getDate() != null) {
+                query.setParameter("date", dto.getDate());
+            }
+            query.setParameter("active", Boolean.FALSE);
+
+            return (StockQuarantined) query.getSingleResult();
+        }catch (NoResultException ex) {
+            return null;
+        }
+
     }
 }

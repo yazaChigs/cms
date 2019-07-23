@@ -3,6 +3,7 @@ package com.totalit.bloodbankstatement.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.domain.config.*;
+import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -202,6 +203,18 @@ public class StockQuarantinedController {
         stockQuarantined.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
 
         return stockQuarantined;
+    }
+
+    @PostMapping("/get-by-date")
+    @ApiOperation("Returns all active company profiles")
+    public StockQuarantined getByDate(@RequestBody StockQuarantined stockQuarantined) {
+
+        List<Branch> branchList = new ArrayList<>();
+        branchList.add(stockQuarantined.getBranch());
+        SearchDTO searchDTO = new SearchDTO();
+        searchDTO.setBranches(branchList);
+        searchDTO.setDate(stockQuarantined.getTodaysDate());
+        return stockService.getQuarantineByDate(searchDTO, stockQuarantined.getBranch());
     }
 
     @GetMapping("/get-by-active-branch")

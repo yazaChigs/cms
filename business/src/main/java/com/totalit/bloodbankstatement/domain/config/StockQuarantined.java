@@ -3,13 +3,15 @@ package com.totalit.bloodbankstatement.domain.config;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 @Entity
 public class StockQuarantined extends BaseEntity {
 
-    private String todaysDate;
+    @Temporal(TemporalType.DATE)
+    private Date todaysDate;
     private Integer openingStock;
     private Integer harareCbd03;
     private Integer staticHq01;
@@ -58,11 +60,11 @@ public class StockQuarantined extends BaseEntity {
     @ManyToOne
     private Branch branch;
 
-    public String getTodaysDate() {
+    public Date getTodaysDate() {
         return todaysDate;
     }
 
-    public void setTodaysDate(String todaysDate) {
+    public void setTodaysDate(Date todaysDate) {
         this.todaysDate = todaysDate;
     }
 

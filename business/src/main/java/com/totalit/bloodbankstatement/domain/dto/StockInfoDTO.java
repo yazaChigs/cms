@@ -8,6 +8,11 @@ public class StockInfoDTO implements Serializable {
     private Integer supplies;
     private Integer orders;
     private Integer collections;
+    private Integer collectionsHarare;
+    private Integer collectionsBulawayo;
+    private Integer collectionsGweru;
+    private Integer collectionsMutare;
+    private Integer collectionsMasvingo;
     private Integer quarantineStock;
     private Integer opening;
     private Integer receipts;
@@ -18,6 +23,14 @@ public class StockInfoDTO implements Serializable {
     private Integer gweruTotalMinCap;
     private Integer masvingoTotalMinCap;
     private Integer mutareTotalMinCap;
+    private Integer stockedOplus;
+    private Integer stockedOminus;
+    private Integer stockedAplus;
+    private Integer stockedBplus;
+    private Integer dailyReqOplus;
+    private Integer dailyReqOminus;
+    private Integer dailyReqAplus;
+    private Integer dailyReqBplus;
 
 
 
@@ -139,5 +152,109 @@ public class StockInfoDTO implements Serializable {
 
     public void setMutareTotalMinCap(Integer mutareTotalMinCap) {
         this.mutareTotalMinCap = mutareTotalMinCap;
+    }
+
+    public Integer getCollectionsHarare() {
+        return collectionsHarare;
+    }
+
+    public void setCollectionsHarare(Integer collectionsHarare) {
+        this.collectionsHarare = collectionsHarare;
+    }
+
+    public Integer getCollectionsBulawayo() {
+        return collectionsBulawayo;
+    }
+
+    public void setCollectionsBulawayo(Integer collectionsBulawayo) {
+        this.collectionsBulawayo = collectionsBulawayo;
+    }
+
+    public Integer getCollectionsGweru() {
+        return collectionsGweru;
+    }
+
+    public void setCollectionsGweru(Integer collectionsGweru) {
+        this.collectionsGweru = collectionsGweru;
+    }
+
+    public Integer getCollectionsMutare() {
+        return collectionsMutare;
+    }
+
+    public void setCollectionsMutare(Integer collectionsMutare) {
+        this.collectionsMutare = collectionsMutare;
+    }
+
+    public Integer getCollectionsMasvingo() {
+        return collectionsMasvingo;
+    }
+
+    public void setCollectionsMasvingo(Integer collectionsMasvingo) {
+        this.collectionsMasvingo = collectionsMasvingo;
+    }
+
+    public Integer getStockedOplus() {
+        return stockedOplus;
+    }
+
+    public void setStockedOplus(Integer stockedOplus) {
+        this.stockedOplus = stockedOplus;
+    }
+
+    public Integer getStockedOminus() {
+        return stockedOminus;
+    }
+
+    public void setStockedOminus(Integer stockedOminus) {
+        this.stockedOminus = stockedOminus;
+    }
+
+    public Integer getStockedAplus() {
+        return stockedAplus;
+    }
+
+    public void setStockedAplus(Integer stockedAplus) {
+        this.stockedAplus = stockedAplus;
+    }
+
+    public Integer getStockedBplus() {
+        return stockedBplus;
+    }
+
+    public void setStockedBplus(Integer stockedBplus) {
+        this.stockedBplus = stockedBplus;
+    }
+
+    public Integer getDailyReqOplus() {
+        return dailyReqOplus;
+    }
+
+    public void setDailyReqOplus(Integer dailyReqOplus) {
+        this.dailyReqOplus = dailyReqOplus;
+    }
+
+    public Integer getDailyReqOminus() {
+        return dailyReqOminus;
+    }
+
+    public void setDailyReqOminus(Integer dailyReqOminus) {
+        this.dailyReqOminus = dailyReqOminus;
+    }
+
+    public Integer getDailyReqAplus() {
+        return dailyReqAplus;
+    }
+
+    public void setDailyReqAplus(Integer dailyReqAplus) {
+        this.dailyReqAplus = dailyReqAplus;
+    }
+
+    public Integer getDailyReqBplus() {
+        return dailyReqBplus;
+    }
+
+    public void setDailyReqBplus(Integer dailyReqBplus) {
+        this.dailyReqBplus = dailyReqBplus;
     }
 }

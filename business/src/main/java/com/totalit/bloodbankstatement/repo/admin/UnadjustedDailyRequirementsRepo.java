@@ -6,5 +6,7 @@ import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.repo.AbstractRepo;
 
 public interface UnadjustedDailyRequirementsRepo extends AbstractRepo<UnadjustedDailyRequirements, Long> {
-    UnadjustedDailyRequirements findByBranch(Branch branch);
+//    UnadjustedDailyRequirements findByBranch(Branch branch);
+
+    UnadjustedDailyRequirements findFirstByOrderById();
 }

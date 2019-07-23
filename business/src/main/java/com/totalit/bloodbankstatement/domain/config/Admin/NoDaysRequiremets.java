@@ -47,8 +47,6 @@ public class NoDaysRequiremets extends BaseEntity {
     private Integer nationalRequirementsTotal;
     private Integer nationalRequirementsNationalPercentage;
 
-    @ManyToOne
-    private Branch branch;
 
     public Integer getHarareOplus() {
         return harareOplus;
@@ -338,11 +336,4 @@ public class NoDaysRequiremets extends BaseEntity {
         this.nationalRequirementsNationalPercentage = nationalRequirementsNationalPercentage;
     }
 
-    public Branch getBranch() {
-        return branch;
-    }
-
-    public void setBranch(Branch branch) {
-        this.branch = branch;
-    }
 }
