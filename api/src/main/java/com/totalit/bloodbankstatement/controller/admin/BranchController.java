@@ -79,55 +79,14 @@ public class BranchController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-//    @PostMapping("/save-logo")
-//    @ApiOperation("Save Company Logo")
-//    public ResponseEntity<Map<String, Object>> create(@RequestParam("file") MultipartFile file, @RequestParam("id") Long id) {
-//        Branch profile = service.get(id);
-//        Map<String, Object> response = new HashMap<>();
-//        String[] fileFrags = file.getOriginalFilename().split("\\.");
-//        String extension = fileFrags[fileFrags.length - 1];
-//        String fileName = profile.getName().concat(".").concat(extension).toLowerCase();
-//        String dir = "LOGOS";
-//        Path path = storageService.createNewDirectory(dir);
-//        profile.setFileName(dir.concat(String.valueOf(File.separatorChar)).concat(fileName));
-//        try {
-//            storageService.storeFile(file, path, fileName);
-//            service.save(profile);
-//        } catch (Exception ex) {
-//            response.put("message", "System error occurred saving item");
-//            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//        response.put("message", "Item created sucessfully");
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
+    @GetMapping("/get-user-branch")
+    @ApiOperation("Returns all active company profiles")
+    public Branch getUserBranch() {
+          return   userService.getCurrentUser().getBranch();
+//        return service.getAll();
+    }
 
-//    @RequestMapping(value = "/patient-csv", method = RequestMethod.POST, consumes = {"multipart/form-data"})
-//    @ApiOperation("Upload Patient CSV file")
-//    public ResponseEntity<Map<String, Object>> uploadPatientCSV(@RequestParam("file") MultipartFile file) throws IOException {
-//        logger.info("Upload File Patient CSV");
-//        File f = convertMultiPartToFile(file);
-//        Map<String, Object> response = new HashMap<>();
-//        Company profile = service.getAll().get(0);
-//        try {
-//            List<Patient> list = readFile(f);
-//            for (Patient p : list) {
-//
-//                   Patient pat =  patientService.getByPatientUuid(p.getPatientUUID());
-//                   if(pat==null){
-//                    Patient patient = patientService.save(p);
-//                    //   patient.setPatientUUID(PatientUUID.generate(profile.getPatientIdStartNumber(), patient.getId().intValue()));
-//                    patient.setSystemID(SystemID.generateEncrypted(profile.getCustomerId(), patient.getId().intValue()));
-//                    patientService.save(patient);
-//                   }
-//            }
-//        } catch (Exception e) {
-//            response.put("error", e.getMessage());
-//        }
-//
-//        return new ResponseEntity<>(response, HttpStatus.OK);
-//    }
-    
-    
+
     @GetMapping("/get-all")
     @ApiOperation("Returns all active company profiles")
     public List<Branch> getAll() {

@@ -44,6 +44,8 @@ public class StockQuarantinedController {
 //        ObjectMapper objectMapper = new ObjectMapper();
 //        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockQuarantined));
 
+        List<StockIssuedToQuarantine> stockIssuedToQuarantines = new ArrayList<>();
+        List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
         Branch branch = stockQuarantined.getBranch();
         Map<String, Object> response = new HashMap<>();
         try {
@@ -51,45 +53,69 @@ public class StockQuarantinedController {
                 StockQuarantined stock = stockService.save(stockQuarantined);
                 stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                     item.setStockQuarantined(stockQuarantined);
-                    stockIssuedToQuarantineService.save(item);
+                    stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
                 });
                 stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
                     item.setStockQuarantined(stockQuarantined);
-                    stockReceivedFromQuarantineService.save(item);
+                    stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
                 });
-
+                stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                 response.put("stockQuarantined", stock);
                 response.put("message", "added new stock quarantined Successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockQuarantined.getId() != null) {
+                if(stockQuarantined.getActive() == Boolean.FALSE) {
+                    stockQuarantined.setActive(Boolean.TRUE);
+                    StockQuarantined stock = stockService.save(stockQuarantined);
+                    stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
+                        item.setStockQuarantined(stockQuarantined);
+                        item.setActive(Boolean.TRUE);
+                        stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
+                    });
+                    stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
+                        item.setStockQuarantined(stockQuarantined);
+                        item.setActive(Boolean.TRUE);
+                        stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
+                    });
+                    stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                    stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
+                    response.put("stockQuarantined", stock);
+                    response.put("message", "enable stock quarantined Successfull");
+                    return new ResponseEntity<>(response, HttpStatus.OK);
+                }
                 StockQuarantined quarantined = stockService.getByBranchAndActive(branch, Boolean.TRUE);
                 if(quarantined != null) {
                     setUpObject(stockQuarantined,quarantined );
+                    StockQuarantined stock = stockService.save(quarantined);
                     stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                         item.setStockQuarantined(stockQuarantined);
-                        stockIssuedToQuarantineService.save(item);
+                        stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
                     });
                     quarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
                         item.setStockQuarantined(quarantined);
-                        stockReceivedFromQuarantineService.save(item);
+                        stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
                     });
-                    StockQuarantined stock = stockService.save(quarantined);
 
+                    stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                    stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "updated stock quaratined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }else{
+                    StockQuarantined stock = stockService.save(stockQuarantined);
                     stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                         item.setStockQuarantined(stockQuarantined);
-                        stockIssuedToQuarantineService.save(item);
+                        stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
                     });
                     stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
                         item.setStockQuarantined(stockQuarantined);
-                        stockReceivedFromQuarantineService.save(item);
+                        stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
                     });
-                    StockQuarantined stock = stockService.save(stockQuarantined);
 
+                    stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                    stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "added new stock quarantined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
@@ -110,6 +136,8 @@ public class StockQuarantinedController {
 
         Branch branch = stockQuarantined.getBranch();
         Map<String, Object> response = new HashMap<>();
+        List<StockIssuedToQuarantine> stockIssuedToQuarantines = new ArrayList<>();
+        List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
         try {
             if (stockQuarantined.getId()== null) {
                 stockQuarantined.setActive(Boolean.FALSE);
@@ -117,14 +145,15 @@ public class StockQuarantinedController {
                 stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                     item.setStockQuarantined(stockQuarantined);
                     item.setActive(Boolean.FALSE);
-                    stockIssuedToQuarantineService.save(item);
+                    stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
                 });
                 stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
                     item.setStockQuarantined(stockQuarantined);
                     item.setActive(Boolean.FALSE);
-                    stockReceivedFromQuarantineService.save(item);
+                    stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
                 });
-
+                stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                 response.put("stockQuarantined", stock);
                 response.put("message", "added and submitted new stock quarantined Successfully");
                 return new ResponseEntity<>(response, HttpStatus.OK);
@@ -138,14 +167,15 @@ public class StockQuarantinedController {
                     stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                         item.setStockQuarantined(stockQuarantined);
                         item.setActive(Boolean.FALSE);
-                        stockIssuedToQuarantineService.save(item);
+                        stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
                     });
                     quarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
                         item.setStockQuarantined(quarantined);
                         item.setActive(Boolean.FALSE);
-                        stockReceivedFromQuarantineService.save(item);
+                        stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
                     });
-
+                    stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                    stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "updated and submitted stock quarantined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);
@@ -155,14 +185,15 @@ public class StockQuarantinedController {
                     stockQuarantined.getIssuedToQuarantines().stream().forEach(item -> {
                         item.setStockQuarantined(stockQuarantined);
                         item.setActive(Boolean.FALSE);
-                        stockIssuedToQuarantineService.save(item);
+                        stockIssuedToQuarantines.add(stockIssuedToQuarantineService.save(item));
                     });
                     stockQuarantined.getReceivedFromQuarantineds().stream().forEach(item ->{
-                        stockReceivedFromQuarantineService.save(item);
                         item.setActive(Boolean.FALSE);
                         item.setStockQuarantined(stockQuarantined);
+                        stockReceivedFromQuarantineds.add(stockReceivedFromQuarantineService.save(item));
                     });
-
+                    stock.setIssuedToQuarantines(stockIssuedToQuarantines);
+                    stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "added and submitted new stock quarantined Successfully");
                     return new ResponseEntity<>(response, HttpStatus.OK);

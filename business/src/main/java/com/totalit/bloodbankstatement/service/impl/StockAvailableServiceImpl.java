@@ -286,6 +286,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         Integer dailyReqOminus = 0;
         Integer dailyReqAplus = 0;
         Integer dailyReqBplus = 0;
+        int harareDone = 0, bulawayoDone=0, gweruDone=0, masvingoDone=0, mutareDone = 0;
         List<StockAvailable> availableList = new ArrayList<>();
         List<StockQuarantined> quarantinedList = new ArrayList<>();
         dto.getBranches().forEach(item -> {
@@ -358,42 +359,48 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                     collectionsMasvingo = checkNull(item.getTotalCollections());}
 
 //                if (item != null) {
-                    if (item.getBranch().getBranchName().equals("HARARE")) {
+                    if (item.getBranch().getBranchName().equals("HARARE") && harareDone==0) {
                         dailyReqOplus += checkNull(dailyRequirements.getHarareOplus());
                         dailyReqOminus += checkNull(dailyRequirements.getHarareOminus());
                         dailyReqAplus += checkNull(dailyRequirements.getHarareAplus());
                         dailyReqBplus += checkNull(dailyRequirements.getHarareBplus());
+                        harareDone++;
                     }
-                    if (item.getBranch().getBranchName().equals("BULAWAYO")) {
+                    if (item.getBranch().getBranchName().equals("BULAWAYO") && bulawayoDone==0) {
                         dailyReqOplus += checkNull(dailyRequirements.getBulawayoOplus());
                         dailyReqOminus += checkNull(dailyRequirements.getBulawayoOminus());
                         dailyReqAplus += checkNull(dailyRequirements.getBulawayoAplus());
                         dailyReqBplus += checkNull(dailyRequirements.getBulawayoBplus());
+                        bulawayoDone++;
                     }
-                    if (item.getBranch().getBranchName().equals("GWERU")) {
+                    if (item.getBranch().getBranchName().equals("GWERU") && gweruDone==0) {
                         dailyReqOplus += checkNull(dailyRequirements.getGweruOplus());
                         dailyReqOminus += checkNull(dailyRequirements.getGweruOminus());
                         dailyReqAplus += checkNull(dailyRequirements.getGweruAplus());
                         dailyReqBplus += checkNull(dailyRequirements.getGweruBplus());
+                        gweruDone++;
                     }
-                    if (item.getBranch().getBranchName().equals("MUTARE")) {
+                    if (item.getBranch().getBranchName().equals("MUTARE") && mutareDone==0) {
                         dailyReqOplus += checkNull(dailyRequirements.getMutareOplus());
                         dailyReqOminus += checkNull(dailyRequirements.getMutareOminus());
                         dailyReqAplus += checkNull(dailyRequirements.getMutareAplus());
                         dailyReqBplus += checkNull(dailyRequirements.getMutareBplus());
+                        mutareDone++;
                     }
-                    if (item.getBranch().getBranchName().equals("MASVINGO")) {
+                    if (item.getBranch().getBranchName().equals("MASVINGO") && masvingoDone==0) {
                         dailyReqOplus += checkNull(dailyRequirements.getMasvingoOplus());
                         dailyReqOminus += checkNull(dailyRequirements.getMasvingoOminus());
                         dailyReqAplus += checkNull(dailyRequirements.getMasvingoAplus());
                         dailyReqBplus += checkNull(dailyRequirements.getMasvingoBplus());
+                        masvingoDone++;
                     }
 
                 opening += checkNull(item.getOpeningStock());
                 receipts += checkNull(item.getTotalReceiptsFromBranches());
                 issues += checkNull(item.getTotalIssues())+ checkNull(item.getAvailableStock());
                 discards += checkNull(item.getTotalIssuesDiscards());
-                quarantineStock += checkNull(item.getTotalCollections()) + checkNull(item.getTotalReceiptsFromBranches()) - checkNull(item.getTotalIssuesDiscards()) - checkNull(item.getTotalIssues());
+                quarantineStock += opening + checkNull(item.getTotalCollections()) - checkNull(item.getAvailableStock()) - checkNull(item.getTotalReceiptsFromBranches())
+                        - checkNull(item.getTotalIssuesDiscards()) - checkNull(item.getTotalIssues());
                 collections += checkNull(item.getTotalCollections()) ; // divided by branchDailyMinimalCapacity.harareTotalMinCapacity kuFront end
                 branchNumberQuarantine ++;
             }

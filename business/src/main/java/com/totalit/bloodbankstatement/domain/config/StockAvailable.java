@@ -16,6 +16,7 @@ public class StockAvailable extends BaseEntity {
     private Integer openingStock;
     private Integer receivedFromQuarantine;
     private Integer totalAvailable;
+    private Integer totalReceipts;
     private Integer hospitals;
     private Integer receicedFromQuarantine;
     private Integer issueToCompats;
@@ -25,6 +26,8 @@ public class StockAvailable extends BaseEntity {
     private Integer wholeBloodToPackedCells;
     private Integer totalIssues;
     private Integer totalHospitalOrders;
+    private Integer totalTransfersToOtherBranches;
+    private Integer currentAvailableStock;
     private Integer rhPositiveWbO;
     private Integer rhPositivePcO;
     private Integer rhPositivePaedWbO;
@@ -128,6 +131,9 @@ public class StockAvailable extends BaseEntity {
     private Integer compatsIssues;
     private Integer compatsOrders;
     private Integer compatsPercentageSupply_Orders;
+    private  Integer verallSupplies;
+    private Integer overallOrders;
+    private Integer overallDemandVsSupply;
     private Integer ffp1;
     private Integer plt1;
     private Integer plt2;
@@ -327,6 +333,22 @@ public class StockAvailable extends BaseEntity {
         this.totalO = totalO;
     }
 
+    public Integer getTotalTransfersToOtherBranches() {
+        return totalTransfersToOtherBranches;
+    }
+
+    public Integer getCurrentAvailableStock() {
+        return currentAvailableStock;
+    }
+
+    public void setCurrentAvailableStock(Integer currentAvailableStock) {
+        this.currentAvailableStock = currentAvailableStock;
+    }
+
+    public void setTotalTransfersToOtherBranches(Integer totalTransfersToOtherBranches) {
+        this.totalTransfersToOtherBranches = totalTransfersToOtherBranches;
+    }
+
     public Integer getPercentagefTotalO() {
         return percentagefTotalO;
     }
@@ -461,6 +483,30 @@ public class StockAvailable extends BaseEntity {
 
     public void setRhNegativePcB(Integer rhNegativePcB) {
         this.rhNegativePcB = rhNegativePcB;
+    }
+
+    public Integer getVerallSupplies() {
+        return verallSupplies;
+    }
+
+    public void setVerallSupplies(Integer verallSupplies) {
+        this.verallSupplies = verallSupplies;
+    }
+
+    public Integer getOverallOrders() {
+        return overallOrders;
+    }
+
+    public void setOverallOrders(Integer overallOrders) {
+        this.overallOrders = overallOrders;
+    }
+
+    public Integer getOverallDemandVsSupply() {
+        return overallDemandVsSupply;
+    }
+
+    public void setOverallDemandVsSupply(Integer overallDemandVsSupply) {
+        this.overallDemandVsSupply = overallDemandVsSupply;
     }
 
     public Integer getRhNegativePaedWbB() {
@@ -1113,6 +1159,14 @@ public class StockAvailable extends BaseEntity {
 
     public Integer getPaedPacks() {
         return paedPacks;
+    }
+
+    public Integer getTotalReceipts() {
+        return totalReceipts;
+    }
+
+    public void setTotalReceipts(Integer totalReceipts) {
+        this.totalReceipts = totalReceipts;
     }
 
     public void setPaedPacks(Integer paedPacks) {
