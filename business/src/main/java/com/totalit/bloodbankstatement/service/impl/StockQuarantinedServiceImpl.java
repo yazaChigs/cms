@@ -89,9 +89,49 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
     }
 
     @Override
-    public StockQuarantined getByDate(Date date) {
-        return null;
+    public StockQuarantined getByBranchAndDateAndActive(Branch branch, Date date, Boolean active) {
+        return repo.findByBranchAndDateCreatedAndActive(branch, date, active);
     }
+
+    @Override
+    public Long getQuarantineByDateAndBranch(Branch branch, Date startDate, Date endDate, String column) {
+        StringBuilder builder = new StringBuilder("Select sum(p." + column + ") from StockQuarantined p");
+        int position = 0;
+        if(branch != null) {
+            if(position == 0) {
+                builder.append(" where p.branch=:branch");
+                position++;
+            }else{
+                builder.append(" and p.branch=:branch");
+            }
+        }
+        if(startDate != null && endDate != null) {
+            if(position == 0) {
+                builder.append(" where p.dateCreated between :startDate and :endDate");
+                position++;
+            }else{
+                builder.append(" and p.dateCreated between :startDate and :endDate");
+            }
+        }
+        if(position == 0) {
+            builder.append(" where p.active=:active");
+            position++;
+        }else{
+            builder.append(" and p.active=:active");
+        }
+        TypedQuery query = entityManager.createQuery(builder.toString(), Long.class);
+        if(branch != null){
+            query.setParameter("branch", branch);
+        }
+        if(startDate != null && endDate != null) {
+            query.setParameter("startDate", startDate);
+            query.setParameter("endDate", endDate);
+        }
+        query.setParameter("active", Boolean.FALSE);
+        Long result = (Long) query.getSingleResult();
+        return result != null ? result : 0L;
+    }
+
 
     public StockQuarantined getQuarantineByDate(SearchDTO dto, Branch branch) {
         try{
@@ -138,5 +178,9 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
     @Override
     public List<StockQuarantined> getAllByActive(boolean active) {
         return repo.findByActive(active);
+    }
+
+    public StockQuarantined getByBranchAndActiveAndDateCreatedBetween(Branch branch, Boolean active, Date startDate, Date endDate) {
+        return repo.findByBranchAndActiveAndDateCreatedBetween(branch, active, startDate, endDate);
     }
 }

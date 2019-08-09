@@ -118,7 +118,8 @@ public class StockAvailableServiceImpl implements StockAvailableService {
 
     @Override
     public StockAvailable getByBranchAndActive(Branch branch, Boolean active) {
-        return repo.getByBranchAndActive(branch, active);
+//        return repo.getByBranchAndActive(branch, active) != null ? true : false
+        return  repo.getByBranchAndActive(branch, active);
     }
 
     public StockAvailable getAvailableByDate(SearchDTO dto, Branch branch) {
@@ -161,6 +162,46 @@ public class StockAvailableServiceImpl implements StockAvailableService {
             return null;
         }
 
+    }
+
+    @Override
+    public List<StockAvailable> getAvailableByDateAndBranch(Branch branch, Date startDate, Date endDate) {
+//        StringBuilder builder = new StringBuilder("Select sum(p." + column + ") from StockAvailable p");
+        StringBuilder builder = new StringBuilder("from StockAvailable p");
+        int position = 0;
+        if(branch != null) {
+            if(position == 0) {
+                builder.append(" where p.branch=:branch");
+                position++;
+            }else{
+                builder.append(" and p.branch=:branch");
+            }
+        }
+        if(startDate != null && endDate != null) {
+            if(position == 0) {
+                builder.append(" where p.dateCreated between :startDate and :endDate");
+                position++;
+            }else{
+                builder.append(" and p.dateCreated between :startDate and :endDate");
+            }
+        }
+        if(position == 0) {
+            builder.append(" where p.active=:active");
+            position++;
+        }else{
+            builder.append(" and p.active=:active");
+        }
+        TypedQuery query = entityManager.createQuery(builder.toString(), StockAvailable.class);
+        if(branch != null){
+            query.setParameter("branch", branch);
+        }
+        if(startDate != null && endDate != null) {
+            query.setParameter("startDate", startDate);
+            query.setParameter("endDate", endDate);
+        }
+        query.setParameter("active", Boolean.FALSE);
+        List<StockAvailable> result =  query.getResultList();
+        return result;
     }
 
     @Override
@@ -257,7 +298,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         Integer availableStock = 0;
         Integer supplies = 0;
         Integer orders = 0;
-        Integer demandVsSupply = 0;
+        Double demandVsSupply = 0.0;
         Integer collections = 0;
         Integer collectionsHarare = 0;
         Integer collectionsBulawayo = 0;
@@ -286,6 +327,8 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         Integer dailyReqOminus = 0;
         Integer dailyReqAplus = 0;
         Integer dailyReqBplus = 0;
+        double bsms = 0;
+
         int harareDone = 0, bulawayoDone=0, gweruDone=0, masvingoDone=0, mutareDone = 0;
         List<StockAvailable> availableList = new ArrayList<>();
         List<StockQuarantined> quarantinedList = new ArrayList<>();
@@ -321,8 +364,8 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                         + checkNull(item.getRhPositivePaedPcB()) + checkNull(item.getRhPositivePaedWbB())
                         + checkNull(item.getRhPositivePcBcompatibility()) + checkNull(item.getRhPositiveWbBcompatibility())
                         + checkNull(item.getRhPositivePaedPcBcompatibility()) + checkNull(item.getRhPositivePaedWbBcompatibility());
-                if (orders != 0)
-                    demandVsSupply += checkNull(supplies/orders);
+//                if (orders != 0){
+                    demandVsSupply = supplies.doubleValue()/orders.doubleValue();
                 branchNumberAvailable ++;
             }
         }
@@ -399,12 +442,19 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 receipts += checkNull(item.getTotalReceiptsFromBranches());
                 issues += checkNull(item.getTotalIssues())+ checkNull(item.getAvailableStock());
                 discards += checkNull(item.getTotalIssuesDiscards());
-                quarantineStock += opening + checkNull(item.getTotalCollections()) - checkNull(item.getAvailableStock()) - checkNull(item.getTotalReceiptsFromBranches())
+                quarantineStock += checkNull(item.getTotalReceiptsFromBranches())
                         - checkNull(item.getTotalIssuesDiscards()) - checkNull(item.getTotalIssues());
                 collections += checkNull(item.getTotalCollections()) ; // divided by branchDailyMinimalCapacity.harareTotalMinCapacity kuFront end
                 branchNumberQuarantine ++;
             }
         }
+
+        double availableStockedUnitsTotal = ((stockedOplus + stockedOminus) * 0.6) + ((stockedAplus + stockedBplus) * 0.2);
+        double availableRequiremetnsTotal = ((dailyReqOplus + dailyReqOminus) * 0.6) + ((dailyReqAplus + dailyReqBplus) * 0.2);
+        double quarantineRequiremetnsTotalRaw = (dailyReqOplus + dailyReqOminus + dailyReqAplus + dailyReqBplus)*0.435;
+
+        bsms = (((availableStockedUnitsTotal/availableRequiremetnsTotal)/5) + (((quarantineStock*0.42)/quarantineRequiremetnsTotalRaw)/5) + (demandVsSupply))/3;
+
         availableDTO.setHarareTotalMinCap(harareTotalMinCap / checkZero(bmcNumber));
         availableDTO.setBulawayoTotalMinCap(bulawayoTotalMinCap / checkZero(bmcNumber));
         availableDTO.setGweruTotalMinCap(gweruTotalMinCap / checkZero(bmcNumber));
@@ -426,8 +476,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         availableDTO.setIssues(issues / checkZero(branchNumberQuarantine));
         availableDTO.setDiscards(discards / checkZero(branchNumberQuarantine));
         availableDTO.setQuarantineStock(quarantineStock / checkZero(branchNumberQuarantine));
-
-
+        availableDTO.setBsms(bsms);
 
         return availableDTO;
     }
@@ -443,5 +492,10 @@ public class StockAvailableServiceImpl implements StockAvailableService {
             input = 1;
         }
         return input;
+    }
+
+    @Override
+    public StockAvailable getByBranchAndActiveAndDateCreatedBetween(Branch branch, Boolean active, Date startDate, Date endDate) {
+        return repo.findByBranchAndActiveAndDateCreatedBetween(branch, active, startDate, endDate);
     }
 }

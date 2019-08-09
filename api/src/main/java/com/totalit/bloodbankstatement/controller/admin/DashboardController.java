@@ -6,6 +6,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.domain.config.Branch;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.domain.dto.StockInfoDTO;
+import com.totalit.bloodbankstatement.domain.util.DateUtil;
+import com.totalit.bloodbankstatement.report.api.GenericReportModel;
+import com.totalit.bloodbankstatement.report.service.StockReportService;
 import com.totalit.bloodbankstatement.service.BranchService;
 import com.totalit.bloodbankstatement.service.StockAvailableService;
 import com.totalit.bloodbankstatement.service.UserService;
@@ -32,6 +35,8 @@ public class DashboardController {
     private UserService userService;
     @Resource
     private StockAvailableService stockAvailableService;
+    @Resource
+    private StockReportService stockReportService;
 
     @PostMapping("/get-for-selected-branches")
     @ApiOperation("Returns info  for selected branches")
@@ -47,9 +52,21 @@ public class DashboardController {
     @PostMapping("/get-for-selected-branches-by-date")
     @ApiOperation("Returns info by date for selected branches")
     public StockInfoDTO getForSelectedBranchesByDate(@RequestBody SearchDTO dto) {
-
         return stockAvailableService.getResult(dto);
 
         // return null;
+    }
+
+    @GetMapping("/get-report")
+    public List<GenericReportModel> getReport() {
+        System.err.println("*****************");
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            System.err.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockReportService.getDefaultReport()));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        System.err.println("*****************");
+        return stockReportService.getDefaultReport();
     }
 }

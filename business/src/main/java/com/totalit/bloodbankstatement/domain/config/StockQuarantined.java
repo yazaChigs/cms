@@ -21,6 +21,7 @@ public class StockQuarantined extends BaseEntity {
     private Integer totalCollections;
     private Integer referenceLaboratory;
     private Integer totalReceiptsFromBranches;
+    private Integer totalReceiptsFromBranchesOnly;
     private Integer p1;
     private Integer dryPacksD3D4;
     private Integer p2;
@@ -35,12 +36,16 @@ public class StockQuarantined extends BaseEntity {
     private Integer serologicalDiscards;
     private Integer totalIssuesDiscards;
     private Integer availableStock;
+    private Integer currentStockInQuarantine;
+    private Integer totalBloodTransferredToOtherBranches;
     private Integer issueTogroupMismatchesToRefLab;
     private Integer totalIssues;
     private Integer ffp1;
     private Integer plt1;
     private Integer plt2;
     private Integer cryo;
+    private String compliedBy;
+    private String checkedBy;
 
 
     @JsonIgnore
@@ -140,6 +145,14 @@ public class StockQuarantined extends BaseEntity {
         this.totalReceiptsFromBranches = totalReceiptsFromBranches;
     }
 
+    public Integer getTotalReceiptsFromBranchesOnly() {
+        return totalReceiptsFromBranchesOnly;
+    }
+
+    public void setTotalReceiptsFromBranchesOnly(Integer totalReceiptsFromBranchesOnly) {
+        this.totalReceiptsFromBranchesOnly = totalReceiptsFromBranchesOnly;
+    }
+
     public Integer getP1() {
         return p1;
     }
@@ -204,6 +217,14 @@ public class StockQuarantined extends BaseEntity {
         this.expired = expired;
     }
 
+    public Integer getTotalBloodTransferredToOtherBranches() {
+        return totalBloodTransferredToOtherBranches;
+    }
+
+    public void setTotalBloodTransferredToOtherBranches(Integer totalBloodTransferredToOtherBranches) {
+        this.totalBloodTransferredToOtherBranches = totalBloodTransferredToOtherBranches;
+    }
+
     public Integer getWrongPack() {
         return wrongPack;
     }
@@ -258,6 +279,14 @@ public class StockQuarantined extends BaseEntity {
 
     public void setTotalIssues(Integer totalIssues) {
         this.totalIssues = totalIssues;
+    }
+
+    public Integer getCurrentStockInQuarantine() {
+        return currentStockInQuarantine;
+    }
+
+    public void setCurrentStockInQuarantine(Integer currentStockInQuarantine) {
+        this.currentStockInQuarantine = currentStockInQuarantine;
     }
 
     public Integer getFfp1() {
@@ -338,5 +367,21 @@ public class StockQuarantined extends BaseEntity {
 
     public void setBroken(Integer broken) {
         this.broken = broken;
+    }
+
+    public String getCompliedBy() {
+        return compliedBy;
+    }
+
+    public void setCompliedBy(String compliedBy) {
+        this.compliedBy = compliedBy;
+    }
+
+    public String getCheckedBy() {
+        return checkedBy;
+    }
+
+    public void setCheckedBy(String checkedBy) {
+        this.checkedBy = checkedBy;
     }
 }

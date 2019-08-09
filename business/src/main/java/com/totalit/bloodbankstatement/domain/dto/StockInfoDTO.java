@@ -3,7 +3,7 @@ package com.totalit.bloodbankstatement.domain.dto;
 import java.io.Serializable;
 
 public class StockInfoDTO implements Serializable {
-    private Integer demandVsSupply;
+    private Double demandVsSupply;
     private Integer stockAvailable;
     private Integer supplies;
     private Integer orders;
@@ -31,14 +31,15 @@ public class StockInfoDTO implements Serializable {
     private Integer dailyReqOminus;
     private Integer dailyReqAplus;
     private Integer dailyReqBplus;
+    private Double bsms;
 
 
 
-    public Integer getDemandVsSupply() {
+    public Double getDemandVsSupply() {
         return demandVsSupply;
     }
 
-    public void setDemandVsSupply(Integer demandVsSupply) {
+    public void setDemandVsSupply(Double demandVsSupply) {
         this.demandVsSupply = demandVsSupply;
     }
 
@@ -256,5 +257,13 @@ public class StockInfoDTO implements Serializable {
 
     public void setDailyReqBplus(Integer dailyReqBplus) {
         this.dailyReqBplus = dailyReqBplus;
+    }
+
+    public Double getBsms() {
+        return bsms;
+    }
+
+    public void setBsms(Double bsms) {
+        this.bsms = bsms;
     }
 }

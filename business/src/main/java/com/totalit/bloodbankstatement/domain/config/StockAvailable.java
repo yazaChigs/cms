@@ -134,11 +134,22 @@ public class StockAvailable extends BaseEntity {
     private  Integer verallSupplies;
     private Integer overallOrders;
     private Integer overallDemandVsSupply;
+    private Integer grandTotalWbPositive;
+    private Integer grandTotalPcPositive;
+    private Integer grandTotalPaedWbPositive;
+    private Integer grandTotalPaedPcPositive;
+    private Integer grandTotalWbNegative;
+    private Integer grandTotalPcNegative;
+    private Integer grandTotalPaedWbNegative;
+    private Integer grandTotalPaedPcNegative;
+    private Integer grandTotal;
     private Integer ffp1;
     private Integer plt1;
     private Integer plt2;
     private Integer cryo;
     private Integer paedPacks;
+    private String checkedBy;
+    private String compliedBy;
 
     @JsonIgnore
     @OneToMany(mappedBy = "stockAvailable", fetch = FetchType.EAGER)
@@ -1211,5 +1222,93 @@ public class StockAvailable extends BaseEntity {
 
     public void setIssuedToAvailable(List<StockIssuedToAvailable> issuedToAvailable) {
         this.issuedToAvailable = issuedToAvailable;
+    }
+
+    public Integer getGrandTotalWbPositive() {
+        return grandTotalWbPositive;
+    }
+
+    public void setGrandTotalWbPositive(Integer grandTotalWbPositive) {
+        this.grandTotalWbPositive = grandTotalWbPositive;
+    }
+
+    public Integer getGrandTotalPcPositive() {
+        return grandTotalPcPositive;
+    }
+
+    public void setGrandTotalPcPositive(Integer grandTotalPcPositive) {
+        this.grandTotalPcPositive = grandTotalPcPositive;
+    }
+
+    public Integer getGrandTotalPaedWbPositive() {
+        return grandTotalPaedWbPositive;
+    }
+
+    public void setGrandTotalPaedWbPositive(Integer grandTotalPaedWbPositive) {
+        this.grandTotalPaedWbPositive = grandTotalPaedWbPositive;
+    }
+
+    public Integer getGrandTotalPaedPcPositive() {
+        return grandTotalPaedPcPositive;
+    }
+
+    public void setGrandTotalPaedPcPositive(Integer grandTotalPaedPcPositive) {
+        this.grandTotalPaedPcPositive = grandTotalPaedPcPositive;
+    }
+
+    public Integer getGrandTotalWbNegative() {
+        return grandTotalWbNegative;
+    }
+
+    public void setGrandTotalWbNegative(Integer grandTotalWbNegative) {
+        this.grandTotalWbNegative = grandTotalWbNegative;
+    }
+
+    public Integer getGrandTotalPcNegative() {
+        return grandTotalPcNegative;
+    }
+
+    public void setGrandTotalPcNegative(Integer grandTotalPcNegative) {
+        this.grandTotalPcNegative = grandTotalPcNegative;
+    }
+
+    public Integer getGrandTotalPaedWbNegative() {
+        return grandTotalPaedWbNegative;
+    }
+
+    public void setGrandTotalPaedWbNegative(Integer grandTotalPaedWbNegative) {
+        this.grandTotalPaedWbNegative = grandTotalPaedWbNegative;
+    }
+
+    public Integer getGrandTotalPaedPcNegative() {
+        return grandTotalPaedPcNegative;
+    }
+
+    public void setGrandTotalPaedPcNegative(Integer grandTotalPaedPcNegative) {
+        this.grandTotalPaedPcNegative = grandTotalPaedPcNegative;
+    }
+
+    public Integer getGrandTotal() {
+        return grandTotal;
+    }
+
+    public void setGrandTotal(Integer grandTotal) {
+        this.grandTotal = grandTotal;
+    }
+
+    public String getCheckedBy() {
+        return checkedBy;
+    }
+
+    public void setCheckedBy(String checkedBy) {
+        this.checkedBy = checkedBy;
+    }
+
+    public String getCompliedBy() {
+        return compliedBy;
+    }
+
+    public void setCompliedBy(String compliedBy) {
+        this.compliedBy = compliedBy;
     }
 }

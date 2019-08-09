@@ -48,6 +48,8 @@ public class StockQuarantinedController {
         List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
         Branch branch = stockQuarantined.getBranch();
         Map<String, Object> response = new HashMap<>();
+        String compiledBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
+        stockQuarantined.setCompliedBy(compiledBy);
         try {
             if (stockQuarantined.getId()== null) {
                 StockQuarantined stock = stockService.save(stockQuarantined);
@@ -138,6 +140,10 @@ public class StockQuarantinedController {
         Map<String, Object> response = new HashMap<>();
         List<StockIssuedToQuarantine> stockIssuedToQuarantines = new ArrayList<>();
         List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
+
+        String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
+        stockQuarantined.setCheckedBy(checkedBy);
+        if (stockQuarantined.getCompliedBy()==null) stockQuarantined.setCompliedBy(checkedBy);
         try {
             if (stockQuarantined.getId()== null) {
                 stockQuarantined.setActive(Boolean.FALSE);

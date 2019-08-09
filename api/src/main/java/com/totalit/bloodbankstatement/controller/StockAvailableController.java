@@ -45,18 +45,17 @@ public class StockAvailableController {
     @PostMapping("/save")
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> saveAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
+
 //        ObjectMapper objectMapper = new ObjectMapper();
-//          System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+//        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
 
           Branch branch = stockAvailable.getBranch();
-
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
-        System.out.println("******************************************************************************");
         List<StockIssuedToAvailable> stockIssuedToAvailables = new ArrayList<>();
         List<StockReceivedFromAvailable> stockReceivedFromAvailables = new ArrayList<>();
-//        Map<String, Object> response =validate(stockAvailable);
         Map<String, Object> response = new HashMap<>();
+
+        String compiledBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
+        stockAvailable.setCompliedBy(compiledBy);
         try {
             if (stockAvailable.getId()== null) {
                 StockAvailable stock = stockService.save(stockAvailable);
@@ -157,6 +156,9 @@ public class StockAvailableController {
         List<StockReceivedFromAvailable> stockReceivedFromAvailables = new ArrayList<>();
 //        Map<String, Object> response =validate(stockAvailable);
         Map<String, Object> response = new HashMap<>();
+        String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
+        stockAvailable.setCheckedBy(checkedBy);
+        if (stockAvailable.getCompliedBy()==null) stockAvailable.setCompliedBy(checkedBy);
         try {
             if (stockAvailable.getId()== null) {
                 stockAvailable.setActive(Boolean.FALSE);
