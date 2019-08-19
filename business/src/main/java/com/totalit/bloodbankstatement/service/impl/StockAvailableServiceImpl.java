@@ -309,7 +309,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         Integer opening = 0;
         Integer receipts = 0;
         Integer issues = 0;
-        Integer discards = 0;
+        Integer discards = 0, expired = 0, serum = 0, samplesOnly = 0;
         Integer harareTotalMinCap = 0;
         Integer bulawayoTotalMinCap = 0;
         Integer masvingoTotalMinCap = 0;
@@ -348,6 +348,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 availableStock += checkNull(item.getTotalTotal()) + checkNull(item.getTotalTotalcompatibility());
                 supplies += checkNull(item.getHospitals()) + checkNull(item.getCompatsIssues());
                 orders += checkNull(item.getCompatsOrders()) + checkNull(item.getTotalHospitalOrders());
+                expired += checkNull(item.getExpired());
                 stockedOplus += checkNull(item.getRhPositivePcO()) + checkNull(item.getRhPositiveWbO())
                         + checkNull(item.getRhPositivePaedPcO()) + checkNull(item.getRhPositivePaedWbO())
                         + checkNull(item.getRhPositivePcOcompatibility()) + checkNull(item.getRhPositiveWbOcompatibility())
@@ -369,6 +370,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 branchNumberAvailable ++;
             }
         }
+        availableDTO.setExpired(expired);
         availableDTO.setStockedOplus(stockedOplus / checkZero(branchNumberAvailable));
         availableDTO.setStockedOminus(stockedOminus / checkZero(branchNumberAvailable));
         availableDTO.setStockedAplus(stockedAplus / checkZero(branchNumberAvailable));
@@ -442,6 +444,8 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 receipts += checkNull(item.getTotalReceiptsFromBranches());
                 issues += checkNull(item.getTotalIssues())+ checkNull(item.getAvailableStock());
                 discards += checkNull(item.getTotalIssuesDiscards());
+                serum += checkNull(item.getDryPacksD1()) + checkNull(item.getDryPacksD3D4());
+                samplesOnly += checkNull((item.getSamplesOnly()));
                 quarantineStock += checkNull(item.getTotalReceiptsFromBranches())
                         - checkNull(item.getTotalIssuesDiscards()) - checkNull(item.getTotalIssues());
                 collections += checkNull(item.getTotalCollections()) ; // divided by branchDailyMinimalCapacity.harareTotalMinCapacity kuFront end
@@ -476,6 +480,8 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         availableDTO.setIssues(issues / checkZero(branchNumberQuarantine));
         availableDTO.setDiscards(discards / checkZero(branchNumberQuarantine));
         availableDTO.setQuarantineStock(quarantineStock / checkZero(branchNumberQuarantine));
+        availableDTO.setSerum(serum);
+        availableDTO.setSamplesOnly(samplesOnly);
         availableDTO.setBsms(bsms);
 
         return availableDTO;

@@ -32,6 +32,9 @@ public class StockInfoDTO implements Serializable {
     private Integer dailyReqAplus;
     private Integer dailyReqBplus;
     private Double bsms;
+    private Integer expired;
+    private Integer serum;
+    private Integer samplesOnly;
 
 
 
@@ -265,5 +268,29 @@ public class StockInfoDTO implements Serializable {
 
     public void setBsms(Double bsms) {
         this.bsms = bsms;
+    }
+
+    public Integer getExpired() {
+        return expired;
+    }
+
+    public void setExpired(Integer expired) {
+        this.expired = expired;
+    }
+
+    public Integer getSerum() {
+        return serum;
+    }
+
+    public void setSerum(Integer serum) {
+        this.serum = serum;
+    }
+
+    public Integer getSamplesOnly() {
+        return samplesOnly;
+    }
+
+    public void setSamplesOnly(Integer samplesOnly) {
+        this.samplesOnly = samplesOnly;
     }
 }

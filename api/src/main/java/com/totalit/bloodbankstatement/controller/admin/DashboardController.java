@@ -53,20 +53,15 @@ public class DashboardController {
     @ApiOperation("Returns info by date for selected branches")
     public StockInfoDTO getForSelectedBranchesByDate(@RequestBody SearchDTO dto) {
         return stockAvailableService.getResult(dto);
-
-        // return null;
     }
 
     @GetMapping("/get-report")
     public List<GenericReportModel> getReport() {
-        System.err.println("*****************");
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            System.err.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockReportService.getDefaultReport()));
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-        System.err.println("*****************");
         return stockReportService.getDefaultReport();
+    }
+
+    @GetMapping("/get-last-month-report")
+    public List<GenericReportModel> getLastMonthStockReportForBranch() {
+        return stockReportService.GetLastMonthStockReport();
     }
 }
