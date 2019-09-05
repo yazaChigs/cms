@@ -13,11 +13,11 @@ public class StockQuarantined extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date todaysDate;
     private Integer openingStock;
-    private Integer harareCbd03;
-    private Integer staticHq01;
-    private Integer mobile04;
-    private Integer mobile02;
-    private Integer mobile06;
+    private String harareCbd03;
+    private String staticHq01;
+    private String mobile04;
+    private String mobile02;
+    private String mobile06;
     private Integer totalCollections;
     private Integer referenceLaboratory;
     private Integer totalReceiptsFromBranches;
@@ -81,43 +81,43 @@ public class StockQuarantined extends BaseEntity {
         this.openingStock = openingStock;
     }
 
-    public Integer getHarareCbd03() {
+    public String getHarareCbd03() {
         return harareCbd03;
     }
 
-    public void setHarareCbd03(Integer harareCbd03) {
+    public void setHarareCbd03(String harareCbd03) {
         this.harareCbd03 = harareCbd03;
     }
 
-    public Integer getStaticHq01() {
+    public String getStaticHq01() {
         return staticHq01;
     }
 
-    public void setStaticHq01(Integer staticHq01) {
+    public void setStaticHq01(String staticHq01) {
         this.staticHq01 = staticHq01;
     }
 
-    public Integer getMobile04() {
+    public String getMobile04() {
         return mobile04;
     }
 
-    public void setMobile04(Integer mobile04) {
+    public void setMobile04(String mobile04) {
         this.mobile04 = mobile04;
     }
 
-    public Integer getMobile02() {
+    public String getMobile02() {
         return mobile02;
     }
 
-    public void setMobile02(Integer mobile02) {
+    public void setMobile02(String mobile02) {
         this.mobile02 = mobile02;
     }
 
-    public Integer getMobile06() {
+    public String getMobile06() {
         return mobile06;
     }
 
-    public void setMobile06(Integer mobile06) {
+    public void setMobile06(String mobile06) {
         this.mobile06 = mobile06;
     }
 
