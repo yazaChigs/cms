@@ -150,6 +150,8 @@ public class StockAvailable extends BaseEntity {
     private Integer paedPacks;
     private String checkedBy;
     private String compliedBy;
+    private Boolean compiledBool;
+    private Boolean checkedBool;
 
     @JsonIgnore
     @OneToMany(mappedBy = "stockAvailable", fetch = FetchType.EAGER)
@@ -1310,5 +1312,21 @@ public class StockAvailable extends BaseEntity {
 
     public void setCompliedBy(String compliedBy) {
         this.compliedBy = compliedBy;
+    }
+
+    public Boolean getCompiledBool() {
+        return compiledBool;
+    }
+
+    public void setCompiledBool(Boolean compiledBool) {
+        this.compiledBool = compiledBool;
+    }
+
+    public Boolean getCheckedBool() {
+        return checkedBool;
+    }
+
+    public void setCheckedBool(Boolean checkedBool) {
+        this.checkedBool = checkedBool;
     }
 }

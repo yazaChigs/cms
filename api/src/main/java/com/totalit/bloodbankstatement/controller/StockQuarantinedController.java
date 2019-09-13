@@ -50,6 +50,8 @@ public class StockQuarantinedController {
         Map<String, Object> response = new HashMap<>();
         String compiledBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockQuarantined.setCompliedBy(compiledBy);
+        stockQuarantined.setCompiledBool(Boolean.TRUE);
+        stockQuarantined.setCheckedBool(Boolean.FALSE);
         try {
             if (stockQuarantined.getId()== null) {
                 StockQuarantined stock = stockService.save(stockQuarantined);
@@ -143,6 +145,8 @@ public class StockQuarantinedController {
 
         String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockQuarantined.setCheckedBy(checkedBy);
+        stockQuarantined.setCompiledBool(Boolean.FALSE);
+        stockQuarantined.setCheckedBool(Boolean.FALSE);
         if (stockQuarantined.getCompliedBy()==null) stockQuarantined.setCompliedBy(checkedBy);
         try {
             if (stockQuarantined.getId()== null) {
@@ -222,22 +226,44 @@ public class StockQuarantinedController {
         List<StockIssuedToQuarantine> stockIssuedToQuarantines = new ArrayList<>();
         List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
 
+        String checked = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         StockQuarantined stockQuarantined = stockService.getByBranchAndActive(branch , Boolean.TRUE);
+
         if (stockQuarantined ==null){
             return null;
+        } else {
+            if (stockQuarantined.getCompliedBy()== null) {
+                stockQuarantined.setCompiledBool(Boolean.TRUE);
+                stockQuarantined.setCheckedBool(Boolean.FALSE);
+                stockService.save(stockQuarantined);
+            }
+            if (checked.equals(stockQuarantined.getCompliedBy())){
+                stockQuarantined.setCompiledBool(Boolean.TRUE);
+                stockQuarantined.setCheckedBool(Boolean.FALSE);
+                stockService.save(stockQuarantined);
+            }
+            else {
+                stockQuarantined.setCompiledBool(Boolean.FALSE);
+                stockQuarantined.setCheckedBool(Boolean.TRUE);
+                stockService.save(stockQuarantined);
+
+            }
+            if (stockQuarantined != null && stockQuarantined.getStockIssuedToQuarantines() != null) {
+                stockQuarantined.getStockIssuedToQuarantines().stream().forEach(item -> {
+                    stockIssuedToQuarantines.add(item);
+                });
+            }
+            if (stockQuarantined != null && stockQuarantined.getStockReceivedFromQuarantineds() != null) {
+                stockQuarantined.getStockReceivedFromQuarantineds().stream().forEach(item -> {
+                    stockReceivedFromQuarantineds.add(item);
+                });
+            }
+            stockQuarantined.setIssuedToQuarantines(stockIssuedToQuarantines);
+            stockQuarantined.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
         }
-        if(stockQuarantined!=null && stockQuarantined.getStockIssuedToQuarantines()!=null) {
-            stockQuarantined.getStockIssuedToQuarantines().stream().forEach(item -> {
-                stockIssuedToQuarantines.add(item);
-            });
-        }
-        if(stockQuarantined!=null && stockQuarantined.getStockReceivedFromQuarantineds()!=null) {
-            stockQuarantined.getStockReceivedFromQuarantineds().stream().forEach(item -> {
-                stockReceivedFromQuarantineds.add(item);
-            });
-        }
-        stockQuarantined.setIssuedToQuarantines(stockIssuedToQuarantines);
-        stockQuarantined.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
+
+
+
 
         return stockQuarantined;
     }
