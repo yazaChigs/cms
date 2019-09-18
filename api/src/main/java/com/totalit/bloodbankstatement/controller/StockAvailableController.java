@@ -56,8 +56,6 @@ public class StockAvailableController {
 
         String compiledBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockAvailable.setCompliedBy(compiledBy);
-        stockAvailable.setCompiledBool(Boolean.TRUE);
-        stockAvailable.setCheckedBool(Boolean.FALSE);
         try {
             if (stockAvailable.getId()== null) {
                 StockAvailable stock = stockService.save(stockAvailable);
@@ -160,8 +158,6 @@ public class StockAvailableController {
         Map<String, Object> response = new HashMap<>();
         String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockAvailable.setCheckedBy(checkedBy);
-        stockAvailable.setCompiledBool(Boolean.FALSE);
-        stockAvailable.setCheckedBool(Boolean.FALSE);
         if (stockAvailable.getCompliedBy()==null) stockAvailable.setCompliedBy(checkedBy);
         try {
             if (stockAvailable.getId()== null) {
@@ -244,27 +240,10 @@ public class StockAvailableController {
         List<StockReceivedFromAvailable> stockReceivedFromAvailable = new ArrayList<>();
 
         StockAvailable stockAvailable = stockService.getByBranchAndActive(branch , Boolean.TRUE);
-        String checked = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
 
         if (stockAvailable ==null){
             return null;
         } else {
-            if (stockAvailable.getCompliedBy()== null) {
-                stockAvailable.setCompiledBool(Boolean.TRUE);
-                stockAvailable.setCheckedBool(Boolean.FALSE);
-                stockService.save(stockAvailable);
-            }
-            if (checked.equals(stockAvailable.getCompliedBy())){
-                stockAvailable.setCompiledBool(Boolean.TRUE);
-                stockAvailable.setCheckedBool(Boolean.FALSE);
-                stockService.save(stockAvailable);
-            }
-            else {
-                stockAvailable.setCompiledBool(Boolean.FALSE);
-                stockAvailable.setCheckedBool(Boolean.TRUE);
-                stockService.save(stockAvailable);
-
-            }
             if (stockAvailable != null && stockAvailable.getStockIssuedToAvailable() != null) {
                 stockAvailable.getStockIssuedToAvailable().stream().forEach(item -> {
                     stockIssuedToAvailable.add(item);

@@ -87,6 +87,13 @@ public class BranchController {
     }
 
 
+    @GetMapping("/get-current-username")
+    @ApiOperation("Returns all active company profiles")
+    public User getCurrentUsername() {
+
+        return userService.getCurrentUser();
+    }
+
     @GetMapping("/get-all")
     @ApiOperation("Returns all active company profiles")
     public List<Branch> getAll() {
