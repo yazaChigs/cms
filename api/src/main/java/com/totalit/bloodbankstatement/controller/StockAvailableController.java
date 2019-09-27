@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.controller.admin.BranchController;
 import com.totalit.bloodbankstatement.domain.config.*;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
+import com.totalit.bloodbankstatement.domain.util.DateUtil;
 import com.totalit.bloodbankstatement.repo.StockAvailableRepo;
 import com.totalit.bloodbankstatement.service.*;
 import io.swagger.annotations.Api;
@@ -46,8 +47,8 @@ public class StockAvailableController {
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> saveAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
 
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
 
           Branch branch = stockAvailable.getBranch();
         List<StockIssuedToAvailable> stockIssuedToAvailables = new ArrayList<>();
@@ -55,7 +56,7 @@ public class StockAvailableController {
         Map<String, Object> response = new HashMap<>();
 
         String compiledBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
-        stockAvailable.setCompliedBy(compiledBy);
+        stockAvailable.setCompiledBy(compiledBy);
         try {
             if (stockAvailable.getId()== null) {
                 StockAvailable stock = stockService.save(stockAvailable);
@@ -151,6 +152,9 @@ public class StockAvailableController {
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> submitAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
 
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+
         Branch branch = stockAvailable.getBranch();
         List<StockIssuedToAvailable> stockIssuedToAvailables = new ArrayList<>();
         List<StockReceivedFromAvailable> stockReceivedFromAvailables = new ArrayList<>();
@@ -158,7 +162,6 @@ public class StockAvailableController {
         Map<String, Object> response = new HashMap<>();
         String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockAvailable.setCheckedBy(checkedBy);
-        if (stockAvailable.getCompliedBy()==null) stockAvailable.setCompliedBy(checkedBy);
         try {
             if (stockAvailable.getId()== null) {
                 stockAvailable.setActive(Boolean.FALSE);
@@ -242,7 +245,14 @@ public class StockAvailableController {
         StockAvailable stockAvailable = stockService.getByBranchAndActive(branch , Boolean.TRUE);
 
         if (stockAvailable ==null){
-            return null;
+            List<Branch> branchList = new ArrayList<>();
+            branchList.add(branch);
+            SearchDTO searchDTO = new SearchDTO();
+            searchDTO.setBranches(branchList);
+            Date date = DateUtil.getYesterdayDate(-1);
+            System.err.println(date);
+            searchDTO.setDate(date);
+            return stockService.getAvailableByDate(searchDTO, branch);
         } else {
             if (stockAvailable != null && stockAvailable.getStockIssuedToAvailable() != null) {
                 stockAvailable.getStockIssuedToAvailable().stream().forEach(item -> {

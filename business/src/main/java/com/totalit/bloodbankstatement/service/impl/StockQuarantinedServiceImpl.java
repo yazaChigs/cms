@@ -107,10 +107,10 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
         }
         if(startDate != null && endDate != null) {
             if(position == 0) {
-                builder.append(" where p.dateCreated between :startDate and :endDate");
+                builder.append(" where p.todaysDate between :startDate and :endDate");
                 position++;
             }else{
-                builder.append(" and p.dateCreated between :startDate and :endDate");
+                builder.append(" and p.todaysDate between :startDate and :endDate");
             }
         }
         if(position == 0) {
@@ -147,10 +147,10 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
             }
             if(dto.getDate() != null) {
                 if(position == 0) {
-                    builder.append("where p.dateCreated=:date");
+                    builder.append("where p.todaysDate=:date");
                     position++;
                 }else{
-                    builder.append(" and p.dateCreated=:date");
+                    builder.append(" and p.todaysDate=:date");
                 }
             }
             if(position == 0) {

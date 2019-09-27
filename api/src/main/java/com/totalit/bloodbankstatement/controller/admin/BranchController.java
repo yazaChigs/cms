@@ -63,7 +63,6 @@ public class BranchController {
     @PostMapping("/save")
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> saveCompanyPro(@RequestBody Branch branch) {
-
         Map<String, Object> response = validate(branch);
         if (!response.isEmpty()) {
             response.put("message", "Validation error?");
@@ -160,6 +159,7 @@ public class BranchController {
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
         try {
+
             Branch old = service.get(item.getId());
             setUpObject(old, item);
             service.save(old);

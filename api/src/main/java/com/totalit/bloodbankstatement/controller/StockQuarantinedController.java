@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.domain.config.*;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
+import com.totalit.bloodbankstatement.domain.util.DateUtil;
 import com.totalit.bloodbankstatement.service.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -16,6 +17,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.lang.reflect.InvocationTargetException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -49,7 +52,7 @@ public class StockQuarantinedController {
         Branch branch = stockQuarantined.getBranch();
         Map<String, Object> response = new HashMap<>();
         String compiledBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
-        stockQuarantined.setCompliedBy(compiledBy);
+        stockQuarantined.setCompiledBy(compiledBy);
         try {
             if (stockQuarantined.getId()== null) {
                 StockQuarantined stock = stockService.save(stockQuarantined);
@@ -143,7 +146,6 @@ public class StockQuarantinedController {
 
         String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockQuarantined.setCheckedBy(checkedBy);
-        if (stockQuarantined.getCompliedBy()==null) stockQuarantined.setCompliedBy(checkedBy);
         try {
             if (stockQuarantined.getId()== null) {
                 stockQuarantined.setActive(Boolean.FALSE);
@@ -226,7 +228,28 @@ public class StockQuarantinedController {
         StockQuarantined stockQuarantined = stockService.getByBranchAndActive(branch , Boolean.TRUE);
 
         if (stockQuarantined ==null){
-            return null;
+            List<Branch> branchList = new ArrayList<>();
+            branchList.add(branch);
+            SearchDTO searchDTO = new SearchDTO();
+            searchDTO.setBranches(branchList);
+            Date date = DateUtil.getYesterdayDate(-1);
+            System.err.println("****************");
+            System.err.println(date);
+            System.err.println("****************");
+            searchDTO.setDate(date);
+            StockQuarantined quarantineByDate = stockService.getQuarantineByDate(searchDTO, branch);
+            ObjectMapper objectMapper = new ObjectMapper();
+            try {
+                System.err.println("****************");
+                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchDTO));
+                System.err.println("****************");
+                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(branch));
+                System.err.println("****************");
+                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(quarantineByDate));
+            } catch (JsonProcessingException e) {
+                e.printStackTrace();
+            }
+            return quarantineByDate;
         } else {
             if (stockQuarantined != null && stockQuarantined.getStockIssuedToQuarantines() != null) {
                 stockQuarantined.getStockIssuedToQuarantines().stream().forEach(item -> {

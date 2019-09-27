@@ -37,5 +37,11 @@ public class DateUtil {
         calendar.set(Calendar.DAY_OF_MONTH, day);
         return calendar.getTime();
     }
+    public static Date getYesterdayDate(int factor) {
+        Calendar calendar = Calendar.getInstance();
+//        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.add(Calendar.DAY_OF_MONTH, factor);
+        return calendar.getTime();
+    }
 
 }

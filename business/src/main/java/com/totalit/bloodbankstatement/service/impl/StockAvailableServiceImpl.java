@@ -136,10 +136,10 @@ public class StockAvailableServiceImpl implements StockAvailableService {
             }
         if(dto.getDate() != null) {
             if(position == 0) {
-                builder.append("where p.dateCreated=:date");
+                builder.append("where p.todaysDate=:date");
                 position++;
             }else{
-                builder.append(" and p.dateCreated=:date");
+                builder.append(" and p.todaysDate=:date");
             }
         }
             if(position == 0) {
@@ -179,10 +179,10 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         }
         if(startDate != null && endDate != null) {
             if(position == 0) {
-                builder.append(" where p.dateCreated between :startDate and :endDate");
+                builder.append(" where p.todaysDate between :startDate and :endDate");
                 position++;
             }else{
-                builder.append(" and p.dateCreated between :startDate and :endDate");
+                builder.append(" and p.todaysDate between :startDate and :endDate");
             }
         }
         if(position == 0) {
@@ -223,10 +223,10 @@ public class StockAvailableServiceImpl implements StockAvailableService {
             }
             if(dto.getDate() != null) {
                 if(position == 0) {
-                    builder.append("where p.dateCreated=:date");
+                    builder.append("where p.todaysDate=:date");
                     position++;
                 }else{
-                    builder.append(" and p.dateCreated=:date");
+                    builder.append(" and p.todaysDate=:date");
                 }
             }
             if(position == 0) {
@@ -266,10 +266,10 @@ public class StockAvailableServiceImpl implements StockAvailableService {
             }
         if(dto.getDate() != null) {
             if(position == 0) {
-                builder.append("where p.dateCreated=:date");
+                builder.append("where p.todaysDate=:date");
                 position++;
             }else{
-                builder.append(" and p.dateCreated=:date");
+                builder.append(" and p.todaysDate=:date");
             }
         }
             if(position == 0) {
@@ -296,8 +296,8 @@ public class StockAvailableServiceImpl implements StockAvailableService {
 
     public StockInfoDTO getResult(SearchDTO dto) {
         Integer availableStock = 0;
-        Integer supplies = 0;
-        Integer orders = 0;
+        Double supplies = 0.0;
+        Double orders = 0.0;
         Double demandVsSupply = 0.0;
         Integer collections = 0;
         Integer collectionsHarare = 0;
@@ -365,20 +365,23 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                         + checkNull(item.getRhPositivePaedPcB()) + checkNull(item.getRhPositivePaedWbB())
                         + checkNull(item.getRhPositivePcBcompatibility()) + checkNull(item.getRhPositiveWbBcompatibility())
                         + checkNull(item.getRhPositivePaedPcBcompatibility()) + checkNull(item.getRhPositivePaedWbBcompatibility());
-//                if (orders != 0){
-                    demandVsSupply = supplies.doubleValue()/orders.doubleValue();
+                demandVsSupply = supplies/orders;
                 branchNumberAvailable ++;
             }
         }
+
         availableDTO.setExpired(expired);
-        availableDTO.setStockedOplus(stockedOplus / checkZero(branchNumberAvailable));
-        availableDTO.setStockedOminus(stockedOminus / checkZero(branchNumberAvailable));
-        availableDTO.setStockedAplus(stockedAplus / checkZero(branchNumberAvailable));
-        availableDTO.setStockedBplus(stockedBplus / checkZero(branchNumberAvailable));
-        availableDTO.setStockAvailable(availableStock / checkZero(branchNumberAvailable));
-        availableDTO.setSupplies(supplies / checkZero(branchNumberAvailable));
-        availableDTO.setOrders(orders / checkZero(branchNumberAvailable));
-        availableDTO.setDemandVsSupply(demandVsSupply / checkZero(branchNumberAvailable));
+        availableDTO.setStockedOplus(stockedOplus);
+        availableDTO.setStockedOminus(stockedOminus);
+        availableDTO.setStockedAplus(stockedAplus );
+        availableDTO.setStockedBplus(stockedBplus);
+        availableDTO.setStockAvailable(availableStock );
+        availableDTO.setSupplies(supplies);
+        availableDTO.setOrders(orders);
+        availableDTO.setDemandVsSupply(demandVsSupply );
+        System.err.println("******************");
+        System.err.println(branchNumberAvailable);
+        System.err.println("******************");
 
         for(StockQuarantined item : quarantinedList){
 
@@ -475,11 +478,11 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         availableDTO.setCollectionsMutare(collectionsMutare);
         availableDTO.setCollections(collections);
         availableDTO.setStockAvailable(availableStock / checkZero(branchNumberQuarantine));
-        availableDTO.setOpening(opening / checkZero(branchNumberQuarantine));
-        availableDTO.setReceipts(receipts / checkZero(branchNumberQuarantine));
-        availableDTO.setIssues(issues / checkZero(branchNumberQuarantine));
-        availableDTO.setDiscards(discards / checkZero(branchNumberQuarantine));
-        availableDTO.setQuarantineStock(quarantineStock / checkZero(branchNumberQuarantine));
+        availableDTO.setOpening(opening);
+        availableDTO.setReceipts(receipts);
+        availableDTO.setIssues(issues);
+        availableDTO.setDiscards(discards);
+        availableDTO.setQuarantineStock(quarantineStock);
         availableDTO.setSerum(serum);
         availableDTO.setSamplesOnly(samplesOnly);
         availableDTO.setBsms(bsms);

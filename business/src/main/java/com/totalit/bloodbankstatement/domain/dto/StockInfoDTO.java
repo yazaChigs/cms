@@ -5,8 +5,8 @@ import java.io.Serializable;
 public class StockInfoDTO implements Serializable {
     private Double demandVsSupply;
     private Integer stockAvailable;
-    private Integer supplies;
-    private Integer orders;
+    private Double supplies;
+    private Double orders;
     private Integer collections;
     private Integer collectionsHarare;
     private Integer collectionsBulawayo;
@@ -54,19 +54,19 @@ public class StockInfoDTO implements Serializable {
         this.stockAvailable = stockAvailable;
     }
 
-    public Integer getSupplies() {
+    public Double getSupplies() {
         return supplies;
     }
 
-    public void setSupplies(Integer supplies) {
+    public void setSupplies(Double supplies) {
         this.supplies = supplies;
     }
 
-    public Integer getOrders() {
+    public Double getOrders() {
         return orders;
     }
 
-    public void setOrders(Integer orders) {
+    public void setOrders(Double orders) {
         this.orders = orders;
     }
 

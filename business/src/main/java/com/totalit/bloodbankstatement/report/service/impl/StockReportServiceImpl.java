@@ -158,8 +158,8 @@ public class StockReportServiceImpl implements StockReportService {
                     dailyReqBplus = dailyRequirements.getMasvingoBplus();
                 }
 
-                if ( qService.getByBranchAndDateAndActive(branch, item.getDateCreated(), Boolean.FALSE)!= null) {
-                    quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getDateCreated(), Boolean.FALSE).getCurrentStockInQuarantine());
+                if ( qService.getByBranchAndDateAndActive(branch, item.getTodaysDate(), Boolean.FALSE)!= null) {
+                    quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getTodaysDate(), Boolean.FALSE).getCurrentStockInQuarantine());
                 }
                 double availableStockedUnitsTotal = ((stockedOplus + stockedOminus) * 0.6) + ((stockedAplus + stockedBplus) * 0.2);
                 double availableRequiremetnsTotal = ((dailyReqOplus + dailyReqOminus) * 0.6) + ((dailyReqAplus + dailyReqBplus) * 0.2);
@@ -249,8 +249,8 @@ public class StockReportServiceImpl implements StockReportService {
                     dailyReqBplus = dailyRequirements.getMasvingoBplus();
                 }
 
-                if ( qService.getByBranchAndDateAndActive(branch, item.getDateCreated(), Boolean.FALSE)!= null) {
-                    quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getDateCreated(), Boolean.FALSE).getCurrentStockInQuarantine());
+                if ( qService.getByBranchAndDateAndActive(branch, item.getTodaysDate(), Boolean.FALSE)!= null) {
+                    quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getTodaysDate(), Boolean.FALSE).getCurrentStockInQuarantine());
                 }
 
 
@@ -345,8 +345,8 @@ public class StockReportServiceImpl implements StockReportService {
                     dailyReqBplus = dailyRequirements.getMasvingoBplus();
                 }
 
-                if ( qService.getByBranchAndDateAndActive(branch, item.getDateCreated(), Boolean.FALSE)!= null) {
-                    quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getDateCreated(), Boolean.FALSE).getCurrentStockInQuarantine());
+                if ( qService.getByBranchAndDateAndActive(branch, item.getTodaysDate(), Boolean.FALSE)!= null) {
+                    quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getTodaysDate(), Boolean.FALSE).getCurrentStockInQuarantine());
                 }
 
 
@@ -446,8 +446,8 @@ public class StockReportServiceImpl implements StockReportService {
                     dailyReqBplus = dailyRequirements.getMasvingoBplus();
                 }
 
-                if ( qService.getByBranchAndDateAndActive(branch, item.getDateCreated(), Boolean.FALSE)!= null) {
-                quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getDateCreated(), Boolean.FALSE).getCurrentStockInQuarantine());
+                if ( qService.getByBranchAndDateAndActive(branch, item.getTodaysDate(), Boolean.FALSE)!= null) {
+                quarantineStock = checkNull(qService.getByBranchAndDateAndActive(item.getBranch(), item.getTodaysDate(), Boolean.FALSE).getCurrentStockInQuarantine());
                 }
 
 

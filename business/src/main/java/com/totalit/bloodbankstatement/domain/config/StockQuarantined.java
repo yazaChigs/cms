@@ -13,8 +13,8 @@ public class StockQuarantined extends BaseEntity {
     @Temporal(TemporalType.DATE)
     private Date todaysDate;
     private Integer openingStock;
-    private String harareCbd03;
-    private String staticHq01;
+    private String cbd;
+    private String staticFacility;
     private String mobile04;
     private String mobile02;
     private String mobile06;
@@ -44,10 +44,8 @@ public class StockQuarantined extends BaseEntity {
     private Integer plt1;
     private Integer plt2;
     private Integer cryo;
-    private String compliedBy;
+    private String compiledBy;
     private String checkedBy;
-    private Boolean compiledBool;
-    private Boolean checkedBool;
 
 
     @JsonIgnore
@@ -83,20 +81,20 @@ public class StockQuarantined extends BaseEntity {
         this.openingStock = openingStock;
     }
 
-    public String getHarareCbd03() {
-        return harareCbd03;
+    public String getCbd() {
+        return cbd;
     }
 
-    public void setHarareCbd03(String harareCbd03) {
-        this.harareCbd03 = harareCbd03;
+    public void setCbd(String cbd) {
+        this.cbd = cbd;
     }
 
-    public String getStaticHq01() {
-        return staticHq01;
+    public String getStaticFacility() {
+        return staticFacility;
     }
 
-    public void setStaticHq01(String staticHq01) {
-        this.staticHq01 = staticHq01;
+    public void setStaticFacility(String staticFacility) {
+        this.staticFacility = staticFacility;
     }
 
     public String getMobile04() {
@@ -371,12 +369,12 @@ public class StockQuarantined extends BaseEntity {
         this.broken = broken;
     }
 
-    public String getCompliedBy() {
-        return compliedBy;
+    public String getCompiledBy() {
+        return compiledBy;
     }
 
-    public void setCompliedBy(String compliedBy) {
-        this.compliedBy = compliedBy;
+    public void setCompiledBy(String compiledBy) {
+        this.compiledBy = compiledBy;
     }
 
     public String getCheckedBy() {
@@ -385,21 +383,5 @@ public class StockQuarantined extends BaseEntity {
 
     public void setCheckedBy(String checkedBy) {
         this.checkedBy = checkedBy;
-    }
-
-    public Boolean getCompiledBool() {
-        return compiledBool;
-    }
-
-    public void setCompiledBool(Boolean compiledBool) {
-        this.compiledBool = compiledBool;
-    }
-
-    public Boolean getCheckedBool() {
-        return checkedBool;
-    }
-
-    public void setCheckedBool(Boolean checkedBool) {
-        this.checkedBool = checkedBool;
     }
 }
