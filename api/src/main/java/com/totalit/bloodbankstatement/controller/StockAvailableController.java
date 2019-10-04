@@ -47,8 +47,8 @@ public class StockAvailableController {
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> saveAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
 
           Branch branch = stockAvailable.getBranch();
         List<StockIssuedToAvailable> stockIssuedToAvailables = new ArrayList<>();
@@ -152,8 +152,8 @@ public class StockAvailableController {
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> submitAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
 
         Branch branch = stockAvailable.getBranch();
         List<StockIssuedToAvailable> stockIssuedToAvailables = new ArrayList<>();

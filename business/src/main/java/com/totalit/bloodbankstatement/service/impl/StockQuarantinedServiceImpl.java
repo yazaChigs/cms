@@ -134,6 +134,7 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
 
 
     public StockQuarantined getQuarantineByDate(SearchDTO dto, Branch branch) {
+
         try{
             StringBuilder builder = new StringBuilder("from StockQuarantined p");
             int position = 0;
@@ -153,12 +154,12 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
                     builder.append(" and p.todaysDate=:date");
                 }
             }
-            if(position == 0) {
-                builder.append(" where p.active=:active");
-                position++;
-            }else{
-                builder.append(" and p.active=:active");
-            }
+//            if(position == 0) {
+//                builder.append(" where p.active=:active");
+//                position++;
+//            }else{
+//                builder.append(" and p.active=:active");
+//            }
             TypedQuery query = entityManager.createQuery(builder.toString(), StockQuarantined.class);
             if(branch != null){
                 query.setParameter("branch", branch);
@@ -166,7 +167,7 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
             if(dto.getDate() != null) {
                 query.setParameter("date", dto.getDate());
             }
-            query.setParameter("active", Boolean.FALSE);
+//            query.setParameter("active", Boolean.FALSE);
 
             return (StockQuarantined) query.getSingleResult();
         }catch (NoResultException ex) {

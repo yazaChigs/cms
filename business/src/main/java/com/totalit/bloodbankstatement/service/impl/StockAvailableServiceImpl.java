@@ -142,12 +142,12 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 builder.append(" and p.todaysDate=:date");
             }
         }
-            if(position == 0) {
-                builder.append(" where p.active=:active");
-                position++;
-            }else{
-                builder.append(" and p.active=:active");
-            }
+//            if(position == 0) {
+//                builder.append(" where p.active=:active");
+//                position++;
+//            }else{
+//                builder.append(" and p.active=:active");
+//            }
             TypedQuery query = entityManager.createQuery(builder.toString(), StockAvailable.class);
             if(branch != null){
                 query.setParameter("branch", branch);
@@ -155,7 +155,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
             if(dto.getDate() != null) {
                 query.setParameter("date", dto.getDate());
             }
-            query.setParameter("active", Boolean.FALSE);
+//            query.setParameter("active", Boolean.FALSE);
 
             return (StockAvailable) query.getSingleResult();
         }catch (NoResultException ex) {
@@ -379,9 +379,6 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         availableDTO.setSupplies(supplies);
         availableDTO.setOrders(orders);
         availableDTO.setDemandVsSupply(demandVsSupply );
-        System.err.println("******************");
-        System.err.println(branchNumberAvailable);
-        System.err.println("******************");
 
         for(StockQuarantined item : quarantinedList){
 

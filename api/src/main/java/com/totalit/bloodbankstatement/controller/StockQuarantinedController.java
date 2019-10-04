@@ -233,22 +233,8 @@ public class StockQuarantinedController {
             SearchDTO searchDTO = new SearchDTO();
             searchDTO.setBranches(branchList);
             Date date = DateUtil.getYesterdayDate(-1);
-            System.err.println("****************");
-            System.err.println(date);
-            System.err.println("****************");
             searchDTO.setDate(date);
             StockQuarantined quarantineByDate = stockService.getQuarantineByDate(searchDTO, branch);
-            ObjectMapper objectMapper = new ObjectMapper();
-            try {
-                System.err.println("****************");
-                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(searchDTO));
-                System.err.println("****************");
-                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(branch));
-                System.err.println("****************");
-                System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(quarantineByDate));
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
             return quarantineByDate;
         } else {
             if (stockQuarantined != null && stockQuarantined.getStockIssuedToQuarantines() != null) {
@@ -274,7 +260,6 @@ public class StockQuarantinedController {
     @PostMapping("/get-by-date")
     @ApiOperation("Returns all active company profiles")
     public StockQuarantined getByDate(@RequestBody StockQuarantined stockQuarantined) {
-
         List<Branch> branchList = new ArrayList<>();
         branchList.add(stockQuarantined.getBranch());
         SearchDTO searchDTO = new SearchDTO();
