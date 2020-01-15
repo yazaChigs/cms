@@ -3,15 +3,15 @@ package com.totalit.bloodbankstatement.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.totalit.bloodbankstatement.domain.config.*;
 import com.totalit.bloodbankstatement.domain.config.Admin.BranchDailyMinimalCapacity;
 import com.totalit.bloodbankstatement.domain.config.Admin.NoDaysRequiremets;
 import com.totalit.bloodbankstatement.domain.config.Admin.UnadjustedDailyRequirements;
-import com.totalit.bloodbankstatement.domain.config.Branch;
-import com.totalit.bloodbankstatement.domain.config.StockAvailable;
-import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.domain.dto.StockInfoDTO;
 import com.totalit.bloodbankstatement.repo.StockAvailableRepo;
+import com.totalit.bloodbankstatement.repo.StockIssuedToAvailableRepo;
+import com.totalit.bloodbankstatement.repo.StockReceivedFromAvailableRepo;
 import com.totalit.bloodbankstatement.repo.admin.BranchDailyMinimalCapacityRepo;
 import com.totalit.bloodbankstatement.repo.admin.NoDaysRequiremetsRepo;
 import com.totalit.bloodbankstatement.repo.admin.UnadjustedDailyRequirementsRepo;
@@ -39,6 +39,10 @@ public class StockAvailableServiceImpl implements StockAvailableService {
 
     @Resource
     private StockAvailableRepo repo;
+    @Resource
+    private StockIssuedToAvailableRepo stockIssuedToAvailableRepo;
+    @Resource
+    private StockReceivedFromAvailableRepo stockReceivedFromAvailableRepo;
     @Resource
     private UserService userService;
     @Resource
@@ -123,6 +127,9 @@ public class StockAvailableServiceImpl implements StockAvailableService {
     }
 
     public StockAvailable getAvailableByDate(SearchDTO dto, Branch branch) {
+        StockAvailable wantedAvailable;
+        List<StockIssuedToAvailable> stockIssuedToAvailable = new ArrayList<>();
+        List<StockReceivedFromAvailable> stockReceivedFromAvailable = new ArrayList<>();
         try{
             StringBuilder builder = new StringBuilder("from StockAvailable p");
             int position = 0;
@@ -156,8 +163,16 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 query.setParameter("date", dto.getDate());
             }
 //            query.setParameter("active", Boolean.FALSE);
-
-            return (StockAvailable) query.getSingleResult();
+            wantedAvailable = (StockAvailable) query.getSingleResult();
+            stockIssuedToAvailableRepo.findAllByDateCreatedAndStockAvailable(wantedAvailable.getDateCreated(), wantedAvailable).stream().forEach(item-> {
+                stockIssuedToAvailable.add(item);
+            });
+            stockReceivedFromAvailableRepo.findAllByDateCreatedAndStockAvailable(wantedAvailable.getDateCreated(), wantedAvailable).stream().forEach(item-> {
+                stockReceivedFromAvailable.add(item);
+            });
+            wantedAvailable.setIssuedToAvailable(stockIssuedToAvailable);
+            wantedAvailable.setReceivedFromAvailable(stockReceivedFromAvailable);
+            return wantedAvailable;
         }catch (NoResultException ex) {
             return null;
         }

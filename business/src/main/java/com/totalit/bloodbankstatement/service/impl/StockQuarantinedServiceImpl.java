@@ -3,10 +3,14 @@ package com.totalit.bloodbankstatement.service.impl;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.totalit.bloodbankstatement.domain.config.Branch;
+import com.totalit.bloodbankstatement.domain.config.StockIssuedToQuarantine;
 import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
+import com.totalit.bloodbankstatement.domain.config.StockReceivedFromQuarantined;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.repo.StockAvailableRepo;
+import com.totalit.bloodbankstatement.repo.StockIssuedToQuarantineRepo;
 import com.totalit.bloodbankstatement.repo.StockQuarantinedRepo;
+import com.totalit.bloodbankstatement.repo.StockReceivedFromQuarantineRepo;
 import com.totalit.bloodbankstatement.service.StockQuarantinedService;
 import com.totalit.bloodbankstatement.service.UserService;
 import org.springframework.stereotype.Repository;
@@ -18,6 +22,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -28,6 +33,10 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
 
     @Resource
     private StockQuarantinedRepo repo;
+    @Resource
+    private StockReceivedFromQuarantineRepo receivedFromQuarantineRepo;
+    @Resource
+    private StockIssuedToQuarantineRepo issuedToQuarantineRepo;
     @Resource
     private UserService userService;
     @PersistenceContext
@@ -134,7 +143,9 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
 
 
     public StockQuarantined getQuarantineByDate(SearchDTO dto, Branch branch) {
-
+        StockQuarantined wantedQuarantine;
+        List<StockIssuedToQuarantine> stockIssuedToQuarantines = new ArrayList<>();
+        List<StockReceivedFromQuarantined> stockReceivedFromQuarantineds = new ArrayList<>();
         try{
             StringBuilder builder = new StringBuilder("from StockQuarantined p");
             int position = 0;
@@ -169,7 +180,16 @@ public class StockQuarantinedServiceImpl implements StockQuarantinedService {
             }
 //            query.setParameter("active", Boolean.FALSE);
 
-            return (StockQuarantined) query.getSingleResult();
+            wantedQuarantine = (StockQuarantined) query.getSingleResult();
+            issuedToQuarantineRepo.findAllByDateCreatedAndStockQuarantined(wantedQuarantine.getDateCreated(), wantedQuarantine).stream().forEach(item-> {
+                stockIssuedToQuarantines.add(item);
+            });
+            receivedFromQuarantineRepo.findAllByDateCreatedAndStockQuarantined(wantedQuarantine.getDateCreated(), wantedQuarantine).stream().forEach(item-> {
+                stockReceivedFromQuarantineds.add(item);
+            });
+            wantedQuarantine.setIssuedToQuarantines(stockIssuedToQuarantines);
+            wantedQuarantine.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
+            return wantedQuarantine;
         }catch (NoResultException ex) {
             return null;
         }

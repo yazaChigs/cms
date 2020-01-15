@@ -1,5 +1,6 @@
 package com.totalit.bloodbankstatement.service.impl;
 
+import com.totalit.bloodbankstatement.domain.config.StockQuarantined;
 import com.totalit.bloodbankstatement.domain.config.StockReceivedFromQuarantined;
 import com.totalit.bloodbankstatement.repo.StockReceivedFromQuarantineRepo;
 import com.totalit.bloodbankstatement.service.StockReceivedFromQuarantineService;
@@ -72,5 +73,11 @@ public class StockReceivedFromQuarantineServiceImpl implements StockReceivedFrom
     @Override
     public Boolean checkDuplicate(StockReceivedFromQuarantined current, StockReceivedFromQuarantined old) {
         return null;
+    }
+
+
+    @Override
+    public List<StockReceivedFromQuarantined> findAllByDateCreatedAndStockQuarantined(Date date, StockQuarantined stockQuarantined) {
+        return repo.findAllByDateCreatedAndStockQuarantined(date, stockQuarantined);
     }
 }

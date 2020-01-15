@@ -1,5 +1,6 @@
 package com.totalit.bloodbankstatement.service.impl;
 
+import com.totalit.bloodbankstatement.domain.config.StockAvailable;
 import com.totalit.bloodbankstatement.domain.config.StockIssuedToAvailable;
 import com.totalit.bloodbankstatement.domain.config.StockIssuedToQuarantine;
 import com.totalit.bloodbankstatement.repo.StockIssuedToAvailableRepo;
@@ -77,5 +78,10 @@ public class StockIssuedToAvailableServiceImpl implements StockIssuedToAvailable
     @Override
     public Boolean checkDuplicate(StockIssuedToAvailable current, StockIssuedToAvailable old) {
         return null;
+    }
+
+    @Override
+    public List<StockIssuedToAvailable> findAllByDateCreatedAndStockAvailable(Date date,  StockAvailable stockAvailable) {
+        return repo.findAllByDateCreatedAndStockAvailable(date, stockAvailable);
     }
 }

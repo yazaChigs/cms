@@ -11,6 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,6 +36,10 @@ public class StockQuarantinedController {
     private UserService userService;
     @Resource
     private StockQuarantinedService stockService;
+    @Resource
+    private StockAvailableService stockAvailableService;
+    @Autowired
+    StockAvailableController stockAvailableController;
     @Resource
     private StockIssuedToQuarantineService stockIssuedToQuarantineService;
     @Resource
@@ -146,6 +151,8 @@ public class StockQuarantinedController {
 
         String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockQuarantined.setCheckedBy(checkedBy);
+        ObjectMapper objectMapper = new ObjectMapper();
+        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockQuarantined));
         try {
             if (stockQuarantined.getId()== null) {
                 stockQuarantined.setActive(Boolean.FALSE);
@@ -164,6 +171,7 @@ public class StockQuarantinedController {
                 stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                 response.put("stockQuarantined", stock);
                 response.put("message", "added and submitted new stock quarantined Successfully");
+                closeAvailableAlsoOnSubmit(stock.getBranch());
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockQuarantined.getId() != null) {
@@ -186,6 +194,7 @@ public class StockQuarantinedController {
                     stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "updated and submitted stock quarantined Successfully");
+                    closeAvailableAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }else{
                     stockQuarantined.setActive(Boolean.FALSE);
@@ -204,6 +213,7 @@ public class StockQuarantinedController {
                     stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "added and submitted new stock quarantined Successfully");
+                    closeAvailableAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }
@@ -214,6 +224,16 @@ public class StockQuarantinedController {
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Map<String, Object>> closeAvailableAlsoOnSubmit(Branch branch) throws JsonProcessingException {
+        StockAvailable available;
+        available = stockAvailableService.getByBranchAndActive(branch,Boolean.TRUE);
+    if (available !=null) {
+        return stockAvailableController.submitAvailableStock(available);
+    } else {
+        return null;
+    }
     }
 
     @GetMapping("/get")

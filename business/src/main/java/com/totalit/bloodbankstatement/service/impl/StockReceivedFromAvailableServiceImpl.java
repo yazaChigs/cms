@@ -1,5 +1,6 @@
 package com.totalit.bloodbankstatement.service.impl;
 
+import com.totalit.bloodbankstatement.domain.config.StockAvailable;
 import com.totalit.bloodbankstatement.domain.config.StockReceivedFromAvailable;
 import com.totalit.bloodbankstatement.domain.config.StockReceivedFromQuarantined;
 import com.totalit.bloodbankstatement.repo.StockReceivedFromAvailableRepo;
@@ -76,5 +77,10 @@ public class StockReceivedFromAvailableServiceImpl implements StockReceivedFromA
     @Override
     public Boolean checkDuplicate(StockReceivedFromAvailable current, StockReceivedFromAvailable old) {
         return null;
+    }
+
+    @Override
+    public List<StockReceivedFromAvailable> findAllByDateCreatedAndStockAvailable(Date date, StockAvailable stockAvailable) {
+        return repo.findAllByDateCreatedAndStockAvailable(date, stockAvailable);
     }
 }

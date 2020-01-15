@@ -3,7 +3,6 @@ package com.totalit.bloodbankstatement.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.totalit.bloodbankstatement.controller.admin.BranchController;
 import com.totalit.bloodbankstatement.domain.config.*;
 import com.totalit.bloodbankstatement.domain.dto.SearchDTO;
 import com.totalit.bloodbankstatement.domain.util.DateUtil;
@@ -34,8 +33,13 @@ public class StockAvailableController {
     private BranchService service;
     @Resource
     private UserService userService;
+    @Autowired
+    private StockQuarantinedController stockQuarantinedController;
     @Resource
     private StockAvailableService stockService;
+    @Resource
+    private StockQuarantinedService stockQuarantinedService;
+
     @Resource
     private StockReceivedFromAvailableService stockReceivedFromAvailableService;
     @Resource
@@ -152,8 +156,7 @@ public class StockAvailableController {
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> submitAvailableStock(@RequestBody StockAvailable stockAvailable) throws JsonProcessingException {
 
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockAvailable));
+        ObjectMapper objectMapper = new ObjectMapper();
 
         Branch branch = stockAvailable.getBranch();
         List<StockIssuedToAvailable> stockIssuedToAvailables = new ArrayList<>();
@@ -180,6 +183,7 @@ public class StockAvailableController {
                 stock.setReceivedFromAvailable(stockReceivedFromAvailables);
                 response.put("stockAvailable", stock);
                 response.put("message", "added and submitted new stock available Successfully");
+                closeQuarantineAlsoOnSubmit(stock.getBranch());
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockAvailable.getId() != null) {
@@ -202,6 +206,7 @@ public class StockAvailableController {
                     stock.setReceivedFromAvailable(stockReceivedFromAvailables);
                     response.put("stockAvailable", stock);
                     response.put("message", "updated and submitted stock available Successfully");
+                    closeQuarantineAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 } else {
                     stockAvailable.setActive(Boolean.FALSE);
@@ -220,6 +225,7 @@ public class StockAvailableController {
                     stock.setReceivedFromAvailable(stockReceivedFromAvailables);
                     response.put("stockAvailable", stock);
                     response.put("message", "added and submitted new stock available Successfully");
+                    closeQuarantineAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }
@@ -232,6 +238,16 @@ public class StockAvailableController {
         }
 
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    public ResponseEntity<Map<String, Object>> closeQuarantineAlsoOnSubmit(Branch branch) throws JsonProcessingException {
+                            StockQuarantined quarantined;
+                    quarantined = stockQuarantinedService.getByBranchAndActive(branch,Boolean.TRUE);
+                    if (quarantined != null) {
+                        return stockQuarantinedController.submitQuarantinedStock(quarantined);
+                    }else {
+                        return null;
+                    }
     }
 
     @GetMapping("/get")
@@ -275,6 +291,7 @@ public class StockAvailableController {
     @PostMapping("/get-by-date")
     @ApiOperation("Returns all active company profiles")
     public StockAvailable getByDate(@RequestBody StockAvailable stockAvailable) {
+
 
         List<Branch> branchList = new ArrayList<>();
         branchList.add(stockAvailable.getBranch());
