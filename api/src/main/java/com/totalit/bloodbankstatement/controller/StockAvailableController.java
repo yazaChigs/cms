@@ -183,7 +183,7 @@ public class StockAvailableController {
                 stock.setReceivedFromAvailable(stockReceivedFromAvailables);
                 response.put("stockAvailable", stock);
                 response.put("message", "added and submitted new stock available Successfully");
-                closeQuarantineAlsoOnSubmit(stock.getBranch());
+//                closeQuarantineAlsoOnSubmit(stock.getBranch());
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockAvailable.getId() != null) {
@@ -206,7 +206,7 @@ public class StockAvailableController {
                     stock.setReceivedFromAvailable(stockReceivedFromAvailables);
                     response.put("stockAvailable", stock);
                     response.put("message", "updated and submitted stock available Successfully");
-                    closeQuarantineAlsoOnSubmit(stock.getBranch());
+//                    closeQuarantineAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 } else {
                     stockAvailable.setActive(Boolean.FALSE);
@@ -225,7 +225,7 @@ public class StockAvailableController {
                     stock.setReceivedFromAvailable(stockReceivedFromAvailables);
                     response.put("stockAvailable", stock);
                     response.put("message", "added and submitted new stock available Successfully");
-                    closeQuarantineAlsoOnSubmit(stock.getBranch());
+//                    closeQuarantineAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }

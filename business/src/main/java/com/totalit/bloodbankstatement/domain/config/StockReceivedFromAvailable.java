@@ -10,7 +10,7 @@ import javax.persistence.ManyToOne;
 public class StockReceivedFromAvailable extends BaseEntity{
 
 
-    private String receivedFrom;
+    private Integer receivedFrom;
     private String branchName;
 
 
@@ -18,11 +18,11 @@ public class StockReceivedFromAvailable extends BaseEntity{
     @JsonIgnore
     private StockAvailable stockAvailable;
 
-    public String getReceivedFrom() {
+    public Integer getReceivedFrom() {
         return receivedFrom;
     }
 
-    public void setReceivedFrom(String receivedFrom) {
+    public void setReceivedFrom(Integer receivedFrom) {
         this.receivedFrom = receivedFrom;
     }
 

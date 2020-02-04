@@ -10,19 +10,18 @@ import javax.persistence.ManyToOne;
 public class StockIssuedToQuarantine extends BaseEntity{
 
 
-        private String issuedTo;
+        private Integer issuedTo;
     private String branchName;
 
     @ManyToOne
         @JsonIgnore
         private StockQuarantined stockQuarantined;
 
-
-    public String getIssuedTo() {
+    public Integer getIssuedTo() {
         return issuedTo;
     }
 
-    public void setIssuedTo(String issuedTo) {
+    public void setIssuedTo(Integer issuedTo) {
         this.issuedTo = issuedTo;
     }
 

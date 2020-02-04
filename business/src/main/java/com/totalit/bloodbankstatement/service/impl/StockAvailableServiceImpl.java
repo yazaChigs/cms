@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static java.util.stream.Collectors.toList;
+
 @Repository
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 public class StockAvailableServiceImpl implements StockAvailableService {
@@ -342,21 +344,38 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         Integer dailyReqOminus = 0;
         Integer dailyReqAplus = 0;
         Integer dailyReqBplus = 0;
+        Integer harareStocks = 0;
+        Integer bulawayoStocks = 0;
+        Integer gweruStocks = 0;
+        Integer mutareStocks = 0;
+        Integer masvingoStocks = 0;
         double bsms = 0;
 
         int harareDone = 0, bulawayoDone=0, gweruDone=0, masvingoDone=0, mutareDone = 0;
         List<StockAvailable> availableList = new ArrayList<>();
         List<StockQuarantined> quarantinedList = new ArrayList<>();
+        List<StockReceivedFromAvailable> availableStocksList = new ArrayList<>();
+
+        StockInfoDTO availableDTO = new StockInfoDTO();
+        List<Branch> availableWithData = new ArrayList<>();
+        List<Branch> quarantineWithData = new ArrayList<>();
         dto.getBranches().forEach(item -> {
             if (item != null) {
-
                 availableList.addAll(getAvailable(dto, item));
                 quarantinedList.addAll(getQuarantine(dto, item));
             }
         });
 
-        StockInfoDTO availableDTO = new StockInfoDTO();
+        availableList.forEach(item -> {
+            availableWithData.add(item.getBranch());
+        });
+        quarantinedList.forEach(item -> {
+            quarantineWithData.add(item.getBranch());
+        });
 
+
+        List<Branch> common = availableWithData.stream().filter(quarantineWithData::contains).collect(toList());
+        availableDTO.setBranchesWithData(common);
 
         for(StockAvailable item : availableList){
             if (item != null) {
@@ -364,25 +383,51 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                 supplies += checkNull(item.getHospitals()) + checkNull(item.getCompatsIssues());
                 orders += checkNull(item.getCompatsOrders()) + checkNull(item.getTotalHospitalOrders());
                 expired += checkNull(item.getExpired());
-                stockedOplus += checkNull(item.getRhPositivePcO()) + checkNull(item.getRhPositiveWbO())
+                int tempStockedOplus = checkNull(item.getRhPositivePcO()) + checkNull(item.getRhPositiveWbO())
                         + checkNull(item.getRhPositivePaedPcO()) + checkNull(item.getRhPositivePaedWbO())
                         + checkNull(item.getRhPositivePcOcompatibility()) + checkNull(item.getRhPositiveWbOcompatibility())
                         + checkNull(item.getRhPositivePaedPcOcompatibility()) + checkNull(item.getRhPositivePaedWbOcompatibility());
-                stockedOminus += checkNull(item.getRhNegativePcO()) + checkNull(item.getRhNegativeWbO())
+                stockedOplus += tempStockedOplus;
+
+                int tempStockedOminus = checkNull(item.getRhNegativePcO()) + checkNull(item.getRhNegativeWbO())
                         + checkNull(item.getRhNegativePaedPcO()) + checkNull(item.getRhNegativePaedWbO())
                         +checkNull(item.getRhNegativePcOcompatibility()) + checkNull(item.getRhNegativeWbOcompatibility())
                         + checkNull(item.getRhNegativePaedPcOcompatibility()) + checkNull(item.getRhNegativePaedWbOcompatibility());
-                stockedAplus += checkNull(item.getRhPositivePcA()) + checkNull(item.getRhPositiveWbA())
+                stockedOminus += tempStockedOminus;
+
+                int tempStockedAplus = checkNull(item.getRhPositivePcA()) + checkNull(item.getRhPositiveWbA())
                         + checkNull(item.getRhPositivePaedPcA()) + checkNull(item.getRhPositivePaedWbA())
                         + checkNull(item.getRhPositivePcAcompatibility()) + checkNull(item.getRhPositiveWbAcompatibility())
                         + checkNull(item.getRhPositivePaedPcAcompatibility()) + checkNull(item.getRhPositivePaedWbAcompatibility());
-                stockedBplus += checkNull(item.getRhPositivePcB()) + checkNull(item.getRhPositiveWbB())
+                stockedAplus += tempStockedAplus;
+
+                int tempStockedBplus = checkNull(item.getRhPositivePcB()) + checkNull(item.getRhPositiveWbB())
                         + checkNull(item.getRhPositivePaedPcB()) + checkNull(item.getRhPositivePaedWbB())
                         + checkNull(item.getRhPositivePcBcompatibility()) + checkNull(item.getRhPositiveWbBcompatibility())
                         + checkNull(item.getRhPositivePaedPcBcompatibility()) + checkNull(item.getRhPositivePaedWbBcompatibility());
+                stockedBplus += tempStockedBplus;
+
+                if(item.getBranch().getBranchName().equals("HARARE")) {
+                    harareStocks += tempStockedAplus + tempStockedBplus + tempStockedOminus + tempStockedOplus;
+
+                }
+                if(item.getBranch().getBranchName().equals("BULAWAYO")) {
+                    bulawayoStocks += tempStockedAplus + tempStockedBplus + tempStockedOminus + tempStockedOplus;
+                }
+                if(item.getBranch().getBranchName().equals("GWERU")) {
+                    gweruStocks += tempStockedAplus + tempStockedBplus + tempStockedOminus + tempStockedOplus;
+                }
+                if(item.getBranch().getBranchName().equals("MUTARE")) {
+                    mutareStocks += tempStockedAplus + tempStockedBplus + tempStockedOminus + tempStockedOplus;
+                }
+                if(item.getBranch().getBranchName().equals("MASVINGO")) {
+                    masvingoStocks += tempStockedAplus + tempStockedBplus + tempStockedOminus + tempStockedOplus;
+                }
                 demandVsSupply = supplies/orders;
                 branchNumberAvailable ++;
+
             }
+
         }
 
         availableDTO.setExpired(expired);
@@ -394,6 +439,11 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         availableDTO.setSupplies(supplies);
         availableDTO.setOrders(orders);
         availableDTO.setDemandVsSupply(demandVsSupply );
+        availableDTO.setHarareStocks(harareStocks);
+        availableDTO.setBulawayoStocks(bulawayoStocks);
+        availableDTO.setGweruStocks(gweruStocks);
+        availableDTO.setMutareStocks(mutareStocks);
+        availableDTO.setMasvingoStocks(masvingoStocks);
 
         for(StockQuarantined item : quarantinedList){
 
@@ -456,7 +506,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
                     }
 
                 opening += checkNull(item.getOpeningStock());
-                receipts += checkNull(item.getTotalReceiptsFromBranches());
+                receipts += checkNull(item.getTotalReceiptsFromBranchesOnly()) + checkNull(item.getTotalCollections());
                 issues += checkNull(item.getTotalIssues())+ checkNull(item.getAvailableStock());
                 discards += checkNull(item.getTotalIssuesDiscards());
                 serum += checkNull(item.getDryPacksD1()) + checkNull(item.getDryPacksD3D4());
@@ -498,6 +548,7 @@ public class StockAvailableServiceImpl implements StockAvailableService {
         availableDTO.setSerum(serum);
         availableDTO.setSamplesOnly(samplesOnly);
         availableDTO.setBsms(bsms);
+
 
         return availableDTO;
     }

@@ -151,8 +151,6 @@ public class StockQuarantinedController {
 
         String checkedBy = userService.getCurrentUser().getFirstName() + userService.getCurrentUser().getLastName();
         stockQuarantined.setCheckedBy(checkedBy);
-        ObjectMapper objectMapper = new ObjectMapper();
-        System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(stockQuarantined));
         try {
             if (stockQuarantined.getId()== null) {
                 stockQuarantined.setActive(Boolean.FALSE);
@@ -171,7 +169,7 @@ public class StockQuarantinedController {
                 stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                 response.put("stockQuarantined", stock);
                 response.put("message", "added and submitted new stock quarantined Successfully");
-                closeAvailableAlsoOnSubmit(stock.getBranch());
+//                closeAvailableAlsoOnSubmit(stock.getBranch());
                 return new ResponseEntity<>(response, HttpStatus.OK);
             }
             if (stockQuarantined.getId() != null) {
@@ -194,7 +192,7 @@ public class StockQuarantinedController {
                     stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "updated and submitted stock quarantined Successfully");
-                    closeAvailableAlsoOnSubmit(stock.getBranch());
+//                    closeAvailableAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }else{
                     stockQuarantined.setActive(Boolean.FALSE);
@@ -213,7 +211,7 @@ public class StockQuarantinedController {
                     stock.setReceivedFromQuarantineds(stockReceivedFromQuarantineds);
                     response.put("stockQuarantined", stock);
                     response.put("message", "added and submitted new stock quarantined Successfully");
-                    closeAvailableAlsoOnSubmit(stock.getBranch());
+//                    closeAvailableAlsoOnSubmit(stock.getBranch());
                     return new ResponseEntity<>(response, HttpStatus.OK);
                 }
             }

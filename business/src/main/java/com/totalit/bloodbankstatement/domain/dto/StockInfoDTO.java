@@ -1,6 +1,9 @@
 package com.totalit.bloodbankstatement.domain.dto;
 
+import com.totalit.bloodbankstatement.domain.config.Branch;
+
 import java.io.Serializable;
+import java.util.List;
 
 public class StockInfoDTO implements Serializable {
     private Double demandVsSupply;
@@ -31,10 +34,16 @@ public class StockInfoDTO implements Serializable {
     private Integer dailyReqOminus;
     private Integer dailyReqAplus;
     private Integer dailyReqBplus;
+    private Integer harareStocks;
+    private Integer bulawayoStocks;
+    private Integer gweruStocks;
+    private Integer mutareStocks;
+    private Integer masvingoStocks;
     private Double bsms;
     private Integer expired;
     private Integer serum;
     private Integer samplesOnly;
+    private List<Branch> branchesWithData;
 
 
 
@@ -292,5 +301,53 @@ public class StockInfoDTO implements Serializable {
 
     public void setSamplesOnly(Integer samplesOnly) {
         this.samplesOnly = samplesOnly;
+    }
+
+    public List<Branch> getBranchesWithData() {
+        return branchesWithData;
+    }
+
+    public void setBranchesWithData(List<Branch> branchesWithData) {
+        this.branchesWithData = branchesWithData;
+    }
+
+    public Integer getHarareStocks() {
+        return harareStocks;
+    }
+
+    public void setHarareStocks(Integer harareStocks) {
+        this.harareStocks = harareStocks;
+    }
+
+    public Integer getBulawayoStocks() {
+        return bulawayoStocks;
+    }
+
+    public void setBulawayoStocks(Integer bulawayoStocks) {
+        this.bulawayoStocks = bulawayoStocks;
+    }
+
+    public Integer getGweruStocks() {
+        return gweruStocks;
+    }
+
+    public void setGweruStocks(Integer gweruStocks) {
+        this.gweruStocks = gweruStocks;
+    }
+
+    public Integer getMutareStocks() {
+        return mutareStocks;
+    }
+
+    public void setMutareStocks(Integer mutareStocks) {
+        this.mutareStocks = mutareStocks;
+    }
+
+    public Integer getMasvingoStocks() {
+        return masvingoStocks;
+    }
+
+    public void setMasvingoStocks(Integer masvingoStocks) {
+        this.masvingoStocks = masvingoStocks;
     }
 }
