@@ -2,190 +2,130 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02d161ac-5535-48f5-877a-99387733d389" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/SmsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Admin/TextMessaging.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Task.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/Priority.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/Status.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/QueryRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/TaskRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/admin/TextMessagingRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/StockReportService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/QueryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/TaskService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/admin/TextMessagingService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/QueryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/StorageService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/admin/TextMessagingServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/ApiApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/AuthenticationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/AuthenticationResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JWTWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JWTWebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtTokenAuthorizationOncePerRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtTokenAuthorizationOncePerRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtTokenUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtUnAuthorizedResponseAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtUnAuthorizedResponseAuthenticationEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtUserDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/UserDetailsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/AuthDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/AuthDetail.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/AuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/AuthenticationException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/JwtAuthenticationRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/JwtAuthenticationRestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/JwtTokenRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/JwtTokenRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/JwtTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/JwtTokenResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/BaseResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/BaseResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/BranchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/BranchController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DataManagementController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/UserResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/UserRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/UserRoleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/BranchDailyMinimalCapacity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/NoDaysRequiremets.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/UnadjustedDailyRequirements.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/BaseName.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/BaseName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Branch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockAvailable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockQuarantined.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/BranchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/BranchDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/SearchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/SearchDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StockInfoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/UserDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/BloodGroup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/Gender.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/UserRoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/UserRoles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/YesNo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/YesNo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/AbstractNameDescRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/AbstractNameDescRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/AbstractRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/AbstractRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/BranchRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/BranchRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockAvailableRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToAvailableRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToQuarantineRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/CategoryRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockQuarantinedRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromAvailableRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromQuarantineRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/UserRoleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/UserRoleRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/BranchDailyMinimalCapacityRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/NoDaysRequiremetsRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/UnadjustedDailyRequirementsRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/api/GenericReportModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/api/GenericReportModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/GenericReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/GenericReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/StockReportService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/impl/StockReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StockReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/BranchService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/GenericNameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/GenericNameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/GenericService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockAvailableService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToAvailableService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToQuarantineService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockQuarantinedService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromAvailableService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromQuarantineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/UserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/UserRoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/BranchDailyMinimalCapacityService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/NoDaysRequiremetsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/UnadjustedDailyRequirementsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/BranchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/BranchServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToAvailableServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToQuarantineServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockQuarantinedServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromAvailableServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromQuarantineServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/CategoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/UserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/BranchDailyMinimalCapacityServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/NoDaysRequiremetsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/TaskServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/UnadjustedDailyRequirementsServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/AppUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/AppUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/Encryption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/FileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/FileInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/GlobalUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/GlobalUrl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/converters/TimeDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/converters/TimeDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/role.sql" beforeDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/api/target/" />
-    <ignored path="$PROJECT_DIR$/business/target/" />
-    <ignored path="$PROJECT_DIR$/target/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="507">
-              <caret line="185" column="45" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <marker date="1579169064973" expanded="true" signature="10207:10849" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="313" column="38" selection-start-line="313" selection-start-column="38" selection-end-line="313" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#7272#7273#0" expanded="true" />
-                <element signature="e#7311#7312#0" expanded="true" />
-                <element signature="e#7381#7382#0" expanded="true" />
-                <element signature="e#7437#7438#0" expanded="true" />
-                <element signature="e#7685#7686#0" expanded="true" />
-                <element signature="e#7742#7743#0" expanded="true" />
-                <element signature="e#7790#7791#0" expanded="true" />
-                <element signature="e#7832#7833#0" expanded="true" />
-                <element signature="e#7869#7870#0" expanded="true" />
-                <element signature="e#7930#7931#0" expanded="true" />
-                <element signature="e#7982#7983#0" expanded="true" />
-                <element signature="e#8021#8022#0" expanded="true" />
-                <element signature="e#8055#8056#0" expanded="true" />
-                <element signature="e#8110#8111#0" expanded="true" />
-                <element signature="e#8156#8157#0" expanded="true" />
-                <element signature="e#8196#8197#0" expanded="true" />
-                <element signature="e#8231#8232#0" expanded="true" />
-                <element signature="e#8288#8289#0" expanded="true" />
-                <element signature="e#8336#8337#0" expanded="true" />
-                <element signature="e#8378#8379#0" expanded="true" />
-                <element signature="e#8415#8416#0" expanded="true" />
-                <element signature="e#8476#8477#0" expanded="true" />
-                <element signature="e#8528#8529#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="454">
-              <caret line="422" column="51" selection-start-line="422" selection-start-column="51" selection-end-line="422" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-              <folding>
-                <element signature="e#465#466#0" expanded="true" />
-                <element signature="e#514#515#0" expanded="true" />
-                <element signature="e#554#555#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-              <folding>
-                <element signature="e#463#464#0" expanded="true" />
-                <element signature="e#512#513#0" expanded="true" />
-                <element signature="e#552#553#0" expanded="true" />
-                <element signature="e#810#811#0" expanded="true" />
-                <element signature="e#843#844#0" expanded="true" />
-                <element signature="e#895#896#0" expanded="true" />
-                <element signature="e#939#940#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="53" selection-start-line="51" selection-end-line="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockAvailable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="155" column="35" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#39331#39332#0" expanded="true" />
-                <element signature="e#39364#39365#0" expanded="true" />
-                <element signature="e#39416#39417#0" expanded="true" />
-                <element signature="e#39460#39461#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-              <folding>
-                <element signature="e#463#464#0" expanded="true" />
-                <element signature="e#520#521#0" expanded="true" />
-                <element signature="e#568#569#0" expanded="true" />
-                <element signature="e#809#810#0" expanded="true" />
-                <element signature="e#842#843#0" expanded="true" />
-                <element signature="e#894#895#0" expanded="true" />
-                <element signature="e#938#939#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-              <folding>
-                <element signature="e#469#470#0" expanded="true" />
-                <element signature="e#526#527#0" expanded="true" />
-                <element signature="e#574#575#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -195,94 +135,8 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>requirementsRepo</find>
-      <find>current</find>
-      <find>O</find>
-      <find>A</find>
-      <find>Harare</find>
-      <find>column</find>
-      <find>System</find>
-      <find>setCompiledBool</find>
-      <find>crea</find>
-      <find>cre</find>
-      <find>checked</find>
-      <find>complied</find>
-      <find>compiled</find>
-      <find>compl</find>
-      <find>closeQuarantineAlsoOnSubmit</find>
-      <find>closeAvailableAlsoOnSubmit</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>Negative</replace>
-      <replace>A</replace>
-      <replace>B</replace>
-      <replace>Masvingo</replace>
-      <replace>Mutare</replace>
-      <replace>Gweru</replace>
-      <replace>Bulawayo</replace>
-    </replaceStrings>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/BranchDailyMinimalCapacity.java" />
-        <option value="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DataManagementController.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/BranchDailyMinimalCapacityRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/NoDaysRequiremetsRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/UnadjustedDailyRequirementsRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/BranchDailyMinimalCapacityService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/NoDaysRequiremetsService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/UnadjustedDailyRequirementsService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/BranchDailyMinimalCapacityServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/NoDaysRequiremetsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/UnadjustedDailyRequirementsServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/BranchService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/BaseEntity.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/api/GenericReportModel.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/StockReportService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockAvailableRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockAvailableService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockQuarantinedService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockQuarantinedRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/GenericReportService.java" />
-        <option value="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DashboardController.java" />
-        <option value="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/impl/StockReportServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/DateUtil.java" />
-        <option value="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/BranchController.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Branch.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/BranchDto.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockQuarantined.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockAvailable.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToAvailableRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToAvailableService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToAvailableServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromAvailableRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromAvailableService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromAvailableServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromQuarantineService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToQuarantineService.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromQuarantineServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromQuarantineRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToQuarantineRepo.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToQuarantineServiceImpl.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockQuarantinedServiceImpl.java" />
-        <option value="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java" />
-        <option value="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java" />
-        <option value="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java" />
-        <option value="$PROJECT_DIR$/api/src/main/resources/application.properties" />
-      </list>
-    </option>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -291,311 +145,28 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="MavenProjectNavigator">
-    <treeState>
-      <expand />
-      <select />
-    </treeState>
-  </component>
-  <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1280" />
-    <option name="height" value="800" />
-  </component>
+  <component name="ProjectId" id="1ZtxBXm4fE1zvw2NYIU1dIXhuB6" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <flattenPackages ProjectPane="false" />
-      <hideEmptyPackages ProjectPane="false" />
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="domain" type="462c0819:PsiDirectoryNode" />
-              <item name="dto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="repo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="report" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BBStatement" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BBStatement" type="462c0819:PsiDirectoryNode" />
-              <item name="business" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="totalit" type="462c0819:PsiDirectoryNode" />
-              <item name="bloodbankstatement" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-    </panes>
+  <component name="ProjectViewState">
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580839058038" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580841502299" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/main/resources" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.yaza.cms.controller.admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin" />
@@ -605,27 +176,15 @@
       <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.totalit.bloodbankstatement.service.impl" />
-      <recent name="com.totalit.bloodbankstatement.service" />
-      <recent name="com.totalit.bloodbankstatement.repo" />
-      <recent name="com.totalit.bloodbankstatement.repo.admin" />
-      <recent name="com.totalit.bloodbankstatement.service.impl.admin" />
+      <recent name="com.yaza.cms.repo" />
+      <recent name="com.yaza.cms.service.impl" />
+      <recent name="com.yaza.cms.service" />
+      <recent name="com.yaza.cms.domain.config" />
+      <recent name="com.yaza.cms.controller" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.totalit.bloodbankstatement.domain.config" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -640,674 +199,31 @@
     </task>
     <servers />
   </component>
-  <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
-    <editor active="true" />
-    <layout>
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.45880452" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32876712" />
-      <window_info anchor="bottom" id="Run" order="5" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" id="Theme Preview" order="1" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.32956383" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="1" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info id="Image Layers" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.23505655" />
-      <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="0" />
-      <window_info anchor="bottom" id="Event Log" order="1" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Message" order="3" />
-      <window_info anchor="bottom" id="Find" order="4" weight="0.32876712" />
-      <window_info anchor="bottom" id="Run" order="5" />
-      <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="7" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="8" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="9" />
-      <window_info anchor="right" id="Capture Analysis" order="0" />
-      <window_info anchor="right" id="Theme Preview" order="1" />
-      <window_info anchor="right" id="Palette&#9;" order="2" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.32956383" />
-      <window_info anchor="right" id="Palette" order="4" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="5" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="6" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="7" weight="0.25" />
-    </layout-to-restore>
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/NoDaysRequiremetsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/UnadjustedDailyRequirementsServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="75" selection-start-line="75" selection-end-line="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/NoDaysRequiremetsService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="26" column="3" lean-forward="true" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/NoDaysRequiremets.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="32" lean-forward="true" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/AbstractRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="29" column="17" selection-start-line="29" selection-start-column="17" selection-end-line="29" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/UserResource.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="48" column="99" selection-start-line="47" selection-start-column="8" selection-end-line="48" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DataManagementController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="99" column="9" lean-forward="true" selection-start-line="99" selection-start-column="9" selection-end-line="101" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/api/GenericReportModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#351#352#0" expanded="true" />
-            <element signature="e#377#378#0" expanded="true" />
-            <element signature="e#421#422#0" expanded="true" />
-            <element signature="e#451#452#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/SearchDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#337#338#0" expanded="true" />
-            <element signature="e#368#369#0" expanded="true" />
-            <element signature="e#422#423#0" expanded="true" />
-            <element signature="e#462#463#0" expanded="true" />
-            <element signature="e#491#492#0" expanded="true" />
-            <element signature="e#518#519#0" expanded="true" />
-            <element signature="e#556#557#0" expanded="true" />
-            <element signature="e#588#589#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/DateUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="39" column="48" selection-start-line="39" selection-start-column="48" selection-end-line="39" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#877#878#0" expanded="true" />
-            <element signature="e#952#953#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/GenericReportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="35" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/StockReportService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/impl/StockReportServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-883">
-          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#calcValue#0;class#StockReportServiceImpl#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DashboardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2258#2259#0" expanded="true" />
-            <element signature="e#2318#2319#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/BranchController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1935">
-          <caret line="168" column="9" selection-start-line="168" selection-start-column="9" selection-end-line="168" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3424#3425#0" expanded="true" />
-            <element signature="e#3463#3464#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/BranchDto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-287">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding>
-            <element signature="e#2298#2299#0" expanded="true" />
-            <element signature="e#2344#2345#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Branch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="31" column="28" lean-forward="true" selection-start-line="27" selection-start-column="4" selection-end-line="31" selection-end-column="28" />
-          <folding>
-            <element signature="e#2665#2666#0" expanded="true" />
-            <element signature="e#2693#2694#0" expanded="true" />
-            <element signature="e#2976#2977#0" expanded="true" />
-            <element signature="e#3013#3014#0" expanded="true" />
-            <element signature="e#3570#3571#0" expanded="true" />
-            <element signature="e#3602#3603#0" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-            <element signature="e#3695#3696#0" expanded="true" />
-            <element signature="e#3729#3730#0" expanded="true" />
-            <element signature="e#3758#3759#0" expanded="true" />
-            <element signature="e#3803#3804#0" expanded="true" />
-            <element signature="e#3839#3840#0" expanded="true" />
-            <element signature="e#3874#3875#0" expanded="true" />
-            <element signature="e#3904#3905#0" expanded="true" />
-            <element signature="e#3951#3952#0" expanded="true" />
-            <element signature="e#3989#3990#0" expanded="true" />
-            <element signature="e#4024#4025#0" expanded="true" />
-            <element signature="e#4054#4055#0" expanded="true" />
-            <element signature="e#4101#4102#0" expanded="true" />
-            <element signature="e#4139#4140#0" expanded="true" />
-            <element signature="e#4174#4175#0" expanded="true" />
-            <element signature="e#4204#4205#0" expanded="true" />
-            <element signature="e#4251#4252#0" expanded="true" />
-            <element signature="e#4289#4290#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockAvailableService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockAvailableRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="9" column="92" lean-forward="true" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/GenericService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/2.1.3.RELEASE/spring-data-commons-2.1.3.RELEASE.jar!/org/springframework/data/repository/CrudRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToAvailableServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="519">
-          <caret line="83" column="89" selection-start-line="83" selection-start-column="89" selection-end-line="83" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockQuarantinedService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="14" column="21" selection-start-line="14" selection-start-column="21" selection-end-line="14" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromAvailableServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="82" column="42" lean-forward="true" selection-start-line="82" selection-start-column="42" selection-end-line="82" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToAvailableService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" selection-start-line="10" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToAvailableRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="113" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="113" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromAvailableRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" selection-start-line="10" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromQuarantineService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="78" selection-start-line="9" selection-start-column="78" selection-end-line="9" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromAvailableService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="11" column="100" selection-start-line="11" selection-start-column="86" selection-end-line="11" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToQuarantineService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromQuarantineServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="80" column="82" selection-start-line="80" selection-start-column="82" selection-end-line="80" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockQuarantinedServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2190">
-          <caret line="183" column="74" selection-start-line="183" selection-start-column="74" selection-end-line="183" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockQuarantinedRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/resources/application-prod.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" selection-start-line="21" selection-end-line="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToQuarantineServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockQuarantined.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3510">
-          <caret line="372" column="19" selection-start-line="372" selection-start-column="19" selection-end-line="372" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#9267#9268#0" expanded="true" />
-            <element signature="e#9300#9301#0" expanded="true" />
-            <element signature="e#9352#9353#0" expanded="true" />
-            <element signature="e#9396#9397#0" expanded="true" />
-            <element signature="e#9432#9433#0" expanded="true" />
-            <element signature="e#9464#9465#0" expanded="true" />
-            <element signature="e#9514#9515#0" expanded="true" />
-            <element signature="e#9556#9557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToQuarantineRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromQuarantineRepo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" column="78" selection-start-line="9" selection-start-column="78" selection-end-line="9" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/resources/application-dev.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="313" column="38" selection-start-line="313" selection-start-column="38" selection-end-line="313" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7272#7273#0" expanded="true" />
-            <element signature="e#7311#7312#0" expanded="true" />
-            <element signature="e#7381#7382#0" expanded="true" />
-            <element signature="e#7437#7438#0" expanded="true" />
-            <element signature="e#7685#7686#0" expanded="true" />
-            <element signature="e#7742#7743#0" expanded="true" />
-            <element signature="e#7790#7791#0" expanded="true" />
-            <element signature="e#7832#7833#0" expanded="true" />
-            <element signature="e#7869#7870#0" expanded="true" />
-            <element signature="e#7930#7931#0" expanded="true" />
-            <element signature="e#7982#7983#0" expanded="true" />
-            <element signature="e#8021#8022#0" expanded="true" />
-            <element signature="e#8055#8056#0" expanded="true" />
-            <element signature="e#8110#8111#0" expanded="true" />
-            <element signature="e#8156#8157#0" expanded="true" />
-            <element signature="e#8196#8197#0" expanded="true" />
-            <element signature="e#8231#8232#0" expanded="true" />
-            <element signature="e#8288#8289#0" expanded="true" />
-            <element signature="e#8336#8337#0" expanded="true" />
-            <element signature="e#8378#8379#0" expanded="true" />
-            <element signature="e#8415#8416#0" expanded="true" />
-            <element signature="e#8476#8477#0" expanded="true" />
-            <element signature="e#8528#8529#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockAvailable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="155" column="35" selection-start-line="155" selection-start-column="35" selection-end-line="155" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#39331#39332#0" expanded="true" />
-            <element signature="e#39364#39365#0" expanded="true" />
-            <element signature="e#39416#39417#0" expanded="true" />
-            <element signature="e#39460#39461#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding>
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#520#521#0" expanded="true" />
-            <element signature="e#568#569#0" expanded="true" />
-            <element signature="e#809#810#0" expanded="true" />
-            <element signature="e#842#843#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#938#939#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="20" column="38" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
-          <folding>
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#526#527#0" expanded="true" />
-            <element signature="e#574#575#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="19" column="34" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
-          <folding>
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#552#553#0" expanded="true" />
-            <element signature="e#810#811#0" expanded="true" />
-            <element signature="e#843#844#0" expanded="true" />
-            <element signature="e#895#896#0" expanded="true" />
-            <element signature="e#939#940#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="53" selection-start-line="51" selection-end-line="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="34" selection-start-line="18" selection-start-column="34" selection-end-line="18" selection-end-column="34" />
-          <folding>
-            <element signature="e#465#466#0" expanded="true" />
-            <element signature="e#514#515#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="507">
-          <caret line="185" column="45" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <marker date="1579169064973" expanded="true" signature="10207:10849" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="454">
-          <caret line="422" column="51" selection-start-line="422" selection-start-column="51" selection-end-line="422" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>api</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.8</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="WindowStateProjectService">
+    <state x="240" y="65" key="#Project_Structure" timestamp="1586074455993">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="240" y="65" key="#Project_Structure/0.0.1280.800@0.0.1280.800" timestamp="1586074455993" />
+    <state x="378" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog" timestamp="1586098718878">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="378" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1586098718878" />
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1586950853624">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1586950853624" />
+    <state x="453" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1586245907242" />
+    <state x="428" y="266" width="455" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587029060399">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="428" y="266" width="455" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.800@0.0.1280.800" timestamp="1587029060399" />
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1587029341758">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="378" y="154" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.800@0.0.1280.800" timestamp="1587029341758" />
+    <state x="128" y="23" width="1024" height="777" key="SettingsEditor" timestamp="1586098066674">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="128" y="23" width="1024" height="777" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1586098066674" />
   </component>
 </project>
