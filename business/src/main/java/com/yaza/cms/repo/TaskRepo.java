@@ -20,7 +20,9 @@ public interface TaskRepo extends AbstractRepo<Task, Long>{
     public List<Task> findByAssignee(User user);
     public List<Task> findByAssigneeAndStatusNot(User user, String status);
     public List<Task> findByAssigneeNotAndStatusNot(User user, String status);
+    public List<Task> findByAssigneeAndStatus(User user, String status);
     public  Task findByQuery(Query query);
+    public  List<Task> findByStatus(String status);
 
 
 }

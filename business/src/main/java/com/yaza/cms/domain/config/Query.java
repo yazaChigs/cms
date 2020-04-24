@@ -5,6 +5,7 @@
  */
 package com.yaza.cms.domain.config;
 
+import com.yaza.cms.domain.config.Admin.QueryType;
 import com.yaza.cms.domain.util.Priority;
 import com.yaza.cms.domain.util.Status;
 

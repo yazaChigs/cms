@@ -5,7 +5,11 @@
  */
 package com.yaza.cms.service;
 
+import com.yaza.cms.domain.config.Admin.CardQueries;
+import com.yaza.cms.domain.config.Admin.MobileBanking;
+import com.yaza.cms.domain.config.Admin.QueryType;
 import com.yaza.cms.domain.config.Branch;
+import com.yaza.cms.domain.config.Category;
 import com.yaza.cms.domain.config.Query;
 
 import java.util.List;
@@ -18,5 +22,10 @@ public interface QueryService extends GenericNameService<Query>{
     public List<Query> findAllByActive(Boolean active);
     public List<Query> findByStatusAndActive(String status,Boolean active);
     public List<Query> findByStatus(String status);
+    public List<Query> findByQueryType(QueryType queryType);
+    public List<Query> findByCategory(Category category);
+
+//    public List<Query> findByCardQueries(CardQueries cardQueries);
+//    public List<Query> findByMobileBanking(MobileBanking mobileBanking);
 
 }

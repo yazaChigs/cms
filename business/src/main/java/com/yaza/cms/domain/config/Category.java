@@ -9,5 +9,13 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Category extends BaseName{
 
+    private String queryType;
 
+    public String getQueryType() {
+        return queryType;
+    }
+
+    public void setQueryType(String queryType) {
+        this.queryType = queryType;
+    }
 }

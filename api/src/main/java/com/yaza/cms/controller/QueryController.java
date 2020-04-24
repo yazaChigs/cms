@@ -22,10 +22,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 /**
  *
@@ -47,6 +48,7 @@ public class QueryController {
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> saveCompanyPro(@RequestBody Query q) {
         Map<String, Object> response= new HashMap<>();
+
         try {
             service.save(q);
         } catch (Exception ex) {
@@ -66,7 +68,28 @@ public class QueryController {
     @GetMapping("/get-all-pending")
     @ApiOperation("Returns all active Queries")
     public List<Query> getAllPending() {
+
         return service.findByStatusAndActive("WAITING",Boolean.FALSE);
+    }
+
+    @GetMapping("/get-all-overdue")
+    @ApiOperation("Returns all active Queries")
+    public List<Query> getAllOverDue() throws ParseException {
+        List<Query> overdueQueries = new ArrayList<>();
+        LocalDate todaysDate = LocalDate.now();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date date1 = sdf.parse(todaysDate.toString());
+        service.findByStatus("WAITING").forEach(query -> {
+            long diff = (date1.getTime() - query.getDateCreated().getTime())/(24 * 60 * 60 * 1000);
+            System.err.println("****************");
+            System.err.println(diff);
+            System.err.println("****************");
+            if(diff>3) {
+                overdueQueries.add(query);
+            }
+        });
+
+        return overdueQueries;
     }
 
     @GetMapping("/get-all-completed")

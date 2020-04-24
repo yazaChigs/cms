@@ -109,4 +109,14 @@ public class TaskServiceImpl implements TaskService {
     public Task findByQuery(Query query) {
         return repo.findByQuery(query);
     }
+
+    @Override
+    public List<Task> findByStatus(String status) {
+        return repo.findByStatus(status);
+    }
+
+    @Override
+    public List<Task> findByAssigneeAndStatus(User user, String status) {
+        return repo.findByAssigneeAndStatus(user,status);
+    }
 }

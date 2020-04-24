@@ -21,6 +21,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,11 +70,46 @@ public class TaskController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    @PostMapping("/update")
+    @ApiOperation("Persists Company Details")
+    public ResponseEntity<Map<String, Object>> updateTask(@RequestBody Task q) {
+        Map<String, Object> response= new HashMap<>();
+        try {
+            service.save(q);
+
+        } catch (Exception ex) {
+            response.put("message", "System error occurred saving item");
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        response.put("message", "Task updated");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
     @GetMapping("/get-all")
     @ApiOperation("Returns all active Tasks")
     public List<Task> getAll() {
         User currentUser = userService.getCurrentUser();
         return service.findByAssigneeNotAndStatusNot(currentUser, "RESOLVED");
+    }
+
+    @GetMapping("/get-overdue")
+    @ApiOperation("Returns all active Tasks")
+    public List<Task> getOverdueTasks() {
+        User currentUser = userService.getCurrentUser();
+        List<Task> allTasks = service.findByStatus("PENDING");
+        List<Task> overDurTasks = new ArrayList<>();
+        LocalDate todaysDate = LocalDate.now();
+        allTasks.forEach(task -> {
+            long diffDays = ChronoUnit.DAYS.between(LocalDate.parse(task.getDateCreated().toString()), todaysDate);
+            System.err.println("****************");
+            System.err.println(diffDays);
+            System.err.println("****************");
+            if (diffDays>3) {
+                overDurTasks.add(task);
+            }
+        });
+
+        return overDurTasks;
     }
 
     @GetMapping("/get-my-tasks")

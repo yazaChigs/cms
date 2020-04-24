@@ -9,6 +9,7 @@ import com.yaza.cms.domain.util.Priority;
 import com.yaza.cms.domain.util.Status;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  *
@@ -26,6 +27,8 @@ public class Task extends BaseEntity{
     private Double spentTime;
     private String assigneeNotes;
     private Double actualTimeSpent;
+    private String working;
+    private Date startTime;
     @OneToOne
     private  Query query;
 
@@ -109,5 +112,21 @@ public class Task extends BaseEntity{
 
     public void setQuery(Query query) {
         this.query = query;
+    }
+
+    public String getWorking() {
+        return working;
+    }
+
+    public void setWorking(String working) {
+        this.working = working;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 }

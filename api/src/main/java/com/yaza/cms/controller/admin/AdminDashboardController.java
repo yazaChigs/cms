@@ -1,30 +1,30 @@
 package com.yaza.cms.controller.admin;
 
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.yaza.cms.domain.config.Branch;
-import com.yaza.cms.domain.dto.SearchDTO;
+import com.yaza.cms.domain.dto.AdminStatsDTO;
 import com.yaza.cms.domain.dto.StatsDTO;
-import com.yaza.cms.domain.dto.StockInfoDTO;
 import com.yaza.cms.report.api.GenericReportModel;
+import com.yaza.cms.report.service.AdminStatsService;
 import com.yaza.cms.report.service.StatsService;
 import com.yaza.cms.report.service.StockReportService;
 import com.yaza.cms.service.BranchService;
 import com.yaza.cms.service.UserService;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 200000)
 @RestController
-@RequestMapping("/api/dashboard")
+@RequestMapping("/api/admin/dashboard")
 @Api(description = "Dashboard Information")
-public class DashboardController {
+public class AdminDashboardController {
 
     public static final Logger logger = LoggerFactory.getLogger(BranchController.class);
     @Resource
@@ -34,7 +34,7 @@ public class DashboardController {
     @Resource
     private StockReportService stockReportService;
     @Resource
-    private StatsService statsService;
+    private AdminStatsService statsService;
 
 //    @PostMapping("/get-for-selected-branches")
 //    @ApiOperation("Returns info  for selected branches")
@@ -54,7 +54,7 @@ public class DashboardController {
 //    }
 
     @GetMapping("/get-stats")
-    public StatsDTO getReport() {
+    public AdminStatsDTO getReport() {
         return statsService.getInitialData();
     }
 

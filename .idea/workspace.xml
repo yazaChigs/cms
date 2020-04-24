@@ -2,125 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02d161ac-5535-48f5-877a-99387733d389" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/CategoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/SmsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Admin/TextMessaging.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Task.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/Priority.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/Status.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/QueryRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/TaskRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/admin/TextMessagingRepo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/StockReportService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/QueryService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/TaskService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/admin/TextMessagingService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/QueryServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/StorageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/admin/TextMessagingServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/AdminDashboardController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Admin/CardQueries.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Admin/MobileBanking.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Admin/QueryType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/AdminStatsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StatsDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/CardQueryRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/MobileBankingRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/AdminStatsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/StatsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/AdminStatsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StatsServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/CardQueryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/MobileBankngService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/CardQueryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/MobileBankingServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/ApiApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/ApiApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/AuthenticationResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/AuthenticationResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JWTWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JWTWebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtTokenAuthorizationOncePerRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtTokenAuthorizationOncePerRequestFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtTokenUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtTokenUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtUnAuthorizedResponseAuthenticationEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtUnAuthorizedResponseAuthenticationEntryPoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/JwtUserDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JwtUserDetails.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/UserDetailsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/UserDetailsServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/AuthDetail.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/AuthDetail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/AuthenticationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/AuthenticationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/JwtAuthenticationRestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/JwtAuthenticationRestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/JwtTokenRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/JwtTokenRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/auth/jwt/resource/JwtTokenResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/resource/JwtTokenResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/BaseResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/BaseResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockAvailableController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/StockQuarantinedController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/BranchController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/BranchController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/DashboardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/DataManagementController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/UserResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/UserResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin/UserRoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/UserRoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/BranchDailyMinimalCapacity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/NoDaysRequiremets.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Admin/UnadjustedDailyRequirements.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/BaseName.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/BaseName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/Branch.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Branch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockAvailable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToAvailable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockIssuedToQuarantine.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockQuarantined.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromAvailable.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/StockReceivedFromQuarantined.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/config/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/BranchDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/BranchDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/SearchDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/SearchDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/StockInfoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StockInfoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/BloodGroup.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/DateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/Gender.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/Gender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/UserRoles.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/UserRoles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/util/YesNo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/YesNo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/AbstractNameDescRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/AbstractNameDescRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/AbstractRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/AbstractRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/BranchRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/BranchRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockAvailableRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToAvailableRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockIssuedToQuarantineRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/CategoryRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockQuarantinedRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromAvailableRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/StockReceivedFromQuarantineRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/UserRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/UserRoleRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/UserRoleRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/BranchDailyMinimalCapacityRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/NoDaysRequiremetsRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo/admin/UnadjustedDailyRequirementsRepo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/api/GenericReportModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/api/GenericReportModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/GenericReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/GenericReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/StockReportService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/report/service/impl/StockReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StockReportServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/BranchService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/BranchService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/GenericNameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/GenericNameService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/GenericService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/GenericService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockAvailableService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToAvailableService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockIssuedToQuarantineService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockQuarantinedService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromAvailableService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/StockReceivedFromQuarantineService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/CategoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/UserRoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/UserRoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/BranchDailyMinimalCapacityService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/NoDaysRequiremetsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/admin/UnadjustedDailyRequirementsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/BranchServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/BranchServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockAvailableServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToAvailableServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockIssuedToQuarantineServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockQuarantinedServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromAvailableServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/StockReceivedFromQuarantineServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/CategoryImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/UserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/UserRoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/BranchDailyMinimalCapacityServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/NoDaysRequiremetsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/TaskServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl/admin/UnadjustedDailyRequirementsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/AppUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/AppUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/DateUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/Encryption.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/Encryption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/FileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/FileInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/GlobalUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/GlobalUrl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/StringUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/util/converters/TimeDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/util/converters/TimeDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/role.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/CategoryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/DashboardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/DashboardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/CategoryRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/CategoryRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/QueryRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/QueryRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/TaskRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/TaskRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/CategoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/CategoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/QueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/QueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/CategoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/CategoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/QueryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/QueryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/TaskServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,11 +90,11 @@
       <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.yaza.cms.repo" />
+      <recent name="com.yaza.cms.report.service.impl" />
+      <recent name="com.yaza.cms.report.service" />
+      <recent name="com.yaza.cms.domain.dto" />
+      <recent name="com.yaza.cms.controller.admin" />
       <recent name="com.yaza.cms.service.impl" />
-      <recent name="com.yaza.cms.service" />
-      <recent name="com.yaza.cms.domain.config" />
-      <recent name="com.yaza.cms.controller" />
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.totalit.bloodbankstatement.domain.config" />
@@ -208,10 +122,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1586098718878" />
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1586950853624">
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1587747886267">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1586950853624" />
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1587747886267" />
     <state x="453" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1586245907242" />
     <state x="428" y="266" width="455" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587029060399">
       <screen x="0" y="0" width="1280" height="800" />

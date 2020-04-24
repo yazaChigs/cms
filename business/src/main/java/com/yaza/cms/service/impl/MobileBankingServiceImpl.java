@@ -1,8 +1,11 @@
 package com.yaza.cms.service.impl;
 
+import com.yaza.cms.domain.config.Admin.MobileBanking;
 import com.yaza.cms.domain.config.Category;
 import com.yaza.cms.repo.CategoryRepo;
+import com.yaza.cms.repo.MobileBankingRepo;
 import com.yaza.cms.service.CategoryService;
+import com.yaza.cms.service.MobileBankngService;
 import com.yaza.cms.service.UserService;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,32 +17,32 @@ import java.util.List;
 
 @Transactional(readOnly = true, propagation = Propagation.SUPPORTS)
 @Repository
-public class CategoryImpl implements CategoryService {
+public class MobileBankingServiceImpl implements MobileBankngService {
 
     @Resource
-    private CategoryRepo repo;
+    private MobileBankingRepo repo;
 
     @Resource
     private UserService userService;
 
 
     @Override
-    public Category getByName(String name) {
-        return null;
+    public MobileBanking getByName(String name) {
+        return repo.findByName(name);
     }
 
     @Override
-    public List<Category> getAll() {
-        return repo.findByActive(Boolean.TRUE);
+    public List<MobileBanking> getAll() {
+        return repo.findAll();
     }
 
     @Override
-    public Category get(Long id) {
+    public MobileBanking get(Long id) {
         return repo.findById(id).get();
     }
 
     @Override
-    public void delete(Category t) {
+    public void delete(MobileBanking t) {
         if (t.getId() == null) {
             throw new IllegalStateException("Item to be deleted is in an inconsistent state");
         }
@@ -48,12 +51,12 @@ public class CategoryImpl implements CategoryService {
     }
 
     @Override
-    public List<Category> getPageable() {
+    public List<MobileBanking> getPageable() {
         return null;
     }
 
     @Override
-    public Category save(Category t) {
+    public MobileBanking save(MobileBanking t) {
         if (t.getId() == null) {
             t.setCreatedBy(userService.getCurrentUser());
             t.setDateCreated(new Date());
@@ -68,17 +71,12 @@ public class CategoryImpl implements CategoryService {
     }
 
     @Override
-    public Category findByUuid(String uuid) {
+    public MobileBanking findByUuid(String uuid) {
         return null;
     }
 
     @Override
-    public Boolean checkDuplicate(Category current, Category old) {
+    public Boolean checkDuplicate(MobileBanking current, MobileBanking old) {
         return null;
-    }
-
-    @Override
-    public List<Category> findByQueryType(String type) {
-        return repo.findByQueryType(type);
     }
 }

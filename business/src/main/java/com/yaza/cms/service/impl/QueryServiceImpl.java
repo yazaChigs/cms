@@ -5,7 +5,11 @@
  */
 package com.yaza.cms.service.impl;
 
+import com.yaza.cms.domain.config.Admin.CardQueries;
+import com.yaza.cms.domain.config.Admin.MobileBanking;
+import com.yaza.cms.domain.config.Admin.QueryType;
 import com.yaza.cms.domain.config.Branch;
+import com.yaza.cms.domain.config.Category;
 import com.yaza.cms.domain.config.Query;
 import com.yaza.cms.repo.BranchRepo;
 import com.yaza.cms.repo.QueryRepo;
@@ -102,6 +106,26 @@ public class QueryServiceImpl implements QueryService {
     public List<Query> findByStatus(String status) {
         return repo.findByStatus(status);
     }
+
+    @Override
+    public List<Query> findByQueryType(QueryType queryType) {
+        return repo.findByQueryType(queryType);
+    }
+
+    @Override
+    public List<Query> findByCategory(Category category) {
+        return repo.findByCategory(category);
+    }
+
+//    @Override
+//    public List<Query> findByCardQueries(CardQueries cardQueries) {
+//        return repo.findByCardQueries(cardQueries);
+//    }
+//
+//    @Override
+//    public List<Query> findByMobileBanking(MobileBanking mobileBanking) {
+//        return repo.findByMobileBanking(mobileBanking);
+//    }
 
 
 }
