@@ -63,6 +63,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        "/api/clinical/orders/lab/file",
 //        "/api/clinical/obs/hae/file",
 //        "/api/admin/icd10/diagnosis/load"
+            "/api/task/pdf"
     };
 
     @Autowired

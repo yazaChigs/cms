@@ -16,6 +16,8 @@ public class StatsDTO implements Serializable {
     private List<Integer> cardQueries;
     private List<String> mobileQueriesNames;
     private List<String> cardQueriesNames;
+    private Integer allAssignees;
+    private Integer freeAssignees;
 
     public List<Integer> getCardQueries() {
         return cardQueries;
@@ -95,5 +97,21 @@ public class StatsDTO implements Serializable {
 
     public void setMobileQueries(List<Integer> mobileQueries) {
         this.mobileQueries = mobileQueries;
+    }
+
+    public Integer getAllAssignees() {
+        return allAssignees;
+    }
+
+    public void setAllAssignees(Integer allAssignees) {
+        this.allAssignees = allAssignees;
+    }
+
+    public Integer getFreeAssignees() {
+        return freeAssignees;
+    }
+
+    public void setFreeAssignees(Integer freeAssignees) {
+        this.freeAssignees = freeAssignees;
     }
 }

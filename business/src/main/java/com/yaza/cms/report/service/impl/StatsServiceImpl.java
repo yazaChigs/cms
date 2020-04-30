@@ -6,12 +6,10 @@ import com.yaza.cms.domain.config.Admin.CardQueries;
 import com.yaza.cms.domain.config.Admin.MobileBanking;
 import com.yaza.cms.domain.config.Branch;
 import com.yaza.cms.domain.config.Query;
+import com.yaza.cms.domain.config.User;
 import com.yaza.cms.domain.dto.StatsDTO;
 import com.yaza.cms.domain.util.DateUtil;
-import com.yaza.cms.repo.CardQueryRepo;
-import com.yaza.cms.repo.CategoryRepo;
-import com.yaza.cms.repo.MobileBankingRepo;
-import com.yaza.cms.repo.QueryRepo;
+import com.yaza.cms.repo.*;
 import com.yaza.cms.report.api.GenericReportModel;
 import com.yaza.cms.report.service.StatsService;
 import com.yaza.cms.report.service.StockReportService;
@@ -33,7 +31,13 @@ public class StatsServiceImpl implements StatsService {
     @Resource
     private QueryRepo queryRepo;
     @Resource
+    private TaskRepo taskRepo;
+    @Resource
     private CategoryRepo categoryRepo;
+    @Resource
+    private UserRepo userRepo;
+    @Resource
+    private UserRoleRepo roleRepo;
     @Resource
     private MobileBankingRepo mobileBankingRepo;
     @Resource
@@ -61,12 +65,24 @@ public class StatsServiceImpl implements StatsService {
         List<String> mobileNames = new ArrayList<>();
         List<Integer> categoryNumbers = new ArrayList<>();
         List<Integer> mobileNumbers = new ArrayList<>();
+        List<User> allAssignees = new ArrayList<>();
         Integer numberOfCards = 0;
+        Integer freeAssignees = 0;
+
+        allAssignees = userRepo.findByUserRoles(roleRepo.findByName("ROLE_E_BANKING"));
+        for(User user:allAssignees) {
+            if (taskRepo.findByAssignee(user).size() == 0) {
+                freeAssignees++;
+            }
+        };
 
         StatsDTO statsDTO = new StatsDTO();
         statsDTO.setWaiting(queryRepo.findByStatus("WAITING").size());
         statsDTO.setPending(queryRepo.findByStatus("PENDING").size());
         statsDTO.setResolved(queryRepo.findByStatus("RESOLVED").size());
+        statsDTO.setAllAssignees(allAssignees.size());
+        statsDTO.setFreeAssignees(freeAssignees);
+
 
 
         categoryRepo.findAll().forEach(category -> {

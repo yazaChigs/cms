@@ -5,11 +5,14 @@
  */
 package com.yaza.cms.controller;
 
+import com.google.zxing.WriterException;
+import com.itextpdf.text.DocumentException;
 import com.yaza.cms.controller.admin.BranchController;
 import com.yaza.cms.domain.config.Branch;
 import com.yaza.cms.domain.config.Query;
 import com.yaza.cms.domain.config.User;
 import com.yaza.cms.domain.config.UserRole;
+import com.yaza.cms.pdf.TaskPdf;
 import com.yaza.cms.service.BranchService;
 import com.yaza.cms.service.QueryService;
 import com.yaza.cms.service.UserService;
@@ -17,11 +20,16 @@ import io.swagger.annotations.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -69,7 +77,7 @@ public class QueryController {
     @ApiOperation("Returns all active Queries")
     public List<Query> getAllPending() {
 
-        return service.findByStatusAndActive("WAITING",Boolean.FALSE);
+        return service.findByStatusAndActive("PENDING",Boolean.FALSE);
     }
 
     @GetMapping("/get-all-overdue")
@@ -103,5 +111,7 @@ public class QueryController {
     public Query getItem(@ApiParam(name = "id", value = "Id used to fetch the object") @RequestParam("id") Long id) {
         return service.get(id);
     }
+
+
 
 }

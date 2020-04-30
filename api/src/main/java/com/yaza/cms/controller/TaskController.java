@@ -5,8 +5,11 @@
  */
 package com.yaza.cms.controller;
 
+import com.google.zxing.WriterException;
+import com.itextpdf.text.DocumentException;
 import com.yaza.cms.controller.admin.BranchController;
 import com.yaza.cms.domain.config.*;
+import com.yaza.cms.pdf.TaskPdf;
 import com.yaza.cms.service.CategoryService;
 import com.yaza.cms.service.QueryService;
 import com.yaza.cms.service.TaskService;
@@ -16,11 +19,16 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -54,6 +62,7 @@ public class TaskController {
             service.save(q);
         if (q.getQuery()!= null && q.getQuery().getStatus().equals("WAITING")) {
             q.getQuery().setActive(Boolean.FALSE);
+            q.getQuery().setStatus("PENDING");
             queryService.save(q.getQuery());
         }
         if (q.getQuery()!= null && q.getStatus().equals("RESOLVED")) {
@@ -130,5 +139,16 @@ public class TaskController {
     public Task getItemByQuery(@ApiParam(name = "id", value = "Id used to fetch the object") @RequestParam("id") Long id) {
         Query query = queryService.get(id);
         return service.findByQuery(query);
+    }
+
+    @RequestMapping(value = "/pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
+    public ResponseEntity<InputStreamResource> getPatientStatement() throws IOException, DocumentException, WriterException {
+        User currentUser =userService.getCurrentUser();
+        List<Task> tasks = service.findByAssigneeAndStatusNot(currentUser, "RESOLVED");
+        TaskPdf pdf = new TaskPdf();
+        ByteArrayInputStream bis = pdf.generatePdf(tasks);
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("Content-Disposition", "inline; filename=accountstatement.pdf");
+        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bis));
     }
 }
