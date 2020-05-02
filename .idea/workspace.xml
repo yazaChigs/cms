@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02d161ac-5535-48f5-877a-99387733d389" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/pdf/TaskPdf.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/ColorUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/PdfTableUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/FileInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JWTWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JWTWebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StatsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StatsDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StatsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StatsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,25 +41,25 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1580841502299" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.totalit.bloodbankstatement.domain.config" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src/main/resources" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.yaza.cms.controller.admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util" />
       <recent name="$PROJECT_DIR$/api/src/main/java/com/totalit/bloodbankstatement/controller/admin" />
       <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service/impl" />
       <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/service" />
       <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo" />
-      <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/domain/dto" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.yaza.cms.domain.util" />
@@ -72,8 +68,8 @@
       <recent name="com.yaza.cms.report.service" />
       <recent name="com.yaza.cms.domain.dto" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src/main/resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.totalit.bloodbankstatement.domain.config" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -98,11 +94,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1586098718878" />
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1588157746908">
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1588454727603">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1588157746908" />
-    <state x="453" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1586245907242" />
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1588454727603" />
+    <state x="453" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1588277640758" />
     <state x="428" y="266" width="455" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587029060399">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -115,5 +111,9 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="128" y="23" width="1024" height="777" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1586098066674" />
+    <state x="320" y="168" width="639" height="486" key="find.popup" timestamp="1588275434049">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="320" y="168" width="639" height="486" key="find.popup/0.23.1280.777@0.23.1280.777" timestamp="1588275434049" />
   </component>
 </project>

@@ -6,13 +6,13 @@
 package com.yaza.cms.domain.config;
 
 import com.yaza.cms.domain.config.Admin.QueryType;
+import com.yaza.cms.domain.util.FileInfo;
 import com.yaza.cms.domain.util.Priority;
 import com.yaza.cms.domain.util.Status;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -38,6 +38,9 @@ public class Query extends BaseEntity{
     private String complaintDetails;
     private String phoneHome;
     private String phoneBusiness;
+    private String fileName;
+    @Transient
+    private List<FileInfo> fileInfos = new ArrayList<>();
 
 
 //    @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
@@ -154,5 +157,21 @@ public class Query extends BaseEntity{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public List<FileInfo> getFileInfos() {
+        return fileInfos;
+    }
+
+    public void setFileInfos(List<FileInfo> fileInfos) {
+        this.fileInfos = fileInfos;
     }
 }
