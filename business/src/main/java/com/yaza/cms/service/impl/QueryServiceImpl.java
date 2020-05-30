@@ -117,6 +117,17 @@ public class QueryServiceImpl implements QueryService {
         return repo.findByCategory(category);
     }
 
+    @Override
+    public  Query findByStanNoAndAccountNumberAndAmount(String stan, String acc, String amt) {
+        return repo.findByStanNoAndAccountNumberAndAmount(stan,acc,amt);
+    }
+
+    @Override
+    public Query findByStanNo(String stan) {
+        return repo.findByStanNo(stan);
+    }
+
+
 //    @Override
 //    public List<Query> findByCardQueries(CardQueries cardQueries) {
 //        return repo.findByCardQueries(cardQueries);

@@ -119,4 +119,16 @@ public class TaskServiceImpl implements TaskService {
     public List<Task> findByAssigneeAndStatus(User user, String status) {
         return repo.findByAssigneeAndStatus(user,status);
     }
+
+    @Override
+    public List<Task> findByAssigneeAndStatusAndActive(User user, String status, Boolean active) {
+        return repo.findByAssigneeAndStatusAndActive(user,status , active);
+    }
+
+    @Override
+    public List<Task> findByCreatedByAndStatusAndActive(User user, String status, Boolean active) {
+        return repo.findByCreatedByAndStatusAndActive(user,status,active);
+    }
+
+
 }

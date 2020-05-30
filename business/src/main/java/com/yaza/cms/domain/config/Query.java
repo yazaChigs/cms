@@ -34,6 +34,8 @@ public class Query extends BaseEntity{
     private Category category;
     private String queryType;
     private String stanNo;
+    private String amount;
+    private String actionTaken;
     private String description;
     private String complaintDetails;
     private String phoneHome;
@@ -173,5 +175,21 @@ public class Query extends BaseEntity{
 
     public void setFileInfos(List<FileInfo> fileInfos) {
         this.fileInfos = fileInfos;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getActionTaken() {
+        return actionTaken;
+    }
+
+    public void setActionTaken(String actionTaken) {
+        this.actionTaken = actionTaken;
     }
 }

@@ -29,6 +29,7 @@ public class Task extends BaseEntity{
     private Double actualTimeSpent;
     private String working;
     private Date startTime;
+    private String actionTaken;
     @OneToOne
     private  Query query;
 
@@ -128,5 +129,13 @@ public class Task extends BaseEntity{
 
     public void setStartTime(Date startTime) {
         this.startTime = startTime;
+    }
+
+    public String getActionTaken() {
+        return actionTaken;
+    }
+
+    public void setActionTaken(String actionTaken) {
+        this.actionTaken = actionTaken;
     }
 }

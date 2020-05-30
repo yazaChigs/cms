@@ -22,6 +22,8 @@ public interface TaskService extends GenericNameService<Task>{
     public  Task findByQuery(Query query);
     public  List<Task> findByStatus(String status);
     public List<Task> findByAssigneeAndStatus(User user, String status);
+    public List<Task> findByAssigneeAndStatusAndActive(User user, String status, Boolean active);
+    public List<Task> findByCreatedByAndStatusAndActive(User user, String status, Boolean active);
 
 
 

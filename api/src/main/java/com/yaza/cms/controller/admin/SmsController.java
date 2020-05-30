@@ -37,7 +37,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/sms")
 @Api(description = "Queries resource")
-public class SmsController {
+public class  SmsController {
 
     public static final Logger logger = LoggerFactory.getLogger(SmsController.class);
     @Resource
@@ -124,7 +124,7 @@ public class SmsController {
                 URLConnection conn = url.openConnection();         // throws an IOException
                 // Step 4:
                 // Convert the InputStreamReader to a Buffered Reader.      //
-                // Buffering the stream makes the reading faster; the readLine() method of the BufferedReader makes the reading easier.
+                // Buffering the stream makes the reading faster; the readLinevv  vvvvvvvvvvvvv        vv() method of the BufferedReader makes the reading easier.
                 BufferedReader br = new BufferedReader(
                         new InputStreamReader(conn.getInputStream()));
                 // Step 5:

@@ -2,11 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02d161ac-5535-48f5-877a-99387733d389" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/util/FileInfo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JWTWebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/auth/jwt/JWTWebSecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/QueryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/SmsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/admin/SmsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Query.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Task.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/config/Task.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StatsDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/domain/dto/StatsDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/QueryRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/QueryRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/TaskRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/repo/TaskRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/AdminStatsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/AdminStatsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StatsServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/report/service/impl/StatsServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/QueryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/QueryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/TaskService.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/TaskService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/QueryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/QueryServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/TaskServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/business/src/main/java/com/yaza/cms/service/impl/TaskServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,10 +104,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1586098718878" />
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1588454727603">
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1590873587493">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1588454727603" />
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1590873587493" />
     <state x="453" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1588277640758" />
     <state x="428" y="266" width="455" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587029060399">
       <screen x="0" y="0" width="1280" height="800" />

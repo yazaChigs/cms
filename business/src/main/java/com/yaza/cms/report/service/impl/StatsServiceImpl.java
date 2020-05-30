@@ -71,8 +71,9 @@ public class StatsServiceImpl implements StatsService {
 
         allAssignees = userRepo.findByUserRoles(roleRepo.findByName("ROLE_E_BANKING"));
         for(User user:allAssignees) {
-            if (taskRepo.findByAssignee(user).size() == 0) {
-                freeAssignees++;
+            if (taskRepo.findByAssigneeAndStatusNot(user, "RESOLVED").size() == 0) {
+                freeAssignees+=1;
+                System.err.println(freeAssignees);
             }
         };
 
@@ -93,12 +94,12 @@ public class StatsServiceImpl implements StatsService {
         statsDTO.setMobileQueriesNames(categoryNames);
         statsDTO.setCardQueries(categoryNumbers);
 
-                ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(statsDTO));
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
+//                ObjectMapper objectMapper = new ObjectMapper();
+//        try {
+//            System.err.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(statsDTO));
+//        } catch (JsonProcessingException e) {
+//            e.printStackTrace();
+//        }
 
 
         return statsDTO;

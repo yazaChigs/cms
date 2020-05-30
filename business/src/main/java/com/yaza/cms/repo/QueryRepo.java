@@ -25,6 +25,9 @@ public interface QueryRepo extends AbstractRepo<Query, Long>{
     public List<Query> findByStatus(String status);
     public List<Query> findByQueryType(QueryType queryType);
     public List<Query> findByCategory(Category category);
+    public Query findByStanNoAndAccountNumberAndAmount(String stan,String acc,String amt);
+    public Query findByStanNo(String stan);
+
 //    public List<Query> findByCardQueries(CardQueries cardQueries);
 //    public List<Query> findByMobileBanking(MobileBanking mobileBanking);
 

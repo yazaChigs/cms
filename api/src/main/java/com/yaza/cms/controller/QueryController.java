@@ -8,15 +8,10 @@ package com.yaza.cms.controller;
 import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import com.yaza.cms.controller.admin.BranchController;
-import com.yaza.cms.domain.config.Branch;
-import com.yaza.cms.domain.config.Query;
-import com.yaza.cms.domain.config.User;
-import com.yaza.cms.domain.config.UserRole;
+import com.yaza.cms.domain.config.*;
 import com.yaza.cms.domain.util.FileInfo;
 import com.yaza.cms.pdf.TaskPdf;
-import com.yaza.cms.service.BranchService;
-import com.yaza.cms.service.QueryService;
-import com.yaza.cms.service.UserService;
+import com.yaza.cms.service.*;
 import com.yaza.cms.service.impl.StorageService;
 import io.swagger.annotations.*;
 import org.slf4j.Logger;
@@ -57,17 +52,48 @@ public class QueryController {
     @Resource
     private QueryService service;
     @Resource
+    private TaskService tService;
+    @Resource
     private UserService userService;
     @Resource
     private StorageService storageService;
+    @Resource
+    private UserRoleService roleService;
 
     @PostMapping("/save")
     @ApiOperation("Persists Company Details")
     public ResponseEntity<Map<String, Object>> saveCompanyPro(@RequestBody Query q) {
+
         Map<String, Object> response= new HashMap<>();
+        if (service.findByStanNoAndAccountNumberAndAmount(q.getStanNo(), q.getAccountNumber(), q.getAmount())!=null
+                && service.findByStanNo(q.getStanNo())!=null)
+        { response.put("message", "Query already exists");
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);}
         Query result = new Query();
+        Task task = new Task();
+        Integer numberOfTasks = 0;
+        User userToBeAssigned = new User();
+        UserRole role = roleService.getByName("ROLE_E_BANKING");
         try {
-           result = service.save(q);
+            if (q!= null && q.getStatus().equals("WAITING")) {
+//                q.setActive(Boolean.FALSE);
+                q.setStatus("PENDING");
+                result = service.save(q);
+            }
+            task.setQuery(q);
+            task.setPriority(q.getPriority());
+            task.setStatus("WAITING");
+
+            for(User user:userService.findByUserRoles(role)) {
+                Integer taskSize = tService.findByAssigneeAndStatusNot(user,"RESOLVED").size();
+                if(taskSize<=numberOfTasks) {
+                    numberOfTasks = taskSize;
+                    userToBeAssigned = user;
+                }
+            }
+            task.setAssignee(userToBeAssigned);
+            tService.save(task);
+
         } catch (Exception ex) {
             response.put("message", "System error occurred saving item");
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -77,12 +103,13 @@ public class QueryController {
         }
         response.put("message", "Query Saved Successfully");
         return new ResponseEntity<>(response, HttpStatus.OK);
+
     }
 
     @GetMapping("/get-all")
     @ApiOperation("Returns all active Queries")
     public List<Query> getAll() {
-        return service.findByStatusAndActive("WAITING",Boolean.TRUE);
+        return service.getAll();
     }
 
     @GetMapping("/get-all-pending")
@@ -101,9 +128,6 @@ public class QueryController {
         Date date1 = sdf.parse(todaysDate.toString());
         service.findByStatus("WAITING").forEach(query -> {
             long diff = (date1.getTime() - query.getDateCreated().getTime())/(24 * 60 * 60 * 1000);
-            System.err.println("****************");
-            System.err.println(diff);
-            System.err.println("****************");
             if(diff>3) {
                 overdueQueries.add(query);
             }
@@ -118,6 +142,12 @@ public class QueryController {
         return service.findByStatus("RESOLVED");
     }
 
+    @GetMapping("/get-by-stan")
+    @ApiOperation(value = "Returns query of id passed as parameter", response = UserRole.class)
+    public Query getBystan(@RequestParam("id") String id) {
+        return service.findByStanNo(id);
+    }
+
     @GetMapping("/get-item")
     @ApiOperation(value = "Returns query of id passed as parameter", response = UserRole.class)
     public Query getItem(@ApiParam(name = "id", value = "Id used to fetch the object") @RequestParam("id") Long id) {
@@ -127,13 +157,13 @@ public class QueryController {
         FileInfo fileInfo = new FileInfo();
         String file = new String();
         if(q.getFileName()!=null) {
-        file = q.getFileName();
-        fileInfo.setFileName(file);
-        fileInfo.setPath(path.concat(file));
+            file = q.getFileName();
+            fileInfo.setFileName(file);
+            fileInfo.setPath(path.concat(file));
 
-        fileInfoList.add(fileInfo);
+            fileInfoList.add(fileInfo);
 
-        q.setFileInfos(fileInfoList);
+            q.setFileInfos(fileInfoList);
         }
 
 
@@ -220,6 +250,10 @@ public class QueryController {
         }
         return fileInfos;
     }
+
+//    public boolean checkDublicate(Query query) {
+//        service.
+//    }
 
 
 

@@ -12,6 +12,7 @@ public class StatsDTO implements Serializable {
     private Integer smartCash;
     private Integer mainCard;
     private Integer visaCard;
+    private Integer overDue;
     private List<Integer> mobileQueries;
     private List<Integer> cardQueries;
     private List<String> mobileQueriesNames;
@@ -101,6 +102,14 @@ public class StatsDTO implements Serializable {
 
     public Integer getAllAssignees() {
         return allAssignees;
+    }
+
+    public Integer getOverDue() {
+        return overDue;
+    }
+
+    public void setOverDue(Integer overDue) {
+        this.overDue = overDue;
     }
 
     public void setAllAssignees(Integer allAssignees) {

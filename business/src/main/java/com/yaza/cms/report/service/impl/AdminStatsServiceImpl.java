@@ -81,14 +81,14 @@ public class AdminStatsServiceImpl implements AdminStatsService {
         });
 
         for (User user: users) {
-            tempTime = 0.00;
+            tempTime = 72.00;
             tempWorkTime = 0.00;
             pendingList.add(taskRepo.findByAssigneeAndStatus(user,"PENDING").size());
             resolvedList.add(taskRepo.findByAssigneeAndStatus(user,"RESOLVED").size());
 
             for (Task task: taskRepo.findByAssignee(user)) {
                 if(task != null) {
-                    tempTime += checkNull(task.getActualTimeSpent());
+                    tempTime += tempTime;
                     tempWorkTime += checkNull(task.getSpentTime());
                 }
             }
