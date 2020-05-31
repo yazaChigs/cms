@@ -198,7 +198,7 @@ public class TaskController {
         String username = txt.getUsername();
         String webservicetoken = txt.getWebServiceToken();
 //        String message = txt.getMessage();
-        String message = "Dear %s, Your Query of %s, Stan Number %s, %s has been resolved. %s";
+        String message = "Dear %s, Your query of $ %s, Stan Number %s, %s has been resolved. %s";
         bulksms_ws = "http://portal.bulksmsweb.com/index.php?app=ws";
 //        Appointment appointments = service.getByPatient(patientService.get(patientId), item.getFacility(), item.getPhysician(), item.getDate());
 
@@ -208,7 +208,7 @@ public class TaskController {
             try {
                 ws_str = bulksms_ws + "&u=" + username + "&h=" + webservicetoken + "&op=pv";
                 ws_str = ws_str + "&to=" + URLEncoder.encode(destinations, "UTF-8") + "&msg="
-                        + URLEncoder.encode(String.format(message, item.getFullname(),item.getAmount(),item.getStanNo(),item.getQueryType(),item.getActionTaken()), "UTF-8");
+                        + URLEncoder.encode(String.format(message, item.getFullname(),item.getAmount(),item.getStanNo(),item.getCategory(),item.getActionTaken()), "UTF-8");
 
                 url = new URL(ws_str);
                 // Sttep 3: Open a URLConnection to the url.  //
