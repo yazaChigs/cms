@@ -10,6 +10,7 @@ import com.itextpdf.text.DocumentException;
 import com.yaza.cms.controller.admin.BranchController;
 import com.yaza.cms.domain.config.*;
 import com.yaza.cms.domain.config.Admin.TextMessaging;
+import com.yaza.cms.domain.dto.BOStatsDTO;
 import com.yaza.cms.pdf.TaskPdf;
 import com.yaza.cms.service.CategoryService;
 import com.yaza.cms.service.QueryService;
@@ -75,6 +76,7 @@ public class TaskController {
     public ResponseEntity<Map<String, Object>> saveCompanyPro(@RequestBody Task q) {
         Map<String, Object> response= new HashMap<>();
         try {
+            q.setActive(Boolean.FALSE);
             service.save(q);
         if (q.getQuery()!= null && q.getQuery().getStatus().equals("WAITING")) {
             q.getQuery().setActive(Boolean.FALSE);
@@ -140,6 +142,16 @@ public class TaskController {
         });
 
         return overDurTasks;
+    }
+
+    @GetMapping("/get-assignee-stats")
+    @ApiOperation("Returns all Queries for user")
+    public BOStatsDTO getUserStats() {
+
+        BOStatsDTO boStatsDTO = new BOStatsDTO();
+        boStatsDTO.setPending(service.findByAssigneeAndStatus(userService.getCurrentUser(),"PENDING").size());
+        boStatsDTO.setResolved(service.findByAssigneeAndStatus(userService.getCurrentUser(),"RESOLVED").size());
+        return boStatsDTO;
     }
 
     @GetMapping("/get-my-tasks")

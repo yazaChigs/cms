@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="02d161ac-5535-48f5-877a-99387733d389" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/java/com/yaza/cms/controller/TaskController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main/resources/application-dev.properties" afterDir="false" />
-    </list>
+    <list default="true" id="02d161ac-5535-48f5-877a-99387733d389" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,8 +42,8 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/api/src/main/resources" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.totalit.bloodbankstatement.domain.config" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.yaza.cms.controller.admin" />
@@ -60,14 +56,14 @@
       <recent name="$PROJECT_DIR$/business/src/main/java/com/totalit/bloodbankstatement/repo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.yaza.cms.domain.dto" />
       <recent name="com.yaza.cms.domain.util" />
       <recent name="com.yaza.cms.pdf" />
       <recent name="com.yaza.cms.report.service.impl" />
       <recent name="com.yaza.cms.report.service" />
-      <recent name="com.yaza.cms.domain.dto" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.totalit.bloodbankstatement.domain.config" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src/main/resources" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -92,10 +88,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="378" y="173" key="#com.intellij.codeInsight.editorActions.RestoreReferencesDialog/0.0.1280.800@0.0.1280.800" timestamp="1586098718878" />
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1590873587493">
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1591087461443">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1590873587493" />
+    <state x="453" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1280.800@0.0.1280.800" timestamp="1591087461443" />
     <state x="453" y="142" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1588277640758" />
     <state x="428" y="266" width="455" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1587029060399">
       <screen x="0" y="0" width="1280" height="800" />

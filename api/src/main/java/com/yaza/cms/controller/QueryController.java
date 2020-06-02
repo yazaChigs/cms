@@ -9,6 +9,7 @@ import com.google.zxing.WriterException;
 import com.itextpdf.text.DocumentException;
 import com.yaza.cms.controller.admin.BranchController;
 import com.yaza.cms.domain.config.*;
+import com.yaza.cms.domain.dto.BOStatsDTO;
 import com.yaza.cms.domain.util.FileInfo;
 import com.yaza.cms.pdf.TaskPdf;
 import com.yaza.cms.service.*;
@@ -116,7 +117,7 @@ public class QueryController {
     @ApiOperation("Returns all active Queries")
     public List<Query> getAllPending() {
 
-        return service.findByStatusAndActive("PENDING",Boolean.FALSE);
+        return service.findByStatusAndActive("PENDING",Boolean.TRUE);
     }
 
     @GetMapping("/get-all-overdue")
@@ -126,7 +127,7 @@ public class QueryController {
         LocalDate todaysDate = LocalDate.now();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = sdf.parse(todaysDate.toString());
-        service.findByStatus("WAITING").forEach(query -> {
+        service.findByStatusAndActive("PENDING",Boolean.TRUE).forEach(query -> {
             long diff = (date1.getTime() - query.getDateCreated().getTime())/(24 * 60 * 60 * 1000);
             if(diff>3) {
                 overdueQueries.add(query);
@@ -140,6 +141,21 @@ public class QueryController {
     @ApiOperation("Returns all complete Queries")
     public List<Query> getAllCompleted() {
         return service.findByStatus("RESOLVED");
+    }
+
+    @GetMapping("/get-by-user")
+    @ApiOperation("Returns all Queries for user")
+    public List<Query> getByUser() {
+        return service.findByCreatedBy(userService.getCurrentUser());
+    }
+
+    @GetMapping("/get-user-stats")
+    @ApiOperation("Returns all Queries for user")
+    public BOStatsDTO getUserStats() {
+        BOStatsDTO boStatsDTO = new BOStatsDTO();
+        boStatsDTO.setPending(service.findByStatusAndActive("PENDING", Boolean.TRUE).size());
+        boStatsDTO.setResolved(service.findByStatusAndActive("RESOLVED", Boolean.TRUE).size());
+        return boStatsDTO;
     }
 
     @GetMapping("/get-by-stan")

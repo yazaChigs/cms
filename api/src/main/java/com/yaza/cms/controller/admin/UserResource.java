@@ -72,6 +72,8 @@ public class UserResource extends BaseResource {
                 user.setPhysician(p);
             }*/
 //            user.setWorkstation(null);
+            if(userService.findByUserName(user.getUserName())!=null && user.getId()==null)
+                return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
             userService.save(user);
         } catch (Exception ex) {
             ex.printStackTrace();

@@ -11,6 +11,7 @@ import com.yaza.cms.domain.config.Admin.QueryType;
 import com.yaza.cms.domain.config.Branch;
 import com.yaza.cms.domain.config.Category;
 import com.yaza.cms.domain.config.Query;
+import com.yaza.cms.domain.config.User;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public interface QueryService extends GenericNameService<Query>{
     public List<Query> findByCategory(Category category);
     public Query findByStanNoAndAccountNumberAndAmount(String stan,String acc,String amt);
     public Query findByStanNo(String stan);
+    public List<Query> findByCreatedBy(User createdBy);
 
 //    public List<Query> findByCardQueries(CardQueries cardQueries);
 //    public List<Query> findByMobileBanking(MobileBanking mobileBanking);

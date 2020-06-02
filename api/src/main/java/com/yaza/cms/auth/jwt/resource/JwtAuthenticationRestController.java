@@ -7,9 +7,8 @@ import com.yaza.cms.service.BranchService;
 import com.yaza.cms.service.UserRoleService;
 import com.yaza.cms.service.UserService;
 import io.swagger.annotations.ApiOperation;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+
+import java.util.*;
 import javax.annotation.Resource;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,16 +68,20 @@ public class JwtAuthenticationRestController {
 	@RequestMapping(value = "${jwt.get.token.uri}", method = RequestMethod.POST)
 	public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtTokenRequest authenticationRequest)
 			throws AuthenticationException{
+        Map<String, Object> response = new HashMap<>();
                 try{
 		boolean successAuth = authenticate(authenticationRequest.getUserName(), authenticationRequest.getPassword());		
                 User user;
                 if(successAuth){
                  String token = createToken(authenticationRequest);
                    user = userService.findByUserName(authenticationRequest.getUserName());
+                   response.put("message","Login successful");
                    return ResponseEntity.ok(new AuthDetail(token, user));
                 }
                else{
-                   return null;
+                    response.put("message","user disabled or bad credentials");
+
+                    return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
 //                    user = switchService.checkCloudUser(authenticationRequest);//Rest Template to check if user Exist on Switch
 //                    if (user != null && user.getCompany() != null) {
 //                        saveRoles(user.getUserRoles()); //Save Roles To Cloud Database
@@ -141,7 +144,7 @@ public class JwtAuthenticationRestController {
                 }
                 catch(Exception e){
                     e.printStackTrace();
-                    return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+                    return new ResponseEntity<>(response,HttpStatus.INTERNAL_SERVER_ERROR);
                 }
 
 	}

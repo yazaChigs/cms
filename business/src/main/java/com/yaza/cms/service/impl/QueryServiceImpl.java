@@ -11,6 +11,7 @@ import com.yaza.cms.domain.config.Admin.QueryType;
 import com.yaza.cms.domain.config.Branch;
 import com.yaza.cms.domain.config.Category;
 import com.yaza.cms.domain.config.Query;
+import com.yaza.cms.domain.config.User;
 import com.yaza.cms.repo.BranchRepo;
 import com.yaza.cms.repo.QueryRepo;
 import com.yaza.cms.service.BranchService;
@@ -125,6 +126,11 @@ public class QueryServiceImpl implements QueryService {
     @Override
     public Query findByStanNo(String stan) {
         return repo.findByStanNo(stan);
+    }
+
+    @Override
+    public List<Query> findByCreatedBy(User createdBy) {
+        return repo.findByCreatedBy(createdBy);
     }
 
 
